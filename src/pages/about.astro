@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { focusAreas, site } from "../data/site";
+---
+
+<BaseLayout title={`About | ${site.name}`} description="About Zack Meacham and the thinking behind this personal site.">
+  <section class="shell pt-14">
+    <SectionHeading
+      eyebrow="About"
+      title="A simple site with room to grow."
+      intro="This version is built to be useful immediately: clear enough to share now, flexible enough to improve as the story gets sharper."
+    />
+    <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
+      <div class="space-y-6">
+        {site.aboutParagraphs.map((paragraph) => (
+          <p class="section-copy">{paragraph}</p>
+        ))}
+      </div>
+
+      <div class="border-t border-ink-900/12 pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+        <p class="eyebrow">Focus Areas</p>
+        <ul class="mt-5 space-y-3 text-sm text-ink-700">
+          {focusAreas.map((item) => (
+            <li class="border-b border-ink-900/8 pb-3">{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell pt-18">
+    <SectionHeading
+      eyebrow="Working Principles"
+      title="What the portfolio should communicate."
+      intro="A strong personal site is not just a list of tools. It should show how you think, what kind of work you gravitate toward, and why your projects mattered."
+    />
+    <div class="mt-12 grid gap-10 lg:grid-cols-3">
+      {site.principles.map((item) => (
+        <article class="border-t border-ink-900/12 pt-5">
+          <h3 class="text-xl font-semibold text-ink-900">{item.title}</h3>
+          <p class="mt-3 text-sm leading-7 text-ink-700">{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

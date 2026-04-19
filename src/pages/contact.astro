@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { profileLinks, site } from "../data/site";
+
+const activeProfiles = profileLinks.filter((link) => link.href);
+---
+
+<BaseLayout title={`Contact | ${site.name}`} description="Contact Zack Meacham.">
+  <section class="shell pt-14">
+    <SectionHeading
+      eyebrow="Contact"
+      title="Keep the contact page direct and low-friction."
+      intro="For a first portfolio site, the goal here is simple: give people one obvious way to reach you and make it easy to add public profiles when you are ready."
+    />
+
+    <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
+      <div class="border-t border-ink-900/12 pt-6">
+        <p class="text-sm uppercase tracking-[0.24em] text-ink-700/80">Primary contact</p>
+        <a
+          href={site.email}
+          class="mt-4 inline-flex rounded-full bg-ink-900 px-6 py-3 text-sm font-semibold text-cream-50 shadow-[0_16px_40px_rgba(22,33,48,0.16)]"
+        >
+          {site.email.replace("mailto:", "")}
+        </a>
+        <p class="mt-4 max-w-2xl text-sm leading-7 text-ink-700">
+          Update the address in `src/data/site.ts` if you want to use a different inbox before launch.
+        </p>
+      </div>
+
+      <div class="border-t border-ink-900/12 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+        <p class="text-sm uppercase tracking-[0.24em] text-ink-700/80">Public profiles</p>
+        {activeProfiles.length > 0 ? (
+          <div class="mt-4 flex flex-col gap-3">
+            {activeProfiles.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex w-fit rounded-full border border-ink-900/12 px-4 py-2 text-sm font-semibold text-ink-900"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p class="mt-4 text-sm leading-7 text-ink-700">
+            Add your GitHub and LinkedIn URLs in `src/data/site.ts` and they will appear here automatically.
+          </p>
+        )}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

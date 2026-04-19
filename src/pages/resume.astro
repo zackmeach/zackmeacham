@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { focusAreas, resumeEntries, site } from "../data/site";
+---
+
+<BaseLayout title={`Resume | ${site.name}`} description="Resume page for Zack Meacham.">
+  <section class="shell pt-14">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
+      <SectionHeading
+        eyebrow="Resume"
+        title="A scan-friendly resume page you can tighten fast."
+        intro="This route is set up as the readable web version of your resume. It works on its own today, and it is also ready for a future PDF download once you add one to the public folder."
+      />
+
+      <div class="border-t border-ink-900/12 pt-5 text-sm text-ink-700 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+        {site.resumePdfHref ? (
+          <a href={site.resumePdfHref} class="inline-flex rounded-full bg-ink-900 px-5 py-3 font-semibold text-cream-50">
+            Download PDF
+          </a>
+        ) : (
+          <p>Add a `resume.pdf` file to `public/` when you want a downloadable version.</p>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <section class="shell pt-18">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
+      <div class="space-y-10">
+        {resumeEntries.map((entry) => (
+          <article class="border-t border-ink-900/12 pt-6">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between">
+              <div>
+                <h2 class="text-2xl font-semibold text-ink-900">{entry.role}</h2>
+                <p class="mt-1 text-sm uppercase tracking-[0.22em] text-ink-700/80">{entry.organization}</p>
+              </div>
+              <p class="text-sm text-ink-700">{entry.period}</p>
+            </div>
+
+            <ul class="mt-5 space-y-3 text-sm leading-7 text-ink-700">
+              {entry.bullets.map((bullet) => (
+                <li class="border-b border-ink-900/8 pb-3">{bullet}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <aside class="border-t border-ink-900/12 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+        <p class="eyebrow">Core Themes</p>
+        <ul class="mt-5 flex flex-wrap gap-2">
+          {focusAreas.map((item) => (
+            <li class="rounded-full border border-ink-900/12 bg-white/70 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-ink-700">
+              {item}
+            </li>
+          ))}
+        </ul>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

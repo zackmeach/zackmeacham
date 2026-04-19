@@ -1,0 +1,21 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import { projects, site } from "../data/site";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title={`Projects | ${site.name}`} description="Selected projects and portfolio case-study structure for Zack Meacham.">
+  <section class="shell pt-14">
+    <SectionHeading
+      eyebrow="Projects"
+      title="A project page built around useful case studies."
+      intro="Each entry is scaffolded to tell the story you actually want in a portfolio: the problem, your contribution, the result, and the stack. Replace the placeholders with 2-4 real projects and this page is ready to carry the site."
+    />
+    <div class="mt-12 space-y-10">
+      {projects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
