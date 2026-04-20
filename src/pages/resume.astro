@@ -13,13 +13,19 @@ import { focusAreas, resumeEntries, site } from "../data/site";
         intro="This route is set up as the readable web version of your resume. It works on its own today, and it is also ready for a future PDF download once you add one to the public folder."
       />
 
-      <div class="border-t border-ink-900/12 pt-5 text-sm text-ink-700 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+      <div class="border-t border-ink-900/12 pt-5 text-sm text-ink-700 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 print:hidden">
         {site.resumePdfHref ? (
           <a href={site.resumePdfHref} class="inline-flex rounded-full bg-ink-900 px-5 py-3 font-semibold text-cream-50">
             Download PDF
           </a>
         ) : (
-          <p>Add a `resume.pdf` file to `public/` when you want a downloadable version.</p>
+          <button
+            type="button"
+            data-print-resume
+            class="inline-flex rounded-full bg-ink-900 px-5 py-3 font-semibold text-cream-50 transition hover:-translate-y-0.5"
+          >
+            Save as PDF
+          </button>
         )}
       </div>
     </div>
@@ -59,4 +65,10 @@ import { focusAreas, resumeEntries, site } from "../data/site";
       </aside>
     </div>
   </section>
+
+  <script>
+    document.querySelector("[data-print-resume]")?.addEventListener("click", () => {
+      window.print();
+    });
+  </script>
 </BaseLayout>
