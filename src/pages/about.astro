@@ -1,47 +1,67 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import { focusAreas, site } from "../data/site";
+import { links, site } from "../data/site";
 ---
 
-<BaseLayout title={`About | ${site.name}`} description="About Zack Meacham and the thinking behind this personal site.">
-  <section class="shell pt-14">
-    <SectionHeading
-      eyebrow="About"
-      title="A simple site with room to grow."
-      intro="This version is built to be useful immediately: clear enough to share now, flexible enough to improve as the story gets sharper."
-    />
-    <div class="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
-      <div class="space-y-6">
-        {site.aboutParagraphs.map((paragraph) => (
-          <p class="section-copy">{paragraph}</p>
-        ))}
-      </div>
+<BaseLayout title={`About - ${site.name}`} description="About Zack Meacham.">
+  <section class="shell-wide pt-14">
+    <p class="mono-tag">About</p>
+    <h1 class="mt-4 max-w-[14ch]">Engineer, builder, and systems-minded generalist.</h1>
+    <div class="mt-6 max-w-[60ch] space-y-5">
+      {site.aboutParagraphs.map((paragraph) => (
+        <p class="prose-soft">{paragraph}</p>
+      ))}
+    </div>
+  </section>
 
-      <div class="border-t border-ink-900/12 pt-5 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-        <p class="eyebrow">Focus Areas</p>
-        <ul class="mt-5 space-y-3 text-sm text-ink-700">
-          {focusAreas.map((item) => (
-            <li class="border-b border-ink-900/8 pb-3">{item}</li>
+  <section class="shell-wide pt-16">
+    <div class="about-grid">
+      <div>
+        <p class="mono-tag">Strengths</p>
+        <ul class="rule mt-4 space-y-4 pt-6">
+          {site.strengths.map((item) => (
+            <li class="prose-soft">{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="mono-tag">Working style</p>
+        <ul class="rule mt-4 space-y-4 pt-6">
+          {site.workingStyle.map((item) => (
+            <li class="prose-soft">{item}</li>
           ))}
         </ul>
       </div>
     </div>
   </section>
 
-  <section class="shell pt-18">
-    <SectionHeading
-      eyebrow="Working Principles"
-      title="What the portfolio should communicate."
-      intro="A strong personal site is not just a list of tools. It should show how you think, what kind of work you gravitate toward, and why your projects mattered."
-    />
-    <div class="mt-12 grid gap-10 lg:grid-cols-3">
-      {site.principles.map((item) => (
-        <article class="border-t border-ink-900/12 pt-5">
-          <h3 class="text-xl font-semibold text-ink-900">{item.title}</h3>
-          <p class="mt-3 text-sm leading-7 text-ink-700">{item.text}</p>
-        </article>
-      ))}
+  <section class="shell-wide pt-16">
+    <div class="about-grid">
+      <div>
+        <p class="mono-tag">Credibility</p>
+        <ul class="rule mt-4 space-y-4 pt-6">
+          {site.credibilityHighlights.map((item) => (
+            <li class="prose-soft">{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <p class="mono-tag">Links</p>
+        <ul class="rule mt-4 space-y-4 pt-6">
+          {links.map((item) => (
+            <li class="prose-soft">
+              <a href={item.href} target="_blank" rel="noreferrer" class="link">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="shell-wide pt-16">
+    <div class="personal-band">
+      <p class="mono-tag">Outside work</p>
+      <p class="prose-soft mt-4 max-w-[62ch]">{site.shortPersonal}</p>
     </div>
   </section>
 </BaseLayout>

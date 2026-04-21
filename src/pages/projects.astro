@@ -1,20 +1,67 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
-import SectionHeading from "../components/SectionHeading.astro";
-import { projects, site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { featured, personalProjects, site, workProjects } from "../data/site";
+
+const personal = [featured, ...personalProjects];
 ---
 
-<BaseLayout title={`Projects | ${site.name}`} description="Selected projects and portfolio case-study structure for Zack Meacham.">
-  <section class="shell pt-14">
-    <SectionHeading
-      eyebrow="Projects"
-      title="A project page built around useful case studies."
-      intro="Each entry is scaffolded to tell the story you actually want in a portfolio: the problem, your contribution, the result, and the stack. Replace the placeholders with 2-4 real projects and this page is ready to carry the site."
-    />
-    <div class="mt-12 space-y-10">
-      {projects.map((project) => (
-        <ProjectCard project={project} />
+<BaseLayout title={`Projects - ${site.name}`} description="Selected projects and build notes by Zack Meacham.">
+  <section class="shell-wide pt-14">
+    <p class="mono-tag">Projects</p>
+    <h1 class="mt-4 max-w-[14ch]">Selected work, written to be scanned quickly.</h1>
+    <p class="prose-soft mt-5 max-w-[60ch]">
+      Personal and startup work comes first because it is the clearest public view into how I build. Professional
+      work follows in a deliberately public-safe form.
+    </p>
+    <p class="mono mt-6 max-w-[72ch]">{site.publicSafeRule}</p>
+  </section>
+
+  <section class="shell-wide pt-16">
+    <div class="flex items-baseline justify-between gap-4">
+      <p class="mono-tag">Personal and startup</p>
+      <p class="mono">{personal.length} entries</p>
+    </div>
+    <div class="mt-6">
+      {personal.map((project) => (
+        <article id={project.slug} class="project-detail rule scroll-mt-24">
+          <div class="project-detail-head">
+            <div>
+              <p class="mono-tag">{project.eyebrow}</p>
+              <h2 class="mt-4">{project.title}</h2>
+            </div>
+            <p class="mono">{project.year} · {project.status}</p>
+          </div>
+          <p class="prose-soft mt-4 max-w-[56ch]">{project.summary}</p>
+          <p class="prose-soft mt-4 max-w-[62ch] text-sm">{project.notes}</p>
+          <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <p class="mono">{project.stack.join(" · ")}</p>
+            {project.href && <a href={project.href} target="_blank" rel="noreferrer" class="mono link">Live</a>}
+            {project.repo && <a href={project.repo} target="_blank" rel="noreferrer" class="mono link">Repo</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="shell-wide pt-20">
+    <div class="flex items-baseline justify-between gap-4">
+      <p class="mono-tag">Professional</p>
+      <p class="mono">{workProjects.length} entries</p>
+    </div>
+    <div class="mt-6">
+      {workProjects.map((project) => (
+        <article id={project.slug} class="project-detail rule scroll-mt-24">
+          <div class="project-detail-head">
+            <div>
+              <p class="mono-tag">{project.eyebrow}</p>
+              <h2 class="mt-4">{project.title}</h2>
+            </div>
+            <p class="mono">{project.year} · {project.status}</p>
+          </div>
+          <p class="prose-soft mt-4 max-w-[56ch]">{project.summary}</p>
+          <p class="prose-soft mt-4 max-w-[62ch] text-sm">{project.notes}</p>
+          <p class="mono mt-4">{project.stack.join(" · ")}</p>
+        </article>
       ))}
     </div>
   </section>

@@ -30,11 +30,8 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
     <meta property="og:site_name" content={site.name} />
   </head>
   <body>
-    <div aria-hidden="true" class="pointer-events-none fixed inset-0 -z-10">
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(22,33,48,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(22,33,48,0.03)_1px,transparent_1px)] bg-[size:3rem_3rem]"></div>
-    </div>
     <SiteHeader currentPath={Astro.url.pathname} />
-    <main class="pb-20">
+    <main class="pb-24">
       <slot />
     </main>
     <SiteFooter />

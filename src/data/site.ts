@@ -9,18 +9,20 @@ export type LinkItem = {
   external?: boolean;
 };
 
-export type Highlight = {
-  title: string;
-  text: string;
+export type ProofPoint = {
+  value: string;
+  label: string;
 };
 
 export type Project = {
+  slug: string;
   title: string;
+  kind: "personal" | "work";
+  eyebrow: string;
+  year: string;
   status: string;
   summary: string;
-  problem: string;
-  build: string;
-  impact: string;
+  notes: string;
   stack: string[];
   href?: string;
   repo?: string;
@@ -33,140 +35,235 @@ export type ResumeEntry = {
   bullets: string[];
 };
 
+export type EducationEntry = {
+  institution: string;
+  credential: string;
+  period: string;
+  details: string[];
+};
+
+export type SkillGroup = {
+  label: string;
+  items: string[];
+};
+
 export const site = {
   name: "Zack Meacham",
   title: "Zack Meacham | Software Engineer",
-  description: "Personal website, resume, and portfolio for Zack Meacham.",
+  description:
+    "Software engineer working across legacy modernization, national-defense test infrastructure, frontier-AI tooling, and product-minded software.",
   siteUrl: "https://zackmeacham.com",
-  eyebrow: "Resume / Portfolio / Personal Website",
-  role: "Experienced programmer building useful software, thoughtful automation, and polished web experiences.",
-  summary:
-    "This first version of the site is intentionally lean: a clear introduction, a few strong project stories, an easy-to-scan resume page, and a direct way to reach out.",
-  location: "Based in the United States",
-  email: "mailto:hello@zackmeacham.com",
-  resumePdfHref: "",
+  email: "mailto:zdmeacham@gmail.com",
+  emailDisplay: "zdmeacham@gmail.com",
+  location: "Findlay, Ohio",
+  roleLabel: "Software engineer",
+  identitySentence:
+    "I work across legacy modernization, national-defense test infrastructure, frontier-AI tooling, and product-minded software.",
+  homeSupport:
+    "At Boeing, I lead and shape modernization work on high-stakes test systems. Outside the day job, I build civic-tech as CTO of Ledger and ship personal software that leans hard on architecture, safety, and operator trust.",
+  nowLine:
+    "Currently leading Boeing modernization work, building Ledger's product and technical foundation, and refining research-first tools and agentic workflows I use every week.",
   aboutParagraphs: [
-    "I am using this site as a clean public home for the work I want people to remember. The goal is not to say everything at once. The goal is to say the right things clearly.",
-    "This Astro setup keeps the editing surface small so the next pass is mostly storytelling: tighten the intro, swap in real projects, add resume details, and publish.",
+    "I came up through computer science at Kent State, then moved into systems and software engineering at Boeing, where I now work across some of my organization's most important modernization efforts. The through-line in my work is taking difficult, legacy-heavy systems seriously and making careful technical decisions under real constraints.",
+    "I like projects that sit at the seam between engineering depth and practical delivery: modernizing brittle hardware-software systems, creating safer operator workflows, and building products that feel well considered instead of overbuilt. The part of engineering that holds my attention most is the point where architecture, ownership, and judgment all matter at once.",
+    "Outside of Boeing, I spend most of my time building. Ledger is my clearest public software story today, and my personal projects tend to cluster around truthful systems, strong tooling, and products that solve a very specific problem end to end.",
   ],
-  principles: [
-    {
-      title: "Clear thinking over noise",
-      text: "I prefer software that feels deliberate, understandable, and sturdy under real use.",
-    },
-    {
-      title: "Fast iteration with solid fundamentals",
-      text: "The stack here is chosen to get a clean site online quickly without painting us into a corner later.",
-    },
-    {
-      title: "Useful, concrete storytelling",
-      text: "Every portfolio entry should explain the problem, the build, and the result instead of listing tools without context.",
-    },
+  strengths: [
+    "Legacy modernization without hand-waving the constraints away",
+    "Cross-discipline engineering across software, hardware, and requirements",
+    "Public-safe storytelling about high-stakes work",
+    "Product-minded software outside the day job",
   ],
+  workingStyle: [
+    "Depth before noise: understand the system, then make the smallest high-leverage move.",
+    "Architecture with a purpose: design for maintainability, operator trust, and real usage.",
+    "Calm ownership: communicate clearly, mentor where helpful, and keep momentum up.",
+  ],
+  credibilityHighlights: [
+    "Boeing recognition awards tied to modernization impact and production acceptance.",
+    "Primary internal resource for frontier-AI adoption across two organizations.",
+    "Mentored an intern and an early-career software engineer while leading project work.",
+    "Kent State computer science graduate with honors and a machine-learning-heavy coursework base.",
+  ],
+  shortPersonal:
+    "I'm married, based in Ohio, and live with my wife Sarah and our golden retriever Milo. I cook most dinners, follow Pittsburgh and Cleveland sports, and have always been the kind of person who falls asleep listening to explainers about things I did not need to know.",
+  resumeSummary:
+    "Software engineer with experience spanning legacy test-infrastructure modernization, frontier-AI adoption, and modern product software. Strongest when the work demands architecture, judgment, and the ability to move between technical depth and clear communication.",
+  publicSafeRule:
+    "Professional work is intentionally written at a public-safe level: enough to show scope, ownership, and technical depth without exposing internal or sensitive program detail.",
+  contactIntro:
+    "Email is the quickest way to reach me. I'm always happy to talk about modernization work, product engineering, AI tooling, or something interesting you think I should be building.",
 };
 
 export const navigation: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
   { label: "Resume", href: "/resume" },
   { label: "Contact", href: "/contact" },
 ];
 
-export const heroActions: LinkItem[] = [
-  { label: "View projects", href: "/projects" },
-  { label: "Read resume", href: "/resume" },
-  { label: "Say hello", href: "/contact" },
+export const links: LinkItem[] = [
+  { label: "GitHub", href: "https://github.com/zackmeach", external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/zachary-meacham/", external: true },
+  { label: "Ledger", href: "https://ledger.vote", external: true },
 ];
 
-export const profileLinks: LinkItem[] = [
-  { label: "GitHub", href: "", external: true },
-  { label: "LinkedIn", href: "", external: true },
+export const proofPoints: ProofPoint[] = [
+  { value: "3", label: "major Boeing modernization efforts shaped or led" },
+  { value: "2", label: "Boeing recognition awards" },
+  { value: "CTO", label: "role on a civic-tech startup" },
+  { value: "2022", label: "Boeing start year" },
 ];
 
-export const highlights: Highlight[] = [
+export const featured: Project = {
+  slug: "ledger",
+  title: "Ledger",
+  kind: "personal",
+  eyebrow: "Featured project · CTO",
+  year: "2026",
+  status: "Launch-stage",
+  summary:
+    "A civic-tech product focused on making politics more transparent, more legible, and more approachable across local, state, and federal contexts.",
+  notes:
+    "This is my strongest public software story right now because it shows both technical breadth and product judgment. My work spans architecture, data contracts, provenance and citation flows, testing infrastructure, rate limiting, auth-aware behavior, CI, documentation, and frontend polish across a modern Next.js stack.",
+  stack: ["Next.js", "React", "TypeScript", "Supabase", "Upstash", "Vitest", "Playwright"],
+  href: "https://ledger.vote",
+};
+
+export const personalProjects: Project[] = [
   {
-    title: "One place for your story",
-    text: "Most of the site content lives in this file so future edits stay simple and visible.",
+    slug: "milodex",
+    title: "Milodex",
+    kind: "personal",
+    eyebrow: "Personal project",
+    year: "2026",
+    status: "Active build",
+    summary:
+      "A research-first autonomous trading platform built around broker abstraction, risk-gated execution, and operator-safe workflows.",
+    notes:
+      "I approached it as infrastructure first, automation second. The platform isolates vendors behind internal models, standardizes market data and execution paths, and gives the risk layer veto power so autonomy has to be earned instead of assumed. It is the kind of system where architecture and truthfulness matter more than hype.",
+    stack: ["Python", "pytest", "Parquet", "CLI", "Risk controls", "Alpaca"],
   },
   {
-    title: "Static by default",
-    text: "Astro keeps the site fast and low-maintenance, which is perfect for a personal portfolio.",
-  },
-  {
-    title: "Ready for Vercel",
-    text: "The project is configured for a straightforward build and can move to deployment whenever the content is ready.",
+    slug: "msm-awakening-tracker",
+    title: "MSM Awakening Tracker",
+    kind: "personal",
+    eyebrow: "Personal project",
+    year: "2026",
+    status: "Built from scratch",
+    summary:
+      "A Windows desktop companion app for My Singing Monsters that makes awakening progress easier to track across multiple active targets.",
+    notes:
+      "This project shows full-stack product ownership in a different form factor: Python and PySide6 UI architecture, SQLite persistence, reversible user actions, updater and content-pipeline tooling, and release automation for Windows distribution. It started as a niche product idea and turned into a clean systems-design exercise.",
+    stack: ["Python", "PySide6", "SQLite", "pytest", "PyInstaller", "GitHub Actions"],
   },
 ];
 
-export const projects: Project[] = [
+export const workProjects: Project[] = [
   {
-    title: "Featured project one",
-    status: "Case study template",
-    summary: "Replace this with your strongest one-line project outcome so the page immediately communicates why the work mattered.",
-    problem: "Describe the real problem, audience, or business need the project solved.",
-    build: "Explain what you personally designed, implemented, owned, or improved.",
-    impact: "Add the result here: a shipped feature, saved time, better reliability, growth, or a measurable win.",
-    stack: ["TypeScript", "Astro", "Tailwind"],
+    slug: "flagship-test-suite-overhaul",
+    title: "Flagship test-suite overhaul",
+    kind: "work",
+    eyebrow: "Boeing · public-safe",
+    year: "2024 - present",
+    status: "Originated and led",
+    summary:
+      "Helped turn a station-level assignment into the largest active modernization effort in my organization by framing the real system risk and building the case for a full-suite overhaul.",
+    notes:
+      "The interesting part of this work was not just the technical depth. It was the combination of systems understanding, disciplined analysis, and stakeholder communication needed to move a fragmented effort into a credible program-level modernization story.",
+    stack: ["Ada", "Requirements engineering", "Stakeholder communication", "Cross-discipline systems"],
   },
   {
-    title: "Featured project two",
-    status: "Case study template",
-    summary: "Use this entry for a project that shows range: product thinking, backend depth, data work, or systems reliability.",
-    problem: "Frame the before-state clearly so the reader understands the challenge without extra context.",
-    build: "Highlight the technical decisions that make you proud: architecture, UX choices, integrations, or automation.",
-    impact: "Close with what changed after launch and how you know it worked.",
-    stack: ["Node.js", "APIs", "Automation"],
+    slug: "legacy-labview-instrumentation",
+    title: "Legacy LabVIEW instrumentation overhaul",
+    kind: "work",
+    eyebrow: "Boeing · public-safe",
+    year: "2024 - present",
+    status: "Lead software engineer",
+    summary:
+      "Leading the software side of a legacy instrumentation overhaul where the safest path was not a full rewrite, but a careful architecture that preserved the right legacy behavior while integrating new hardware.",
+    notes:
+      "I inherited a brittle, old LabVIEW environment with real constraints and missing pieces. The work has been about making deliberate tradeoffs, keeping risk contained, and creating a supportable path forward without pretending the system was greenfield.",
+    stack: ["LabVIEW", "C++", "Hardware integration", "Modernization strategy"],
   },
   {
-    title: "Featured project three",
-    status: "Case study template",
-    summary: "Reserve one slot for the project you most want to talk about in interviews or networking conversations.",
-    problem: "Focus on the tension: scale, ambiguity, user friction, performance, or a workflow bottleneck.",
-    build: "Say what you built and why those choices were the right fit.",
-    impact: "Use one sentence that makes the project memorable and concrete.",
-    stack: ["Frontend", "Backend", "UX"],
+    slug: "calibration-equipment-suite",
+    title: "Calibration-equipment software suite",
+    kind: "work",
+    eyebrow: "Boeing · public-safe",
+    year: "2023 - present",
+    status: "In production use",
+    summary:
+      "Built a brand-new software suite for calibration equipment that supports broader testing operations, taking it from zero software to production-facing daily use.",
+    notes:
+      "This project is a good example of my comfort zone: define the interface between old and new systems, build the missing software layer from scratch, and stay with it through acceptance, real usage, and release-process friction.",
+    stack: ["LabVIEW", "Real-time behavior", "Instrumentation", "Production validation"],
   },
-];
-
-export const focusAreas = [
-  "Product-minded engineering",
-  "Web applications and developer tooling",
-  "Automation and workflow design",
-  "Readable, maintainable code",
-  "Practical system design",
-  "Clear technical communication",
 ];
 
 export const resumeEntries: ResumeEntry[] = [
   {
-    role: "Most recent role",
-    organization: "Company or client name",
-    period: "Year - Year",
+    role: "CTO",
+    organization: "Ledger",
+    period: "2026 - Present",
     bullets: [
-      "Lead with one strong accomplishment and include a metric or scope when possible.",
-      "Add one bullet about architecture, ownership, or technical depth.",
-      "Add one bullet about collaboration, product impact, or quality improvements.",
+      "Leading technical direction for a civic-tech product focused on transparency, literacy, and usability across political data and workflows.",
+      "Own architecture and implementation across frontend UX, data contracts, provenance and citation behavior, testing infrastructure, rate limiting, CI, and product-definition work.",
+      "Use the project as a modern public proving ground for product judgment, maintainability, and shipping speed.",
     ],
   },
   {
-    role: "Previous role",
-    organization: "Company or client name",
-    period: "Year - Year",
+    role: "Software Engineer 2 -> Systems Engineer 2 -> Systems Engineer 1",
+    organization: "The Boeing Company · Boeing Guidance Repair Center · Heath, Ohio",
+    period: "Sep 2022 - Present",
     bullets: [
-      "Keep the bullets compact and outcome-focused.",
-      "Use specific verbs that show what you actually changed or shipped.",
-      "Cut anything that does not help someone understand your range quickly.",
+      "Lead or shape three major modernization efforts tied to high-stakes test infrastructure, spanning software, systems, instrumentation, and public-safe technical communication.",
+      "Helped originate the largest active modernization effort in my organization by framing system risk, building the modernization case, and presenting the path forward to senior stakeholders.",
+      "Built a new production-facing calibration-equipment software suite from scratch and led the software strategy for legacy LabVIEW modernization under real constraints.",
+      "Serve as a primary internal resource for frontier-AI adoption across two organizations, and have mentored both an intern and an early-career software engineer.",
+      "Received Boeing recognition awards for modernization impact and production-level acceptance success.",
     ],
   },
   {
-    role: "Earlier role or standout contract",
-    organization: "Company or client name",
-    period: "Year - Year",
+    role: "Volunteer contributor, ML / Data Science",
+    organization: "Pillar.gg",
+    period: "Dec 2021 - Mar 2022",
     bullets: [
-      "Use this slot to show progression, breadth, or a memorable project.",
-      "Prefer concrete achievements over long lists of responsibilities.",
-      "If the role is older, keep it brief and let the strongest recent work do the heavy lifting.",
+      "Contributed to a startup's automated editing product while finishing my computer science degree.",
+      "Worked on feature engineering, structured-data analysis, and research into deeper ML and audio-processing capabilities.",
     ],
+  },
+];
+
+export const educationEntries: EducationEntry[] = [
+  {
+    institution: "Kent State University",
+    credential: "B.S. Computer Science · Cum Laude",
+    period: "Aug 2018 - May 2022",
+    details: [
+      "Cumulative GPA 3.6 with six Dean's List semesters.",
+      "Coursework included machine learning, deep learning, AI, big data analytics, linear algebra, software engineering, and requirements engineering.",
+      "Senior capstone focused on recommendation-pipeline and database design work for a social-media aggregation web app.",
+    ],
+  },
+];
+
+export const skillGroups: SkillGroup[] = [
+  {
+    label: "Languages",
+    items: ["Python", "TypeScript", "LabVIEW", "Ada", "C++"],
+  },
+  {
+    label: "Systems",
+    items: ["Legacy modernization", "Instrumentation", "Requirements engineering", "Cross-discipline systems"],
+  },
+  {
+    label: "Product",
+    items: ["Architecture", "Testing strategy", "Operator tooling", "Technical writing"],
+  },
+  {
+    label: "AI / tooling",
+    items: ["Agentic workflows", "Prompt engineering", "RAG", "Custom AI skills"],
   },
 ];

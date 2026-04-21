@@ -1,27 +1,26 @@
 ---
-import { profileLinks, site } from "../data/site";
+import { links, site } from "../data/site";
 
-const activeProfiles = profileLinks.filter((link) => link.href);
 const year = new Date().getFullYear();
+const lastUpdated = new Date().toISOString().slice(0, 10);
 ---
 
-<footer class="shell pb-10 pt-16">
-  <div class="border-t border-ink-900/10 pt-6 sm:flex sm:items-end sm:justify-between">
-    <div>
-      <p class="text-sm font-semibold text-ink-900">{site.name}</p>
-      <p class="mt-2 text-sm text-ink-700">
-        Built with Astro, styled with Tailwind, and ready for Vercel deployment.
-      </p>
+<footer class="shell pt-20 pb-10">
+  <div class="rule flex flex-col gap-4 pt-6 sm:flex-row sm:items-end sm:justify-between">
+    <div class="mono">
+      <span>{site.name.toLowerCase().replace(" ", "-")}.com</span>
+      <span class="px-2">·</span>
+      <span>last updated {lastUpdated}</span>
+      <span class="px-2">·</span>
+      <span>© {year}</span>
     </div>
-
-    <div class="mt-5 flex flex-wrap items-center gap-4 text-sm text-ink-700 sm:mt-0">
-      {activeProfiles.map((link) => (
-        <a href={link.href} target="_blank" rel="noreferrer" class="hover:text-ink-900">
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">
+      <a href={site.email} class="hover:text-ink transition-colors">Email</a>
+      {links.map((link) => (
+        <a href={link.href} target="_blank" rel="noreferrer" class="hover:text-ink transition-colors">
           {link.label}
         </a>
       ))}
-      <a href={site.email} class="hover:text-ink-900">Email</a>
-      <span>© {year}</span>
     </div>
   </div>
 </footer>
