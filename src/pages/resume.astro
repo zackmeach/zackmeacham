@@ -12,13 +12,16 @@ import { educationEntries, links, resumeEntries, site, skillGroups } from "../da
         <p class="prose-soft mt-4 max-w-[60ch]">{site.resumeSummary}</p>
       </div>
 
-      <div class="resume-links print:hidden">
-        <button type="button" data-print-resume class="button-link">Save as PDF</button>
-        <p class="mono mt-3">{site.emailDisplay}</p>
+      <div class="resume-links">
+        <button type="button" data-print-resume class="button-link print:hidden">Save as PDF</button>
+        <a href={site.email} class="mono link mt-3" data-print-url={site.emailDisplay}>{site.emailDisplay}</a>
         <p class="mono">{site.location}</p>
-        {links.map((item) => (
-          <a href={item.href} target="_blank" rel="noreferrer" class="mono link">{item.label}</a>
-        ))}
+        {links.map((item) => {
+          const printUrl = item.href.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+          return (
+            <a href={item.href} target="_blank" rel="noreferrer" class="mono link" data-print-url={printUrl}>{item.label}</a>
+          );
+        })}
       </div>
     </div>
   </section>

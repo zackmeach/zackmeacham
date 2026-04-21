@@ -445,6 +445,12 @@
     text-decoration: none !important;
   }
 
+  .resume-links a[data-print-url]::after {
+    content: " — " attr(data-print-url);
+    color: #333;
+    font-size: 0.95em;
+  }
+
   @page {
     margin: 0.6in;
   }
