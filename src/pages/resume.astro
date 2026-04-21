@@ -5,14 +5,16 @@ import { educationEntries, links, resumeEntries, site, skillGroups } from "../da
 
 <BaseLayout title={`Resume - ${site.name}`} description="Resume for Zack Meacham.">
   <section class="shell-wide pt-14">
-    <div class="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between">
+    <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
       <div>
         <p class="mono-tag">Resume</p>
         <h1 class="mt-4">Zack Meacham</h1>
         <p class="prose-soft mt-4 max-w-[60ch]">{site.resumeSummary}</p>
       </div>
-      <div class="resume-links">
-        <p class="mono">{site.emailDisplay}</p>
+
+      <div class="resume-links print:hidden">
+        <button type="button" data-print-resume class="button-link">Save as PDF</button>
+        <p class="mono mt-3">{site.emailDisplay}</p>
         <p class="mono">{site.location}</p>
         {links.map((item) => (
           <a href={item.href} target="_blank" rel="noreferrer" class="mono link">{item.label}</a>
@@ -76,4 +78,10 @@ import { educationEntries, links, resumeEntries, site, skillGroups } from "../da
       ))}
     </dl>
   </section>
+
+  <script>
+    document.querySelector("[data-print-resume]")?.addEventListener("click", () => {
+      window.print();
+    });
+  </script>
 </BaseLayout>

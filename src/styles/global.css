@@ -402,3 +402,50 @@
     }
   }
 }
+
+@media print {
+  :root {
+    color-scheme: light;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  body > div[aria-hidden="true"],
+  header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  .shell,
+  .shell-wide {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  section {
+    padding-top: 1rem !important;
+    page-break-inside: avoid;
+  }
+
+  article {
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+
+  @page {
+    margin: 0.6in;
+  }
+}
