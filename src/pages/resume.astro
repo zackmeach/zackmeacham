@@ -1,9 +1,41 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { educationEntries, links, resumeEntries, site, skillGroups } from "../data/site";
+
+const [addressLocality, addressRegion] = site.location.split(",").map((part) => part.trim());
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.roleLabel,
+  email: site.emailDisplay,
+  url: site.siteUrl,
+  description: site.resumeSummary,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality,
+    addressRegion,
+    addressCountry: "US",
+  },
+  sameAs: links.map((item) => item.href),
+  worksFor: resumeEntries
+    .filter((entry) => /present/i.test(entry.period))
+    .map((entry) => ({
+      "@type": "Organization",
+      name: entry.organization.split(" · ")[0],
+    })),
+  alumniOf: educationEntries.map((entry) => ({
+    "@type": "CollegeOrUniversity",
+    name: entry.institution,
+  })),
+  knowsAbout: Array.from(new Set(skillGroups.flatMap((group) => group.items))),
+};
 ---
 
 <BaseLayout title={`Resume - ${site.name}`} description="Resume for Zack Meacham.">
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(personJsonLd)} />
+
   <section class="shell-wide pt-14">
     <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end">
       <div>
