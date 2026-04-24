@@ -122,7 +122,6 @@ export const navigation: NavItem[] = [
 export const links: LinkItem[] = [
   { label: "GitHub", href: "https://github.com/zackmeach", external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/zachary-meacham/", external: true },
-  { label: "Ledger", href: "https://ledger.vote", external: true },
 ];
 
 export const proofPoints: ProofPoint[] = [
@@ -131,21 +130,6 @@ export const proofPoints: ProofPoint[] = [
   { value: "CTO", label: "role on a civic-tech startup" },
   { value: "2", label: "organizations where I've led frontier-AI adoption" },
 ];
-
-export const featured: Project = {
-  slug: "ledger",
-  title: "Ledger",
-  kind: "personal",
-  eyebrow: "Featured project · CTO",
-  year: "2026",
-  status: "Launch-stage",
-  summary:
-    "A civic-tech product focused on making politics more transparent, more legible, and more approachable across local, state, and federal contexts.",
-  notes:
-    "This is my strongest public software story right now because it shows both technical breadth and product judgment. My work spans architecture, data contracts, provenance and citation flows, testing infrastructure, rate limiting, auth-aware behavior, CI, documentation, and frontend polish across a modern Next.js stack.",
-  stack: ["Next.js", "React", "TypeScript", "Supabase", "Upstash", "Vitest", "Playwright"],
-  href: "https://ledger.vote",
-};
 
 export const personalProjects: Project[] = [
   {
@@ -158,8 +142,26 @@ export const personalProjects: Project[] = [
     summary:
       "A research-first autonomous trading platform built around broker abstraction, risk-gated execution, and operator-safe workflows.",
     notes:
-      "I approached it as infrastructure first, automation second. The platform isolates vendors behind internal models, standardizes market data and execution paths, and gives the risk layer veto power so autonomy has to be earned instead of assumed. It is the kind of system where architecture and truthfulness matter more than hype.",
+      "Infrastructure first, automation second. Vendors sit behind internal models, the risk layer has veto power, and autonomy has to be earned instead of assumed.",
     stack: ["Python", "pytest", "Parquet", "CLI", "Risk controls", "Alpaca"],
+    chips: ["Python", "Alpaca", "Parquet", "pytest", "CLI"],
+    repo: "https://github.com/zackmeach/Milodex",
+    detailHref: "/projects/milodex",
+  },
+  {
+    slug: "ledger",
+    title: "Ledger",
+    kind: "personal",
+    eyebrow: "Personal project · CTO",
+    year: "2026",
+    status: "Launch-stage",
+    summary:
+      "A civic-tech product focused on making politics more transparent, legible, and approachable across local, state, and federal contexts.",
+    notes:
+      "My strongest public software story right now: architecture, data contracts, provenance and citation flows, testing, rate limiting, auth-aware behavior, CI, and frontend polish.",
+    stack: ["Next.js", "React", "TypeScript", "Supabase", "Upstash", "Vitest", "Playwright"],
+    chips: ["Next.js", "TypeScript", "Supabase", "Upstash", "Vitest", "Playwright"],
+    detailHref: "/projects/ledger",
   },
   {
     slug: "msm-awakening-tracker",
@@ -171,8 +173,9 @@ export const personalProjects: Project[] = [
     summary:
       "A Windows desktop companion app for My Singing Monsters that makes awakening progress easier to track across multiple active targets.",
     notes:
-      "This project shows full-stack product ownership in a different form factor: Python and PySide6 UI architecture, SQLite persistence, reversible user actions, updater and content-pipeline tooling, and release automation for Windows distribution. It started as a niche product idea and turned into a clean systems-design exercise.",
+      "Full-stack product ownership in a different form factor: PySide6 UI architecture, SQLite persistence, reversible user actions, updater tooling, and release automation.",
     stack: ["Python", "PySide6", "SQLite", "pytest", "PyInstaller", "GitHub Actions"],
+    chips: ["Python", "PySide6", "SQLite", "PyInstaller", "GitHub Actions"],
   },
 ];
 
