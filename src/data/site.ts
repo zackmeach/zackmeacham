@@ -83,17 +83,17 @@ export const site = {
   name: "Zack Meacham",
   title: "Zack Meacham | Software Engineer",
   description:
-    "Software engineer focused on legacy modernization, agentic-AI tooling, and product-minded systems that hold up under real constraints.",
+    "Software engineer working across deep systems, agentic-AI tooling, and modern product software that holds up under real constraints.",
   siteUrl: "https://zackmeacham.com",
   email: "mailto:zdmeacham@gmail.com",
   emailDisplay: "zdmeacham@gmail.com",
   location: "Findlay, Ohio",
   roleLabel: "Software engineer",
   identitySentence:
-    "Software engineer focused on legacy modernization, agentic-AI tooling, and product-minded systems that hold up under real constraints.",
+    "Software engineer working across deep systems, agentic-AI tooling, and modern product software that holds up under real constraints.",
   aboutParagraphs: [
-    "I came up through computer science at Kent State, then moved into systems and software engineering at Boeing, where I now work across some of my organization's most important modernization efforts. The through-line is the same one that attracted me to computer science in the first place: take difficult, legacy-heavy systems seriously, and make careful technical decisions under real constraints.",
-    "I gravitate toward work at the seam between engineering depth and practical delivery — modernizing brittle hardware-software systems, designing safer operator workflows, and building products that feel considered rather than overbuilt. The part of engineering that holds my attention most is the point where architecture, ownership, and judgment all matter at once.",
+    "I came up through computer science at Kent State, then moved into systems and software engineering at Boeing, where I now work across several of my organization's most important engineering efforts. The through-line is the same one that attracted me to computer science in the first place: take difficult, high-stakes systems seriously, and make careful technical decisions under real constraints.",
+    "I gravitate toward work at the seam between engineering depth and practical delivery — hardening brittle hardware-software systems, designing safer operator workflows, and building products that feel considered rather than overbuilt. The part of engineering that holds my attention most is the point where architecture, ownership, and judgment all matter at once.",
     "Outside of Boeing, I spend most of my time building. Ledger is my clearest public software story today as CTO of a civic-tech startup, and my personal projects tend to cluster around truthful systems, strong tooling, and products that solve a very specific problem end to end.",
   ],
   workingStyle: [
@@ -104,11 +104,11 @@ export const site = {
   shortPersonal:
     "I'm married and based in Ohio with my wife Sarah and our golden retriever Milo. I cook most dinners, follow Pittsburgh and Cleveland sports, and have always been the kind of person who falls asleep listening to explainers about things I did not need to know.",
   resumeSummary:
-    "Software engineer with experience spanning legacy test-infrastructure modernization, frontier-AI adoption, and modern product software. Strongest when the work demands architecture, judgment, and the ability to move between deep technical work and clear communication.",
+    "Software engineer with experience spanning critical test-infrastructure systems, frontier-AI adoption, and modern product software. Strongest when the work demands architecture, judgment, and the ability to move between deep technical work and clear communication.",
   publicSafeRule:
     "Professional work is intentionally written at a public-safe level: enough to show scope, ownership, and technical depth without exposing internal or sensitive program detail.",
   contactIntro:
-    "Email is the quickest way to reach me. Happy to talk about modernization work, product engineering, agentic-AI tooling, or something interesting you think I should be building.",
+    "Email is the quickest way to reach me. Happy to talk about systems work, product engineering, agentic-AI tooling, or something interesting you think I should be building.",
 };
 
 export const navigation: NavItem[] = [
@@ -124,7 +124,7 @@ export const links: LinkItem[] = [
 ];
 
 export const proofPoints: ProofPoint[] = [
-  { value: "3", label: "major Boeing modernization efforts shaped or led" },
+  { value: "3", label: "major Boeing engineering efforts shaped or led" },
   { value: "2", label: "Boeing recognition awards" },
   { value: "CTO", label: "role on a civic-tech startup" },
   { value: "2", label: "organizations where I've led frontier-AI adoption" },
@@ -189,7 +189,7 @@ export const workProjects: Project[] = [
     summary:
       "Helped turn a station-level assignment into the largest active modernization effort in my organization by framing the real system risk and building the case for a full-suite overhaul.",
     notes:
-      "The interesting part of this work was not just the technical depth. It was the combination of systems understanding, disciplined analysis, and stakeholder communication needed to move a fragmented effort into a credible program-level modernization story.",
+      "The interesting part of this work was not just the technical depth. It was the combination of systems understanding, disciplined analysis, and stakeholder communication needed to move a fragmented effort into a credible program-level story.",
     stack: ["Ada", "Requirements engineering", "Stakeholder communication", "Cross-discipline systems"],
     chips: ["Ada", "Requirements engineering", "Stakeholder communication", "Cross-discipline systems"],
   },
@@ -225,9 +225,9 @@ export const workProjects: Project[] = [
 
 export const professionalBlock = {
   eyebrow: "At Boeing",
-  heading: "High-stakes modernization, done under real constraints.",
+  heading: "High-stakes engineering, done under real constraints.",
   body: [
-    "I work across three modernization efforts at Boeing spanning software, systems, and instrumentation for high-stakes test infrastructure. One I helped originate as the largest active modernization initiative in my organization; one I lead as the senior software engineer on a legacy instrumentation overhaul; one I built from scratch and took into daily production use.",
+    "I work across three very different efforts at Boeing spanning software, systems, and instrumentation for high-stakes test infrastructure. One I helped originate as the largest active modernization initiative in my organization; one I lead as the senior software engineer on a legacy instrumentation overhaul; one I built from scratch and took into daily production use.",
     "Professional work here is written public-safe — enough to show scope and ownership without exposing program specifics.",
   ],
   chips: [
@@ -268,11 +268,11 @@ export const resumeEntries: ResumeEntry[] = [
     organization: "The Boeing Company · Boeing Guidance Repair Center · Heath, Ohio",
     period: "Sep 2022 - Present",
     bullets: [
-      "Lead or shape three major modernization efforts tied to high-stakes test infrastructure, spanning software, systems, instrumentation, and public-safe technical communication.",
-      "Helped originate the largest active modernization effort in my organization by framing system risk, building the modernization case, and presenting the path forward to senior stakeholders.",
-      "Built a new production-facing calibration-equipment software suite from scratch and led the software strategy for legacy LabVIEW modernization under real constraints.",
+      "Lead or shape three major engineering efforts across high-stakes test infrastructure, spanning software, systems, instrumentation, and public-safe technical communication.",
+      "Helped originate the largest active modernization effort in my organization by framing system risk, building the case, and presenting the path forward to senior stakeholders.",
+      "Built a new production-facing calibration-equipment software suite from scratch and led the software strategy for a legacy LabVIEW instrumentation overhaul under real constraints.",
       "Serve as a primary internal resource for frontier-AI adoption across two organizations, and have mentored both an intern and an early-career software engineer.",
-      "Received Boeing recognition awards for modernization impact and production-level acceptance success.",
+      "Received Boeing recognition awards for engineering impact and production-level acceptance success.",
     ],
     chips: [
       "Ada",
@@ -343,7 +343,7 @@ export const aboutPhilosophy = {
   heading: "How I think about AI & agentic work",
   body: [
     "The part of frontier AI that holds my attention is the same part that holds my attention in a legacy test system: can the operator trust what it's doing? I spend most of my time building agentic workflows, custom skills, MCP servers, and RAG pipelines — and I spend a lot of the rest helping two organizations adopt these tools without getting burned by them.",
-    "My posture is engineer-first. Autonomy is earned, not assumed. A tool that can't explain itself, can't be verified, or can't be safely rolled back isn't ready for production — no matter how impressive the demo. The discipline that makes that real — clear interfaces, small blast radius, honest failure modes — is the same discipline I lean on in hard modernization work.",
+    "My posture is engineer-first. Autonomy is earned, not assumed. A tool that can't explain itself, can't be verified, or can't be safely rolled back isn't ready for production — no matter how impressive the demo. The discipline that makes that real — clear interfaces, small blast radius, honest failure modes — is the same discipline I lean on in hard systems work.",
     "On the hands-on side: hands on Claude and the major frontier models; hands on MCP, RAG, custom skills, and tool-using agents I actually run day-to-day. On the conceptual side: I'm honest about what I've shipped versus what I've only read about, and I'd rather claim less and demonstrate more.",
   ],
   chips: ["Claude API", "MCP", "RAG", "Agentic workflows", "Prompt engineering", "Custom skills"],
