@@ -1,68 +1,49 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { featured, personalProjects, site, workProjects } from "../data/site";
-
-const personal = [featured, ...personalProjects];
+import ChipRow from "../components/ChipRow.astro";
+import { personalProjects, professionalBlock, site } from "../data/site";
 ---
 
-<BaseLayout title={`Projects - ${site.name}`} description="Selected projects and build notes by Zack Meacham.">
-  <section class="shell-wide pt-14">
+<BaseLayout title={`Projects · ${site.name}`} description={site.description}>
+  <section class="shell-wide pt-14 pb-24">
     <p class="mono-tag">Projects</p>
-    <h1 class="mt-4 max-w-[14ch]">Selected work, written to be scanned quickly.</h1>
-    <p class="prose-soft mt-5 max-w-[60ch]">
-      Personal and startup work comes first because it is the clearest public view into how I build. Professional
-      work follows in a deliberately public-safe form.
-    </p>
-    <p class="mono mt-6 max-w-[72ch]">{site.publicSafeRule}</p>
-  </section>
+    <h1 class="hero-title mt-5 max-w-[22ch]">A mix of professional modernization work and systems I've built end-to-end.</h1>
 
-  <section class="shell-wide pt-16">
-    <div class="flex items-baseline justify-between gap-4">
-      <p class="mono-tag">Personal and startup</p>
-      <p class="mono">{personal.length} entries</p>
-    </div>
-    <div class="mt-6">
-      {personal.map((project) => (
-        <article id={project.slug} class="project-detail rule scroll-mt-24">
-          <div class="project-detail-head">
-            <div>
-              <p class="mono-tag">{project.eyebrow}</p>
-              <h2 class="mt-4">{project.title}</h2>
-            </div>
-            <p class="mono">{project.year} · {project.status}</p>
-          </div>
-          <p class="prose-soft mt-4 max-w-[56ch]">{project.summary}</p>
-          <p class="prose-soft mt-4 max-w-[62ch] text-sm">{project.notes}</p>
-          <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
-            <p class="mono">{project.stack.join(" · ")}</p>
-            {project.href && <a href={project.href} target="_blank" rel="noreferrer" class="mono link">Live</a>}
-            {project.repo && <a href={project.repo} target="_blank" rel="noreferrer" class="mono link">Repo</a>}
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
+    <section class="mt-16">
+      <p class="mono-tag">Professional work</p>
+      <h2 class="mt-4 max-w-[22ch]">At Boeing</h2>
+      <p class="prose-soft mt-5 max-w-[65ch]">{professionalBlock.body[0]}</p>
+      <ChipRow chips={professionalBlock.chips} class="mt-5" />
+      <p class="mt-5">
+        <a href="/projects/boeing-modernization" class="mono link">Read the synthesis →</a>
+      </p>
+      <p class="mono mt-4 text-graphite">{site.publicSafeRule}</p>
+    </section>
 
-  <section class="shell-wide pt-20">
-    <div class="flex items-baseline justify-between gap-4">
-      <p class="mono-tag">Professional</p>
-      <p class="mono">{workProjects.length} entries</p>
-    </div>
-    <div class="mt-6">
-      {workProjects.map((project) => (
-        <article id={project.slug} class="project-detail rule scroll-mt-24">
-          <div class="project-detail-head">
-            <div>
+    <section class="mt-16">
+      <p class="mono-tag">Personal projects</p>
+      <ol class="project-list mt-8">
+        {personalProjects.map((project) => (
+          <li class="project-row">
+            <div class="project-row-meta">
               <p class="mono-tag">{project.eyebrow}</p>
-              <h2 class="mt-4">{project.title}</h2>
+              <p class="mono">{project.year} · {project.status}</p>
             </div>
-            <p class="mono">{project.year} · {project.status}</p>
-          </div>
-          <p class="prose-soft mt-4 max-w-[56ch]">{project.summary}</p>
-          <p class="prose-soft mt-4 max-w-[62ch] text-sm">{project.notes}</p>
-          <p class="mono mt-4">{project.stack.join(" · ")}</p>
-        </article>
-      ))}
-    </div>
+            <div class="project-row-body">
+              <h3>{project.title}</h3>
+              <p class="prose-soft mt-3">{project.summary}</p>
+              <p class="prose-soft mt-3 text-sm">{project.notes}</p>
+              <ChipRow chips={project.chips ?? project.stack} class="mt-4" />
+              <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">
+                {project.detailHref && <a href={project.detailHref} class="link">Read more</a>}
+                {project.repo && (
+                  <a href={project.repo} target="_blank" rel="noreferrer" class="link">GitHub</a>
+                )}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
   </section>
 </BaseLayout>
