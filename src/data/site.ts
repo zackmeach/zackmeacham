@@ -83,48 +83,32 @@ export const site = {
   name: "Zack Meacham",
   title: "Zack Meacham | Software Engineer",
   description:
-    "Software engineer working across legacy modernization, national-defense test infrastructure, frontier-AI tooling, and product-minded software.",
+    "Software engineer focused on legacy modernization, agentic-AI tooling, and product-minded systems that hold up under real constraints.",
   siteUrl: "https://zackmeacham.com",
   email: "mailto:zdmeacham@gmail.com",
   emailDisplay: "zdmeacham@gmail.com",
   location: "Findlay, Ohio",
   roleLabel: "Software engineer",
   identitySentence:
-    "I work across legacy modernization, national-defense test infrastructure, frontier-AI tooling, and product-minded software.",
-  homeSupport:
-    "At Boeing, I lead and shape modernization work on high-stakes test systems. Outside the day job, I build civic-tech as CTO of Ledger and ship personal software that leans hard on architecture, safety, and operator trust.",
-  nowLine:
-    "Currently leading Boeing modernization work, building Ledger's product and technical foundation, and refining research-first tools and agentic workflows I use every week.",
+    "Software engineer focused on legacy modernization, agentic-AI tooling, and product-minded systems that hold up under real constraints.",
   aboutParagraphs: [
-    "I came up through computer science at Kent State, then moved into systems and software engineering at Boeing, where I now work across some of my organization's most important modernization efforts. The through-line in my work is taking difficult, legacy-heavy systems seriously and making careful technical decisions under real constraints.",
-    "I like projects that sit at the seam between engineering depth and practical delivery: modernizing brittle hardware-software systems, creating safer operator workflows, and building products that feel well considered instead of overbuilt. The part of engineering that holds my attention most is the point where architecture, ownership, and judgment all matter at once.",
-    "Outside of Boeing, I spend most of my time building. Ledger is my clearest public software story today, and my personal projects tend to cluster around truthful systems, strong tooling, and products that solve a very specific problem end to end.",
-  ],
-  strengths: [
-    "Legacy modernization without hand-waving the constraints away",
-    "Cross-discipline engineering across software, hardware, and requirements",
-    "Public-safe storytelling about high-stakes work",
-    "Product-minded software outside the day job",
+    "I came up through computer science at Kent State, then moved into systems and software engineering at Boeing, where I now work across some of my organization's most important modernization efforts. The through-line is the same one that attracted me to computer science in the first place: take difficult, legacy-heavy systems seriously, and make careful technical decisions under real constraints.",
+    "I gravitate toward work at the seam between engineering depth and practical delivery — modernizing brittle hardware-software systems, designing safer operator workflows, and building products that feel considered rather than overbuilt. The part of engineering that holds my attention most is the point where architecture, ownership, and judgment all matter at once.",
+    "Outside of Boeing, I spend most of my time building. Ledger is my clearest public software story today as CTO of a civic-tech startup, and my personal projects tend to cluster around truthful systems, strong tooling, and products that solve a very specific problem end to end.",
   ],
   workingStyle: [
-    "Depth before noise: understand the system, then make the smallest high-leverage move.",
-    "Architecture with a purpose: design for maintainability, operator trust, and real usage.",
-    "Calm ownership: communicate clearly, mentor where helpful, and keep momentum up.",
-  ],
-  credibilityHighlights: [
-    "Boeing recognition awards tied to modernization impact and production acceptance.",
-    "Primary internal resource for frontier-AI adoption across two organizations.",
-    "Mentored an intern and an early-career software engineer while leading project work.",
-    "Kent State computer science graduate with honors and a machine-learning-heavy coursework base.",
+    "Depth before noise — understand the system, then make the smallest high-leverage move.",
+    "Architecture with a purpose — design for maintainability, operator trust, and real usage.",
+    "Calm ownership — communicate clearly, mentor where helpful, keep momentum up.",
   ],
   shortPersonal:
-    "I'm married, based in Ohio, and live with my wife Sarah and our golden retriever Milo. I cook most dinners, follow Pittsburgh and Cleveland sports, and have always been the kind of person who falls asleep listening to explainers about things I did not need to know.",
+    "I'm married and based in Ohio with my wife Sarah and our golden retriever Milo. I cook most dinners, follow Pittsburgh and Cleveland sports, and have always been the kind of person who falls asleep listening to explainers about things I did not need to know.",
   resumeSummary:
-    "Software engineer with experience spanning legacy test-infrastructure modernization, frontier-AI adoption, and modern product software. Strongest when the work demands architecture, judgment, and the ability to move between technical depth and clear communication.",
+    "Software engineer with experience spanning legacy test-infrastructure modernization, frontier-AI adoption, and modern product software. Strongest when the work demands architecture, judgment, and the ability to move between deep technical work and clear communication.",
   publicSafeRule:
     "Professional work is intentionally written at a public-safe level: enough to show scope, ownership, and technical depth without exposing internal or sensitive program detail.",
   contactIntro:
-    "Email is the quickest way to reach me. I'm always happy to talk about modernization work, product engineering, AI tooling, or something interesting you think I should be building.",
+    "Email is the quickest way to reach me. Happy to talk about modernization work, product engineering, agentic-AI tooling, or something interesting you think I should be building.",
 };
 
 export const navigation: NavItem[] = [
