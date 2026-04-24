@@ -1159,6 +1159,8 @@ import {
 export function getStaticPaths() {
   const allProjects: Project[] = [...personalProjects, ...workProjects];
   // Add a synthesized entry for the boeing-modernization synthesis page
+  // These values drive the rendered hero on /projects/boeing-modernization
+  // (eyebrow, title, year, status). They are the final strings, not placeholders.
   const boeingSynthesisProject: Project = {
     slug: "boeing-modernization",
     title: "Modernization at Boeing",
@@ -1294,7 +1296,7 @@ Find the block that renders each `ResumeEntry` and add, below the bullets:
 
 Import `ChipRow` at top of the file.
 
-Skills section requires no template change — it iterates `skillGroups` and the array order already changed in C7.
+Skills section requires no template change — it iterates `skillGroups` and the array order already changed in C7. **Intentional choice:** the Skills section keeps the existing interpuncted-list rendering (`group.items.join(" · ")`), not a `ChipRow`. Chips are reserved for the per-experience rows above. Do not change this.
 
 Keep the existing Save-as-PDF button and print styles unchanged.
 
@@ -1376,6 +1378,9 @@ Expected on every route:
 
 Run: `grep -rin "MGS\|GCATS\|Autocollimator" src/` (Grep tool)
 Expected: no matches anywhere in the repo.
+
+Run: `grep -rin "ledger\.vote" src/` (Grep tool)
+Expected: no matches (v1 ships with no outbound Ledger links until it's public).
 
 - [ ] **Step 3: Resize to mobile and re-verify home**
 
