@@ -445,6 +445,14 @@
     text-decoration: none !important;
   }
 
+  .resume-links a[href^="http"]::after {
+    content: " — " attr(href);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: #444;
+    font-weight: normal;
+  }
+
   @page {
     margin: 0.6in;
   }
