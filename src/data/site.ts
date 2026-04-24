@@ -262,6 +262,7 @@ export const resumeEntries: ResumeEntry[] = [
       "Own architecture and implementation across frontend UX, data contracts, provenance and citation behavior, testing infrastructure, rate limiting, CI, and product-definition work.",
       "Use the project as a modern public proving ground for product judgment, maintainability, and shipping speed.",
     ],
+    chips: ["Next.js", "TypeScript", "Supabase", "Vitest", "Playwright", "CI"],
   },
   {
     role: "Software Engineer 2 -> Systems Engineer 2 -> Systems Engineer 1",
@@ -274,6 +275,14 @@ export const resumeEntries: ResumeEntry[] = [
       "Serve as a primary internal resource for frontier-AI adoption across two organizations, and have mentored both an intern and an early-career software engineer.",
       "Received Boeing recognition awards for modernization impact and production-level acceptance success.",
     ],
+    chips: [
+      "Ada",
+      "C++",
+      "LabVIEW",
+      "Requirements engineering",
+      "Hardware integration",
+      "Stakeholder communication",
+    ],
   },
   {
     role: "Volunteer contributor, ML / Data Science",
@@ -283,6 +292,7 @@ export const resumeEntries: ResumeEntry[] = [
       "Contributed to a startup's automated editing product while finishing my computer science degree.",
       "Worked on feature engineering, structured-data analysis, and research into deeper ML and audio-processing capabilities.",
     ],
+    chips: ["Python", "Feature engineering", "ML research"],
   },
 ];
 
@@ -305,16 +315,28 @@ export const skillGroups: SkillGroup[] = [
     items: ["Python", "TypeScript", "LabVIEW", "Ada", "C++"],
   },
   {
+    label: "AI / tooling",
+    items: [
+      "Claude API",
+      "Agentic workflows",
+      "MCP",
+      "Prompt engineering",
+      "RAG",
+      "Custom skills",
+    ],
+  },
+  {
     label: "Systems",
-    items: ["Legacy modernization", "Instrumentation", "Requirements engineering", "Cross-discipline systems"],
+    items: [
+      "Legacy modernization",
+      "Instrumentation",
+      "Requirements engineering",
+      "Cross-discipline systems",
+    ],
   },
   {
     label: "Product",
     items: ["Architecture", "Testing strategy", "Operator tooling", "Technical writing"],
-  },
-  {
-    label: "AI / tooling",
-    items: ["Agentic workflows", "Prompt engineering", "RAG", "Custom AI skills"],
   },
 ];
 
