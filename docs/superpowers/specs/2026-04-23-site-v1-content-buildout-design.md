@@ -113,7 +113,7 @@ The existing `publicSafeRule` sentence in `site.ts` stays and is surfaced on the
 - **Summary.** 2 sentences, retuned to match the new positioning.
 - **Experience.** Ledger (CTO), Boeing (role progression, no codenames), Pillar.gg (volunteer). Bullets refined; chip row under each entry (new).
 - **Education.** Kent State entry, tightened wording.
-- **Skills.** Grouped as today (Languages / Systems / Product / AI-tooling) but **AI / tooling moves to 2nd** (after Languages) since it is a differentiator. Items slightly expanded.
+- **Skills.** Grouped as today but reordered so AI / tooling sits 2nd (differentiator). Final order: **Languages → AI / tooling → Systems → Product.** Items slightly expanded.
 - **Save-as-PDF button.** Unchanged.
 
 ## 11. Project detail pages
@@ -148,7 +148,7 @@ WHAT I LEARNED / WHAT'S NEXT   2–4 sentences, honest, no gap-dumping
 - **Lead:** *"A civic-tech product focused on making politics more legible at the local, state, and federal level."*
 - **Takeaways (3):** Provenance-first; Modern stack with disciplined boundaries; Built to ship & stay shipped.
 - **Subsystems:** (1) Frontend UX & provenance flows — `Next.js · React · TypeScript · Tailwind`. (2) Data contracts & backend — `Supabase · Upstash · TypeScript`. (3) Testing & CI — `Vitest · Playwright · GitHub Actions`.
-- **Status:** "Launch-stage; live URL coming soon." No live link in v1 (site is not yet public).
+- **Status:** "Launch-stage; live URL coming soon." **No outbound Ledger links anywhere on the site in v1** — the Ledger entry is removed from the global `links` array, and the Ledger detail page does not link to `ledger.vote`. The outbound link returns in v1.1 the moment Ledger goes publicly live.
 
 ### 11.4 `/projects/boeing-modernization` (synthesis, public-safe)
 
@@ -241,10 +241,12 @@ export type Project = {
 
 - `SectionHeading.astro`, `SiteHeader.astro`, `SiteFooter.astro` — unchanged.
 
-### 13.3 Routing
+### 13.3 Routing & cleanup
 
 - New dynamic route: `src/pages/projects/[slug].astro` using Astro's `getStaticPaths`, sourced from `projectDetails`.
 - `src/pages/contact.astro` **deleted**. `navigation` array in `site.ts` updated to drop the Contact entry.
+- `SiteFooter.astro` audited and any `/contact` references removed or replaced with the email CTA.
+- The existing `featured` export (currently Ledger) is **folded into `personalProjects`** — Ledger appears as the second card in the Milodex → Ledger → MSM ordering. The standalone `featured` export is removed to avoid a dead surface.
 
 ## 14. Content sourcing plan
 
