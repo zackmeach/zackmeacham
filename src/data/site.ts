@@ -317,3 +317,184 @@ export const skillGroups: SkillGroup[] = [
     items: ["Agentic workflows", "Prompt engineering", "RAG", "Custom AI skills"],
   },
 ];
+
+export const projectDetails: ProjectDetail[] = [
+  {
+    slug: "milodex",
+    lead:
+      "A research-first autonomous trading platform where autonomy is earned, not assumed.",
+    topChips: ["Python", "Alpaca", "Parquet", "pytest", "CLI"],
+    takeaways: [
+      {
+        lead: "Architecture-first",
+        body:
+          "vendors are isolated behind internal models; market data and execution paths are standardized so swapping brokers is a boundary concern, not a rewrite.",
+      },
+      {
+        lead: "Risk has veto power",
+        body:
+          "a gated execution layer sits between strategy and the broker — automation has to pass risk checks before any order leaves.",
+      },
+      {
+        lead: "Operator-safe by design",
+        body:
+          "CLI-first, reversible actions, auditable decisions — built for the operator, not the algorithm.",
+      },
+    ],
+    glance: [
+      { label: "Scope", value: "Personal project, active build" },
+      { label: "Stack", value: "Python · pytest · Parquet · Alpaca" },
+      {
+        label: "Links",
+        value:
+          '<a class="link" href="https://github.com/zackmeach/Milodex" target="_blank" rel="noreferrer">GitHub</a>',
+      },
+    ],
+    subsystems: [
+      {
+        title: "Broker abstraction & market-data pipeline",
+        description:
+          "Broker vendors are hidden behind an internal model so the rest of the system reasons in one vocabulary. Market data lands in Parquet with a consistent shape; execution paths share the same contract the data uses.",
+        chips: ["Python", "Alpaca", "Parquet"],
+      },
+      {
+        title: "Risk-gated execution layer",
+        description:
+          "A layer between strategy and broker that enforces risk rules per order. Every path an automated system can take runs through the gate — the default outcome is refuse, not execute.",
+        chips: ["Python", "Gating rules", "Reversibility"],
+      },
+      {
+        title: "Operator CLI & test harness",
+        description:
+          "A deliberate CLI-first operator surface: inspect state, replay sessions, run with simulated brokers. Tests cover the same paths the operator drives.",
+        chips: ["Python", "CLI", "pytest"],
+      },
+    ],
+    closing: {
+      heading: "What's next",
+      body:
+        "Continuing to harden the risk layer, add more strategy research, and tighten the operator feedback loop. The goal is a system whose behavior I can trust before I extend what it's allowed to do.",
+    },
+  },
+  {
+    slug: "ledger",
+    lead:
+      "A civic-tech product focused on making politics more legible at the local, state, and federal level.",
+    topChips: ["Next.js", "TypeScript", "Supabase", "Upstash", "Vitest", "Playwright"],
+    takeaways: [
+      {
+        lead: "Provenance-first",
+        body:
+          "every fact traces to a source; citation is a first-class UX concern, not an afterthought.",
+      },
+      {
+        lead: "Modern stack, disciplined boundaries",
+        body:
+          "Next.js + Supabase + Upstash with clear data contracts between layers so surface-area changes stay local.",
+      },
+      {
+        lead: "Built to ship and stay shipped",
+        body:
+          "CI, rate limiting, auth-aware behavior, Playwright and Vitest coverage — the kind of habits that let a small team keep moving.",
+      },
+    ],
+    glance: [
+      { label: "Scope", value: "Civic-tech startup, CTO, launch-stage" },
+      {
+        label: "Stack",
+        value: "Next.js · React · TypeScript · Supabase · Upstash · Vitest · Playwright",
+      },
+      { label: "Links", value: "Live URL coming soon" },
+    ],
+    subsystems: [
+      {
+        title: "Frontend UX & provenance flows",
+        description:
+          "Product surfaces that let citation and context ride with every claim. The UI is shaped around trust: what did we assert, where did it come from, and how can a reader verify it themselves.",
+        chips: ["Next.js", "React", "TypeScript", "Tailwind"],
+      },
+      {
+        title: "Data contracts & backend",
+        description:
+          "Supabase for structured data, Upstash for rate-limiting and ephemeral state, with typed contracts at every crossing. The goal is to make the honest path the easy path as the schema evolves.",
+        chips: ["Supabase", "Upstash", "TypeScript"],
+      },
+      {
+        title: "Testing & CI",
+        description:
+          "Vitest for units, Playwright for end-to-end flows, GitHub Actions for CI — set up to catch the regressions a civic-tech product can least afford to ship.",
+        chips: ["Vitest", "Playwright", "GitHub Actions"],
+      },
+    ],
+    closing: {
+      heading: "What's next",
+      body:
+        "Pushing toward public launch while hardening the parts that matter most — provenance, auth-aware behavior, and the operator tooling that makes the data defensible.",
+    },
+  },
+  {
+    slug: "boeing-modernization",
+    lead:
+      "Three modernization efforts across high-stakes test infrastructure — one originated, one led, one built from scratch.",
+    topChips: [
+      "Ada",
+      "C++",
+      "LabVIEW",
+      "Hardware integration",
+      "Requirements engineering",
+      "Stakeholder communication",
+    ],
+    takeaways: [
+      {
+        lead: "Originated a program-level modernization effort",
+        body:
+          "turned a station-level assignment into the largest active modernization initiative in my organization by framing system risk and taking the story to senior stakeholders.",
+      },
+      {
+        lead: "Led legacy instrumentation modernization",
+        body:
+          "deliberate tradeoffs over rewrites; risk-contained integration of new hardware alongside behaviors the legacy system still has to honor.",
+      },
+      {
+        lead: "Shipped calibration software from zero to production",
+        body:
+          "built the missing software layer from scratch, owned it through acceptance, and carried it into daily production use.",
+      },
+    ],
+    glance: [
+      { label: "Scope", value: "Boeing · public-safe · 2022 – present" },
+      {
+        label: "Stack",
+        value: "Ada · C++ · LabVIEW · Hardware integration · Requirements engineering",
+      },
+      { label: "Recognition", value: "Two Boeing recognition awards tied to modernization impact" },
+    ],
+    subsystems: [
+      {
+        title: "Flagship test-suite overhaul (originator)",
+        description:
+          "Helped turn a station-level assignment into a program-level modernization. The interesting part wasn't the technical depth alone — it was pairing system understanding with disciplined analysis and stakeholder communication until a credible modernization story existed.",
+        chips: ["Ada", "Requirements engineering", "Stakeholder communication"],
+      },
+      {
+        title: "Legacy instrumentation overhaul (lead software engineer)",
+        description:
+          "Inherited a brittle legacy environment with real constraints and missing pieces. The work has been about careful tradeoffs — preserving the legacy behavior that matters, integrating new hardware safely, and creating a supportable path forward without pretending the system is greenfield.",
+        chips: ["LabVIEW", "C++", "Hardware integration", "Modernization strategy"],
+      },
+      {
+        title: "Calibration-equipment software suite (from scratch)",
+        description:
+          "Built a new software suite for calibration equipment that supports broader testing operations. Zero software to production-facing daily use — the kind of work where defining the interface between old and new, and staying with it through acceptance, is most of the job.",
+        chips: ["LabVIEW", "Real-time behavior", "Instrumentation", "Production validation"],
+      },
+    ],
+    closing: {
+      heading: "How I think about this work",
+      body:
+        "Modernization is rarely a rewrite. The discipline is finding the smallest high-leverage move that makes the system safer, clearer, and easier to live with — and then being the one who stays with it through the messy middle.",
+    },
+    publicSafeNote:
+      "This page is written public-safe: program names, specific station counts, and sensitive internal detail are intentionally omitted.",
+  },
+];
