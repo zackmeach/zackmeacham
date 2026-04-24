@@ -224,6 +224,34 @@ export const workProjects: Project[] = [
   },
 ];
 
+export const professionalBlock = {
+  eyebrow: "At Boeing",
+  heading: "High-stakes modernization, done under real constraints.",
+  body: [
+    "I work across three modernization efforts at Boeing spanning software, systems, and instrumentation for high-stakes test infrastructure. One I helped originate as the largest active modernization initiative in my organization; one I lead as the senior software engineer on a legacy instrumentation overhaul; one I built from scratch and took into daily production use.",
+    "Professional work here is written public-safe — enough to show scope and ownership without exposing program specifics.",
+  ],
+  chips: [
+    "Ada",
+    "C++",
+    "LabVIEW",
+    "Hardware integration",
+    "Requirements engineering",
+    "Stakeholder communication",
+  ],
+  link: { label: "Read more", href: "/projects/boeing-modernization" },
+};
+
+export const aiBlock = {
+  eyebrow: "AI & agentic engineering",
+  heading: "Shipping with frontier tools, not just using them.",
+  body: [
+    "I build and operate agentic workflows day-to-day — custom skills, MCP servers, RAG pipelines, tool-using agents — and I serve as the primary internal resource for frontier-AI adoption across two organizations.",
+    "My posture is engineer-first: operator trust, verifiable behavior, clear failure modes. Autonomy gets earned, not assumed — the same discipline I apply in Milodex and in production test systems.",
+  ],
+  chips: ["Claude API", "MCP", "RAG", "Agentic workflows", "Prompt engineering", "Custom skills"],
+};
+
 export const resumeEntries: ResumeEntry[] = [
   {
     role: "CTO",
