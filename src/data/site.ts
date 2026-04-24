@@ -129,7 +129,7 @@ export const proofPoints: ProofPoint[] = [
   { value: "3", label: "major Boeing modernization efforts shaped or led" },
   { value: "2", label: "Boeing recognition awards" },
   { value: "CTO", label: "role on a civic-tech startup" },
-  { value: "2022", label: "Boeing start year" },
+  { value: "2", label: "organizations where I've led frontier-AI adoption" },
 ];
 
 export const featured: Project = {
