@@ -192,6 +192,7 @@ export const workProjects: Project[] = [
     notes:
       "The interesting part of this work was not just the technical depth. It was the combination of systems understanding, disciplined analysis, and stakeholder communication needed to move a fragmented effort into a credible program-level modernization story.",
     stack: ["Ada", "Requirements engineering", "Stakeholder communication", "Cross-discipline systems"],
+    chips: ["Ada", "Requirements engineering", "Stakeholder communication", "Cross-discipline systems"],
   },
   {
     slug: "legacy-labview-instrumentation",
@@ -205,6 +206,7 @@ export const workProjects: Project[] = [
     notes:
       "I inherited a brittle, old LabVIEW environment with real constraints and missing pieces. The work has been about making deliberate tradeoffs, keeping risk contained, and creating a supportable path forward without pretending the system was greenfield.",
     stack: ["LabVIEW", "C++", "Hardware integration", "Modernization strategy"],
+    chips: ["LabVIEW", "C++", "Hardware integration", "Modernization strategy"],
   },
   {
     slug: "calibration-equipment-suite",
@@ -218,6 +220,7 @@ export const workProjects: Project[] = [
     notes:
       "This project is a good example of my comfort zone: define the interface between old and new systems, build the missing software layer from scratch, and stay with it through acceptance, real usage, and release-process friction.",
     stack: ["LabVIEW", "Real-time behavior", "Instrumentation", "Production validation"],
+    chips: ["LabVIEW", "Real-time behavior", "Instrumentation", "Production validation"],
   },
 ];
 
