@@ -1,0 +1,14 @@
+---
+import type { Chip } from "../data/site";
+
+interface Props {
+  chips: Chip[];
+  class?: string;
+}
+
+const { chips, class: className = "" } = Astro.props;
+---
+
+{chips.length > 0 && (
+  <p class:list={["mono", className]}>{chips.join(" · ")}</p>
+)}
