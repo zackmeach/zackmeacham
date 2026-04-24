@@ -26,6 +26,8 @@ export type Project = {
   stack: string[];
   href?: string;
   repo?: string;
+  chips?: Chip[];
+  detailHref?: string;
 };
 
 export type ResumeEntry = {
@@ -33,6 +35,7 @@ export type ResumeEntry = {
   organization: string;
   period: string;
   bullets: string[];
+  chips: Chip[];
 };
 
 export type EducationEntry = {
@@ -45,6 +48,35 @@ export type EducationEntry = {
 export type SkillGroup = {
   label: string;
   items: string[];
+};
+
+export type Chip = string;
+
+export type Subsystem = {
+  title: string;
+  description: string;
+  chips: Chip[];
+};
+
+export type Takeaway = {
+  lead: string;
+  body: string;
+};
+
+export type GlanceRow = {
+  label: string;
+  value: string;
+};
+
+export type ProjectDetail = {
+  slug: string;
+  lead: string;
+  topChips: Chip[];
+  takeaways: Takeaway[];
+  glance: GlanceRow[];
+  subsystems: Subsystem[];
+  closing: { heading: string; body: string };
+  publicSafeNote?: string;
 };
 
 export const site = {
