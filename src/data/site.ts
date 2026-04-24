@@ -116,7 +116,6 @@ export const navigation: NavItem[] = [
   { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
   { label: "Resume", href: "/resume" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const links: LinkItem[] = [
@@ -339,6 +338,16 @@ export const skillGroups: SkillGroup[] = [
     items: ["Architecture", "Testing strategy", "Operator tooling", "Technical writing"],
   },
 ];
+
+export const aboutPhilosophy = {
+  heading: "How I think about AI & agentic work",
+  body: [
+    "The part of frontier AI that holds my attention is the same part that holds my attention in a legacy test system: can the operator trust what it's doing? I spend most of my time building agentic workflows, custom skills, MCP servers, and RAG pipelines — and I spend a lot of the rest helping two organizations adopt these tools without getting burned by them.",
+    "My posture is engineer-first. Autonomy is earned, not assumed. A tool that can't explain itself, can't be verified, or can't be safely rolled back isn't ready for production — no matter how impressive the demo. The discipline that makes that real — clear interfaces, small blast radius, honest failure modes — is the same discipline I lean on in hard modernization work.",
+    "On the hands-on side: hands on Claude and the major frontier models; hands on MCP, RAG, custom skills, and tool-using agents I actually run day-to-day. On the conceptual side: I'm honest about what I've shipped versus what I've only read about, and I'd rather claim less and demonstrate more.",
+  ],
+  chips: ["Claude API", "MCP", "RAG", "Agentic workflows", "Prompt engineering", "Custom skills"],
+};
 
 export const projectDetails: ProjectDetail[] = [
   {
