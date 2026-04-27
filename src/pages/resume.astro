@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ChipRow from "../components/ChipRow.astro";
 import { educationEntries, links, resumeEntries, site, skillGroups } from "../data/site";
 ---
 
@@ -40,6 +41,7 @@ import { educationEntries, links, resumeEntries, site, skillGroups } from "../da
               <li class="prose-soft text-sm">{bullet}</li>
             ))}
           </ul>
+          <ChipRow chips={entry.chips} class="mt-4" />
         </article>
       ))}
     </div>

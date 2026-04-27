@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectDetailLayout from "../../components/ProjectDetailLayout.astro";
+import {
+  personalProjects,
+  projectDetails,
+  site,
+  workProjects,
+  type Project,
+} from "../../data/site";
+
+export function getStaticPaths() {
+  const allProjects: Project[] = [...personalProjects, ...workProjects];
+  const boeingSynthesisProject: Project = {
+    slug: "boeing-modernization",
+    title: "Modernization at Boeing",
+    kind: "work",
+    eyebrow: "Boeing · public-safe",
+    year: "2022 – present",
+    status: "Three concurrent efforts",
+    summary: "",
+    notes: "",
+    stack: [],
+  };
+  return projectDetails.map((detail) => {
+    const project =
+      detail.slug === "boeing-modernization"
+        ? boeingSynthesisProject
+        : allProjects.find((p) => p.slug === detail.slug)!;
+    return { params: { slug: detail.slug }, props: { project, detail } };
+  });
+}
+
+const { project, detail } = Astro.props;
+---
+
+<BaseLayout title={`${project.title} · ${site.name}`} description={detail.lead}>
+  <ProjectDetailLayout project={project} detail={detail} />
+</BaseLayout>
