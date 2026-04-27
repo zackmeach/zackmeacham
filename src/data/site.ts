@@ -14,6 +14,16 @@ export type ProofPoint = {
   label: string;
 };
 
+export type NowItem = {
+  label: string;
+  detail: string;
+};
+
+export type StackRow = {
+  key: string;
+  value: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -128,6 +138,20 @@ export const proofPoints: ProofPoint[] = [
   { value: "2", label: "Boeing recognition awards" },
   { value: "CTO", label: "role on a civic-tech startup" },
   { value: "2", label: "organizations where I've led frontier-AI adoption" },
+];
+
+export const nowItems: NowItem[] = [
+  { label: "Ledger", detail: "civic-tech launch prep" },
+  { label: "Milodex", detail: "risk-gate hardening" },
+  { label: "Boeing", detail: "legacy instrumentation overhaul" },
+  { label: "AI enablement", detail: "2 orgs" },
+];
+
+export const heroStack: StackRow[] = [
+  { key: "systems", value: "Ada · C++ · LabVIEW" },
+  { key: "product", value: "TypeScript · Next.js · Supabase" },
+  { key: "ai", value: "Claude · MCP · RAG · skills" },
+  { key: "posture", value: "operator trust, small blast radius" },
 ];
 
 export const personalProjects: Project[] = [

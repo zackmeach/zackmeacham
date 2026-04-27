@@ -29,6 +29,23 @@ function isActive(href: string) {
           {item.label}
         </a>
       ))}
+      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
+        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
+        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☼</span>
+      </button>
     </nav>
   </div>
 </header>
+
+<script is:inline>
+  document.addEventListener("click", function (event) {
+    var target = event.target;
+    if (!target || !target.closest || !target.closest("[data-theme-toggle]")) return;
+    var root = document.documentElement;
+    var next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch (e) {}
+  });
+</script>
