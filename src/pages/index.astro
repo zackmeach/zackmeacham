@@ -123,15 +123,14 @@ import {
     <p class="prose-soft mt-6 max-w-[65ch]">{site.aboutParagraphs[0]}</p>
   </section>
 
-  <section class="shell-wide pt-20">
-    <div class="closing-band">
+  <section class="shell-wide pt-20 pb-20">
+    <div class="flex items-baseline justify-between gap-4">
       <div>
         <p class="mono-tag">Contact</p>
-        <p class="prose-soft mt-4 max-w-[55ch]">{site.contactIntro}</p>
+        <h2 class="mt-4 max-w-[20ch]">Reach out.</h2>
       </div>
-      <div class="closing-actions">
-        <a href={site.email} class="button-link">Email</a>
-      </div>
+      <a href={site.email} class="mono link">Email</a>
     </div>
+    <p class="prose-soft mt-6 max-w-[55ch]">{site.contactIntro}</p>
   </section>
 </BaseLayout>

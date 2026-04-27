@@ -466,21 +466,6 @@
     border-top: 1px solid var(--color-rule);
   }
 
-  .closing-band {
-    display: grid;
-    gap: 1.5rem;
-    padding: 2rem;
-    border: 1px solid color-mix(in srgb, var(--color-accent) 14%, var(--color-rule));
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(231, 222, 206, 0.38));
-  }
-
-  .closing-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 1rem;
-  }
-
   .button-link {
     display: inline-flex;
     align-items: center;
@@ -600,11 +585,6 @@
     .project-row {
       grid-template-columns: minmax(0, 14rem) minmax(0, 1fr);
       gap: 2rem;
-    }
-
-    .closing-band {
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: end;
     }
 
     .project-detail-head {
