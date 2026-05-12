@@ -8,19 +8,20 @@ interface Props {
 const { currentPath } = Astro.props;
 
 function isActive(href: string) {
+  if (href.startsWith("/#")) return false;
   if (href === "/") return currentPath === "/";
   return currentPath === href || currentPath.startsWith(href + "/");
 }
 ---
 
-<header class="shell pt-10 pb-2">
-  <div class="flex items-baseline justify-between gap-6">
+<header class="shell pt-8 pb-2 sm:pt-10">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
     <a href="/" class="text-[0.95rem] font-medium tracking-tight text-ink">
       {site.name}
-      <span class="mono ml-2">/ software engineer</span>
+      <span class="mono ml-2 hidden sm:inline">/ software engineer</span>
     </a>
-    <nav aria-label="Primary" class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">
-      {navigation.slice(1).map((item) => (
+    <nav aria-label="Primary" class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] text-graphite sm:gap-x-5 sm:text-sm">
+      {navigation.map((item) => (
         <a
           href={item.href}
           class="nav-link hover:text-ink transition-colors"
@@ -29,23 +30,6 @@ function isActive(href: string) {
           {item.label}
         </a>
       ))}
-      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
-        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
-        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☼</span>
-      </button>
     </nav>
   </div>
 </header>
-
-<script is:inline>
-  document.addEventListener("click", function (event) {
-    var target = event.target;
-    if (!target || !target.closest || !target.closest("[data-theme-toggle]")) return;
-    var root = document.documentElement;
-    var next = root.dataset.theme === "dark" ? "light" : "dark";
-    root.dataset.theme = next;
-    try {
-      localStorage.setItem("theme", next);
-    } catch (e) {}
-  });
-</script>

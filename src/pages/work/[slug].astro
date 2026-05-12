@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectDetailLayout from "../../components/ProjectDetailLayout.astro";
+import ContextRail, { type RailItem } from "../../components/ContextRail.astro";
+import { projectDetails, site, type Project } from "../../data/site";
+
+export function getStaticPaths() {
+  const flagshipMeta: Record<string, Project> = {
+    ledger: {
+      slug: "ledger",
+      kind: "personal",
+      eyebrow: "Flagship · applied AI product",
+      title: "Ledger / Vera",
+      year: "2026",
+      status: "Launch-stage",
+      summary: "",
+      notes: "",
+      stack: [],
+    },
+    milodex: {
+      slug: "milodex",
+      kind: "personal",
+      eyebrow: "Flagship · independent systems",
+      title: "Milodex",
+      year: "2026",
+      status: "Active build",
+      summary: "",
+      notes: "",
+      stack: [],
+      repo: "https://github.com/zackmeach/Milodex",
+    },
+    boeing: {
+      slug: "boeing",
+      kind: "work",
+      eyebrow: "Flagship · professional engineering",
+      title: "Modernization at Boeing",
+      year: "2022 – present",
+      status: "Three concurrent efforts",
+      summary: "",
+      notes: "",
+      stack: [],
+    },
+  };
+
+  return projectDetails.map((detail) => ({
+    params: { slug: detail.slug },
+    props: { project: flagshipMeta[detail.slug], detail },
+  }));
+}
+
+const { project, detail } = Astro.props;
+
+const caseStructureItems: RailItem[] = [
+  { id: "at-a-glance", label: "At a glance", href: "#at-a-glance" },
+  { id: "why-this-mattered", label: "Why this mattered", href: "#why-this-mattered" },
+  { id: "role-and-ownership", label: "Role & ownership", href: "#role-and-ownership" },
+  { id: "core-constraints", label: "Core constraints", href: "#core-constraints" },
+  { id: "architecture", label: "Architecture", href: "#architecture-and-key-decisions" },
+  { id: "execution", label: "Execution", href: "#execution-highlights" },
+  { id: "current-state", label: "Current state", href: "#impact-current-state" },
+  { id: "demonstrates", label: "Demonstrates", href: "#what-this-demonstrates" },
+];
+
+const focusNotes: Record<string, string> = {
+  ledger: "Focus: source-aware civic AI",
+  boeing: "Focus: public-safe modernization",
+  milodex: "Focus: risk-first autonomy",
+};
+---
+
+<BaseLayout title={`${project.title} · ${site.name}`} description={detail.lead} hasRail>
+  <ContextRail
+    heading="Case structure"
+    subheading="Built for skim first, depth second."
+    items={caseStructureItems}
+    footerNote={focusNotes[project.slug]}
+    variant="case-structure"
+  />
+  <ProjectDetailLayout project={project} detail={detail} />
+</BaseLayout>

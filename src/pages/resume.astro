@@ -33,6 +33,9 @@ import { educationEntries, links, resumeEntries, site, skillGroups } from "../da
             <div>
               <h2>{entry.role}</h2>
               <p class="mono mt-1">{entry.organization}</p>
+              {entry.previousRoles && (
+                <p class="mono mt-1 text-graphite">{entry.previousRoles}</p>
+              )}
             </div>
             <p class="mono whitespace-nowrap">{entry.period}</p>
           </div>

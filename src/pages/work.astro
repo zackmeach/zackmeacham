@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ChipRow from "../components/ChipRow.astro";
+import ContextRail, { type RailItem } from "../components/ContextRail.astro";
+import { archiveProjects, flagshipProjects, site } from "../data/site";
+
+const railItems: RailItem[] = [
+  {
+    id: "ledger",
+    label: "Ledger / Vera",
+    note: "civic AI · source-aware",
+    href: "/work/ledger",
+  },
+  {
+    id: "boeing",
+    label: "Boeing",
+    note: "test infrastructure · public-safe",
+    href: "/work/boeing",
+  },
+  {
+    id: "milodex",
+    label: "Milodex",
+    note: "risk system · operator tooling",
+    href: "/work/milodex",
+  },
+  {
+    id: "archive",
+    label: "Archive",
+    evidence: "MSM Awakening Tracker",
+    href: "#archive",
+  },
+];
+---
+
+<BaseLayout title={`Work · ${site.name}`} description={site.description} hasRail>
+  <ContextRail
+    heading="Case index"
+    subheading="Flagship work first. Archive second."
+    items={railItems}
+    variant="case-index"
+  />
+
+  <section class="shell-wide pt-14 pb-4">
+    <p class="mono-tag">Work</p>
+    <h1 class="hero-title mt-5 max-w-[22ch]">Selected work.</h1>
+    <p class="lead mt-6 max-w-[60ch]">
+      Three flagship case studies plus a compact archive of additional shipped work.
+    </p>
+    <p class="mono mt-6 max-w-[65ch] text-graphite">{site.publicSafeRule}</p>
+  </section>
+
+  <section id="flagship-case-studies" class="shell-wide pt-12 scroll-mt-24">
+    <p class="mono-tag">Flagship case studies</p>
+    <ol class="project-list mt-8">
+      {flagshipProjects.map((project) => (
+        <li class="project-row">
+          <div class="project-row-meta">
+            <p class="mono-tag">{project.eyebrow}</p>
+            <p class="mono mt-2">{project.meta}</p>
+          </div>
+          <div class="project-row-body">
+            <h2>{project.title}</h2>
+            <p class="prose-soft mt-3">{project.blurb}</p>
+            <ChipRow chips={project.chips} class="mt-4" />
+            <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">
+              <a href={project.href} class="link">Read case study →</a>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section id="archive" class="shell-wide pt-20 pb-16 scroll-mt-24">
+    <div class="flex items-baseline justify-between gap-4">
+      <div>
+        <p class="mono-tag">Archive</p>
+        <h2 class="mt-4 max-w-[24ch]">Additional shipped work.</h2>
+      </div>
+    </div>
+    <ul class="mt-10 space-y-8">
+      {archiveProjects.map((project) => (
+        <li class="rule pt-6">
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <h3 class="text-lg font-semibold">{project.title}</h3>
+            <p class="mono whitespace-nowrap">{project.meta}</p>
+          </div>
+          <p class="mono-tag mt-2">{project.eyebrow}</p>
+          <p class="prose-soft mt-3 text-sm max-w-[68ch]">{project.summary}</p>
+          <ChipRow chips={project.chips} class="mt-3" />
+          {(project.repo || project.href) && (
+            <p class="mt-3 text-sm">
+              {project.href && (
+                <a href={project.href} class="link">Read more</a>
+              )}
+              {project.repo && (
+                <a href={project.repo} target="_blank" rel="noreferrer" class="link ml-4">GitHub</a>
+              )}
+            </p>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+</BaseLayout>
