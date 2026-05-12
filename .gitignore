@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # local tool metadata
 .codex/
+.claude/scheduled_tasks.lock
+.playwright-mcp/
+screenshots/

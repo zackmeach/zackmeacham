@@ -1,110 +1,98 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ChipRow from "../components/ChipRow.astro";
-import SectionBlock from "../components/SectionBlock.astro";
+import ContextRail, { type RailItem } from "../components/ContextRail.astro";
 import {
-  aiBlock,
-  heroStack,
-  nowItems,
-  personalProjects,
-  professionalBlock,
+  flagshipProjects,
+  hero,
+  howIWork,
+  proofStrip,
   site,
 } from "../data/site";
+
+const railItems: RailItem[] = [
+  {
+    id: "systems-depth",
+    label: "Systems depth",
+    evidence: "Boeing",
+    href: "/work/boeing",
+  },
+  {
+    id: "applied-ai",
+    label: "Applied AI products",
+    evidence: "Ledger / Vera",
+    href: "/work/ledger",
+  },
+  {
+    id: "agentic-workflows",
+    label: "Agentic workflows",
+    evidence: "How I work",
+    href: "#how-i-work",
+  },
+  {
+    id: "full-stack",
+    label: "Full-stack delivery",
+    evidence: "Selected work",
+    href: "#selected-work",
+  },
+];
 ---
 
-<BaseLayout title={site.title} description={site.description}>
-  <section class="hero-band">
-    <div class="shell-wide pt-10 pb-14 sm:pb-18">
-      <div class="hero-grid">
-        <div>
-          <p class="mono-tag mono-tag--accent reveal">{site.roleLabel}</p>
-          <h1 class="hero-title reveal reveal-1 mt-5">{site.name}</h1>
-          <p class="lead reveal reveal-2 mt-6 max-w-[46ch]">{site.identitySentence}</p>
-          <div class="reveal reveal-3 mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 text-sm text-graphite">
-            <a href={site.email} class="button-link">Email</a>
-            <a href="/projects" class="link">View projects</a>
-            <a href="/resume" class="link">Open resume</a>
-          </div>
-        </div>
+<BaseLayout title={site.title} description={site.description} hasRail>
+  <ContextRail
+    heading="Thesis ⇢ Evidence"
+    subheading="Each principle links to the work that proves it."
+    items={railItems}
+    variant="thesis"
+  />
 
-        <aside class="stack-pane reveal reveal-4" aria-label="Engineering stack at a glance">
-          <div class="stack-pane__head">
-            <span class="stack-pane__dots" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </span>
-            <span class="stack-pane__label">zack — stack</span>
-          </div>
-          <div>
-            <span class="stack-pane__prompt">$</span>
-            <span class="stack-pane__cmd">zack stack</span>
-          </div>
-          <div class="stack-pane__list">
-            {heroStack.map((row, i) => (
-              <div class="stack-pane__row">
-                <span class="stack-pane__branch">{i === heroStack.length - 1 ? "└─" : "├─"}</span>
-                <span class="stack-pane__key">{row.key}</span>
-                <span class="stack-pane__val">{row.value}</span>
-              </div>
-            ))}
-          </div>
-          <div>
-            <span class="stack-pane__prompt">$</span><span class="stack-pane__caret" aria-hidden="true"></span>
-          </div>
-        </aside>
+  <section class="hero-band">
+    <div class="shell-wide pt-10 pb-16 sm:pb-20">
+      <p class="mono-tag mono-tag--accent reveal">{hero.eyebrow}</p>
+      <h1 class="hero-title reveal reveal-1 mt-5 max-w-[22ch]">{hero.headline}</h1>
+      <p class="lead reveal reveal-2 mt-6 max-w-[60ch]">{hero.thesis}</p>
+      <p class="hero-sub reveal reveal-3 mt-6 max-w-[62ch]">{hero.paragraph}</p>
+      <div class="reveal reveal-3 mt-9 flex flex-wrap items-center gap-3 text-sm">
+        <a href={hero.primaryCta.href} class="button-link">{hero.primaryCta.label}</a>
+        <a href={hero.secondaryCta.href} class="button-link button-link--ghost">{hero.secondaryCta.label}</a>
       </div>
     </div>
   </section>
 
-  <section class="shell-wide">
-    <div class="now-strip reveal">
-      <span class="now-strip__label">Now</span>
-      {nowItems.map((item) => (
-        <span class="now-strip__item"><strong>{item.label}</strong> · {item.detail}</span>
+  <section id="proof" class="shell-wide pt-2 pb-2 scroll-mt-24">
+    <p class="mono-tag">Proof</p>
+    <ul class="mt-6 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
+      {proofStrip.map((item) => (
+        <li>
+          <p class="mono-tag mono-tag--accent">{item.label}</p>
+          <p class="prose-soft mt-3 text-sm max-w-[36ch]">{item.body}</p>
+        </li>
       ))}
-    </div>
+    </ul>
   </section>
 
-  <SectionBlock
-    eyebrow={professionalBlock.eyebrow}
-    heading={professionalBlock.heading}
-    body={professionalBlock.body}
-    chips={professionalBlock.chips}
-    link={professionalBlock.link}
-  />
-
-  <SectionBlock
-    eyebrow={aiBlock.eyebrow}
-    heading={aiBlock.heading}
-    body={aiBlock.body}
-    chips={aiBlock.chips}
-  />
-
-  <section class="shell-wide pt-20">
+  <section id="selected-work" class="shell-wide pt-20 scroll-mt-24">
     <div class="flex items-baseline justify-between gap-4">
       <div>
-        <p class="mono-tag">Selected personal work</p>
-        <h2 class="mt-4 max-w-[18ch]">Systems I've built end-to-end outside the day job.</h2>
+        <p class="mono-tag">Selected work</p>
+        <h2 class="mt-4 max-w-[22ch]">Three flagship case studies.</h2>
       </div>
-      <a href="/projects" class="mono link">See all projects</a>
+      <a href="/work" class="mono link whitespace-nowrap">All work</a>
     </div>
 
     <ol class="project-list mt-8">
-      {personalProjects.map((project) => (
+      {flagshipProjects.map((project) => (
         <li class="project-row">
           <div class="project-row-meta">
             <p class="mono-tag">{project.eyebrow}</p>
-            <p class="mono">{project.year} · {project.status}</p>
+            <p class="mono mt-2">{project.meta}</p>
           </div>
           <div class="project-row-body">
             <h3>{project.title}</h3>
-            <p class="prose-soft mt-3">{project.summary}</p>
-            <p class="prose-soft mt-3 text-sm">{project.notes}</p>
-            <ChipRow chips={project.chips ?? project.stack} class="mt-4" />
+            <p class="prose-soft mt-3">{project.blurb}</p>
+            <ChipRow chips={project.chips} class="mt-4" />
             <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">
-              {project.detailHref && <a href={project.detailHref} class="link">Read more</a>}
-              {project.repo && (
-                <a href={project.repo} target="_blank" rel="noreferrer" class="link">GitHub</a>
-              )}
+              <a href={project.href} class="link">Read case study</a>
             </div>
           </div>
         </li>
@@ -112,24 +100,40 @@ import {
     </ol>
   </section>
 
-  <section class="shell-wide pt-20">
+  <section id="how-i-work" class="shell-wide pt-20 scroll-mt-24">
     <div class="flex items-baseline justify-between gap-4">
       <div>
-        <p class="mono-tag">About</p>
-        <h2 class="mt-4 max-w-[20ch]">How I think about this work.</h2>
+        <p class="mono-tag">How I work</p>
+        <h2 class="mt-4 max-w-[18ch]">{howIWork.heading}</h2>
       </div>
-      <a href="/about" class="mono link">Read more</a>
     </div>
-    <p class="prose-soft mt-6 max-w-[65ch]">{site.aboutParagraphs[0]}</p>
+    <ul class="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+      {howIWork.pillars.map((p) => (
+        <li class="max-w-[40ch]">
+          <p class="mono-tag mono-tag--accent">{p.lead}</p>
+          <p class="prose-soft mt-3 text-sm">{p.body}</p>
+        </li>
+      ))}
+    </ul>
   </section>
 
-  <section class="shell-wide pt-20 pb-20">
+  <section id="resume" class="shell-wide pt-20 scroll-mt-24">
+    <div class="flex items-baseline justify-between gap-4">
+      <div>
+        <p class="mono-tag">Experience</p>
+        <h2 class="mt-4 max-w-[22ch]">Full role history and skills.</h2>
+      </div>
+      <a href="/resume" class="mono link whitespace-nowrap">Open resume</a>
+    </div>
+  </section>
+
+  <section id="contact" class="shell-wide pt-20 pb-20 scroll-mt-24">
     <div class="flex items-baseline justify-between gap-4">
       <div>
         <p class="mono-tag">Contact</p>
         <h2 class="mt-4 max-w-[20ch]">Reach out.</h2>
       </div>
-      <a href={site.email} class="mono link">Email</a>
+      <a href={site.email} class="mono link whitespace-nowrap">Email</a>
     </div>
     <p class="prose-soft mt-6 max-w-[55ch]">{site.contactIntro}</p>
   </section>

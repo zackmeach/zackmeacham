@@ -1,38 +1,52 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import ChipRow from "../components/ChipRow.astro";
-import { aboutPhilosophy, site } from "../data/site";
+import { aboutPage, site } from "../data/site";
 ---
 
 <BaseLayout title={`About · ${site.name}`} description={site.description}>
   <section class="shell-wide pt-14 pb-24">
     <p class="mono-tag">About</p>
-    <h1 class="hero-title mt-5 max-w-[24ch]">How I think and how I work.</h1>
+    <h1 class="hero-title mt-5 max-w-[20ch]">About.</h1>
 
-    <div class="mt-10 space-y-5 max-w-[65ch]">
+    <div class="mt-10 space-y-7 max-w-[65ch] sm:space-y-5">
       {site.aboutParagraphs.map((p) => <p class="prose-soft">{p}</p>)}
     </div>
 
     <section class="mt-16">
-      <p class="mono-tag">How I work</p>
-      <ul class="mt-6 space-y-4 max-w-[70ch]">
-        {site.workingStyle.map((principle) => (
-          <li class="prose-soft">{principle}</li>
+      <p class="mono-tag">Current focus</p>
+      <p class="prose-soft mt-6 max-w-[70ch]">{aboutPage.currentFocus.body}</p>
+      <ul class="mt-6 space-y-3 max-w-[70ch]">
+        {aboutPage.currentFocus.items.map((item) => (
+          <li class="prose-soft text-sm">{item}</li>
         ))}
       </ul>
     </section>
 
     <section class="mt-16">
-      <p class="mono-tag">{aboutPhilosophy.heading}</p>
-      <div class="mt-6 space-y-4 max-w-[70ch]">
-        {aboutPhilosophy.body.map((p) => <p class="prose-soft">{p}</p>)}
-      </div>
-      <ChipRow chips={aboutPhilosophy.chips} class="mt-5" />
+      <p class="mono-tag">How I work</p>
+      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+        {aboutPage.howIWorkPillars.map((pillar) => (
+          <li class="max-w-[40ch]">
+            <p class="mono-tag mono-tag--accent">{pillar.lead}</p>
+            <p class="prose-soft mt-3 text-sm">{pillar.body}</p>
+          </li>
+        ))}
+      </ul>
     </section>
 
     <section class="mt-16">
-      <p class="mono-tag">Outside work</p>
-      <p class="prose-soft mt-4 max-w-[65ch]">{site.shortPersonal}</p>
+      <p class="mono-tag">Outside the work</p>
+      <p class="prose-soft mt-6 max-w-[65ch]">{site.shortPersonal}</p>
+    </section>
+
+    <section class="mt-16">
+      <p class="mono-tag">Where I'm headed</p>
+      <p class="prose-soft mt-6 max-w-[70ch]">{aboutPage.whereHeaded.body}</p>
+      <ul class="mt-6 space-y-3 max-w-[70ch]">
+        {aboutPage.whereHeaded.items.map((item) => (
+          <li class="prose-soft text-sm">{item}</li>
+        ))}
+      </ul>
     </section>
   </section>
 </BaseLayout>

@@ -9,19 +9,35 @@ export type LinkItem = {
   external?: boolean;
 };
 
-export type ProofPoint = {
-  value: string;
+export type ProofStripItem = {
   label: string;
+  body: string;
 };
 
-export type NowItem = {
-  label: string;
-  detail: string;
+export type FlagshipProject = {
+  slug: string;
+  eyebrow: string;
+  title: string;
+  blurb: string;
+  meta: string;
+  chips: Chip[];
+  href: string;
 };
 
-export type StackRow = {
-  key: string;
-  value: string;
+export type Pillar = {
+  lead: string;
+  body: string;
+};
+
+export type ArchiveProject = {
+  slug: string;
+  title: string;
+  eyebrow: string;
+  meta: string;
+  summary: string;
+  chips: Chip[];
+  repo?: string;
+  href?: string;
 };
 
 export type Project = {
@@ -44,6 +60,7 @@ export type ResumeEntry = {
   role: string;
   organization: string;
   period: string;
+  previousRoles?: string;
   bullets: string[];
   chips: Chip[];
 };
@@ -68,11 +85,6 @@ export type Subsystem = {
   chips: Chip[];
 };
 
-export type Takeaway = {
-  lead: string;
-  body: string;
-};
-
 export type GlanceRow = {
   label: string;
   value: string;
@@ -80,12 +92,17 @@ export type GlanceRow = {
 
 export type ProjectDetail = {
   slug: string;
+  detailTitle: string;
   lead: string;
   topChips: Chip[];
-  takeaways: Takeaway[];
   glance: GlanceRow[];
-  subsystems: Subsystem[];
-  closing: { heading: string; body: string };
+  whyThisMattered: string;
+  roleAndOwnership: string;
+  coreConstraints: string[];
+  architecture: Subsystem[];
+  execution: string[];
+  currentState: string;
+  whatThisDemonstrates: string;
   publicSafeNote?: string;
 };
 
@@ -93,26 +110,18 @@ export const site = {
   name: "Zack Meacham",
   title: "Zack Meacham | Software Engineer",
   description:
-    "Software engineer working across deep systems, agentic-AI tooling, and modern product software that holds up under real constraints.",
+    "Personal site for Zack Meacham, software engineer in Findlay, Ohio. Test infrastructure at Boeing, CTO of Ledger (civic-tech), and frontier-AI adoption lead across two organizations.",
   siteUrl: "https://zackmeacham.com",
   email: "mailto:zdmeacham@gmail.com",
   emailDisplay: "zdmeacham@gmail.com",
   location: "Findlay, Ohio",
-  roleLabel: "Software engineer",
-  identitySentence:
-    "Software engineer working across deep systems, agentic-AI tooling, and modern product software that holds up under real constraints.",
   aboutParagraphs: [
-    "I came up through computer science at Kent State, then moved into systems and software engineering at Boeing, where I now work across several of my organization's most important engineering efforts. The through-line is the same one that attracted me to computer science in the first place: take difficult, high-stakes systems seriously, and make careful technical decisions under real constraints.",
-    "I gravitate toward work at the seam between engineering depth and practical delivery — hardening brittle hardware-software systems, designing safer operator workflows, and building products that feel considered rather than overbuilt. The part of engineering that holds my attention most is the point where architecture, ownership, and judgment all matter at once.",
+    "I came up through computer science at Kent State, then moved into systems and software engineering at Boeing. The through-line is the same one that attracted me to computer science in the first place: take difficult, high-stakes systems seriously, and make careful technical decisions under real constraints.",
+    "I gravitate toward work at the seam between engineering depth and practical delivery: hardening brittle hardware-software systems, designing safer operator workflows, and building products that feel considered rather than overbuilt. The part of engineering that holds my attention most is the point where architecture, ownership, and judgment all matter at once.",
     "Outside of Boeing, I spend most of my time building. Ledger is my clearest public software story today as CTO of a civic-tech startup, and my personal projects tend to cluster around truthful systems, strong tooling, and products that solve a very specific problem end to end.",
   ],
-  workingStyle: [
-    "Depth before noise — understand the system, then make the smallest high-leverage move.",
-    "Architecture with a purpose — design for maintainability, operator trust, and real usage.",
-    "Calm ownership — communicate clearly, mentor where helpful, keep momentum up.",
-  ],
   shortPersonal:
-    "I'm married and based in Ohio with my wife Sarah and our golden retriever Milo. I cook most dinners, follow Pittsburgh and Cleveland sports, and have always been the kind of person who falls asleep listening to explainers about things I did not need to know.",
+    "Outside of work, I'm usually building side projects, cooking dinner, following Pittsburgh and Cleveland sports, or spending time in Ohio with my wife Sarah and our golden retriever Milo.",
   resumeSummary:
     "Software engineer with experience spanning critical test-infrastructure systems, frontier-AI adoption, and modern product software. Strongest when the work demands architecture, judgment, and the ability to move between deep technical work and clear communication.",
   publicSafeRule:
@@ -123,9 +132,10 @@ export const site = {
 
 export const navigation: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
+  { label: "Work", href: "/work" },
   { label: "Resume", href: "/resume" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export const links: LinkItem[] = [
@@ -133,146 +143,149 @@ export const links: LinkItem[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/zachary-meacham/", external: true },
 ];
 
-export const proofPoints: ProofPoint[] = [
-  { value: "3", label: "major Boeing engineering efforts shaped or led" },
-  { value: "2", label: "Boeing recognition awards" },
-  { value: "CTO", label: "role on a civic-tech startup" },
-  { value: "2", label: "organizations where I've led frontier-AI adoption" },
-];
+export const hero = {
+  eyebrow: "Zack Meacham",
+  headline: "Software Engineer focused on Applied AI and LLM-powered products.",
+  thesis:
+    "I combine systems engineering, software engineering, and AI fluency to build high-leverage products.",
+  paragraph:
+    "Systems-minded by background, product-driven by instinct, and deeply interested in how LLMs can be used both as features and as force multipliers for engineering itself.",
+  primaryCta: { label: "View selected work", href: "/work" },
+  secondaryCta: { label: "Resume", href: "/resume" },
+};
 
-export const nowItems: NowItem[] = [
-  { label: "Ledger", detail: "civic-tech launch prep" },
-  { label: "Milodex", detail: "risk-gate hardening" },
-  { label: "Boeing", detail: "legacy instrumentation overhaul" },
-  { label: "AI enablement", detail: "2 orgs" },
-];
-
-export const heroStack: StackRow[] = [
-  { key: "systems", value: "Ada · C++ · LabVIEW" },
-  { key: "product", value: "TypeScript · Next.js · Supabase" },
-  { key: "ai", value: "Claude · MCP · RAG · skills" },
-  { key: "posture", value: "operator trust, small blast radius" },
-];
-
-export const personalProjects: Project[] = [
+export const proofStrip: ProofStripItem[] = [
   {
-    slug: "milodex",
-    title: "Milodex",
-    kind: "personal",
-    eyebrow: "Personal project",
-    year: "2026",
-    status: "Active build",
-    summary:
-      "A research-first autonomous trading platform built around broker abstraction, risk-gated execution, and operator-safe workflows.",
-    notes:
-      "Infrastructure first, automation second. Vendors sit behind internal models, the risk layer has veto power, and autonomy has to be earned instead of assumed.",
-    stack: ["Python", "pytest", "Parquet", "CLI", "Risk controls", "Alpaca"],
-    chips: ["Python", "Alpaca", "Parquet", "pytest", "CLI"],
-    repo: "https://github.com/zackmeach/Milodex",
-    detailHref: "/projects/milodex",
+    label: "Systems engineering",
+    body: "Mission-critical test infrastructure at Boeing: public-safe scope, ownership, and modernization work.",
   },
+  {
+    label: "LLM-powered products",
+    body: "Ledger / Vera: a civic AI assistant with source-aware tool use and provenance as a first-class concern.",
+  },
+  {
+    label: "Agentic AI workflows",
+    body: "Custom skills, MCP servers, RAG pipelines, and tool-using agents built and run day-to-day.",
+  },
+  {
+    label: "Full-stack delivery",
+    body: "Web, desktop, and CLI products taken from zero to real usage.",
+  },
+];
+
+export const flagshipProjects: FlagshipProject[] = [
   {
     slug: "ledger",
-    title: "Ledger",
-    kind: "personal",
-    eyebrow: "Personal project · CTO",
-    year: "2026",
-    status: "Launch-stage",
-    summary:
-      "A civic-tech product focused on making politics more transparent, legible, and approachable across local, state, and federal contexts.",
-    notes:
-      "My strongest public software story right now: architecture, data contracts, provenance and citation flows, testing, rate limiting, auth-aware behavior, CI, and frontend polish.",
-    stack: ["Next.js", "React", "TypeScript", "Supabase", "Upstash", "Vitest", "Playwright"],
+    eyebrow: "Flagship · applied AI product",
+    title: "Ledger / Vera",
+    blurb:
+      "Building a civic AI assistant with source-aware tool use. Provenance and citation are first-class; the stack is shaped to ship and stay shipped.",
+    meta: "2026 · Launch-stage · CTO",
     chips: ["Next.js", "TypeScript", "Supabase", "Upstash", "Vitest", "Playwright"],
-    detailHref: "/projects/ledger",
+    href: "/work/ledger",
   },
+  {
+    slug: "boeing",
+    eyebrow: "Flagship · professional engineering",
+    title: "Modernization at Boeing",
+    blurb:
+      "Modernizing mission-critical test infrastructure inside a constrained enterprise, written public-safe. Three concurrent efforts spanning Ada, LabVIEW, and stakeholder-level systems work.",
+    meta: "2022 – present · public-safe",
+    chips: ["Ada", "C++", "LabVIEW", "Hardware integration", "Requirements engineering"],
+    href: "/work/boeing",
+  },
+  {
+    slug: "milodex",
+    eyebrow: "Flagship · independent systems",
+    title: "Milodex",
+    blurb:
+      "Architecting an autonomous trading platform with research-first risk controls. Broker abstraction, risk-gated execution, operator-safe CLI workflows.",
+    meta: "2026 · Active build",
+    chips: ["Python", "Alpaca", "Parquet", "pytest", "CLI"],
+    href: "/work/milodex",
+  },
+];
+
+export const archiveProjects: ArchiveProject[] = [
   {
     slug: "msm-awakening-tracker",
     title: "MSM Awakening Tracker",
-    kind: "personal",
-    eyebrow: "Personal project",
-    year: "2026",
-    status: "Built from scratch",
+    eyebrow: "Personal project · desktop",
+    meta: "2026 · Built from scratch",
     summary:
-      "A Windows desktop companion app for My Singing Monsters that makes awakening progress easier to track across multiple active targets.",
-    notes:
-      "Full-stack product ownership in a different form factor: PySide6 UI architecture, SQLite persistence, reversible user actions, updater tooling, and release automation.",
-    stack: ["Python", "PySide6", "SQLite", "pytest", "PyInstaller", "GitHub Actions"],
+      "A Windows desktop companion app for My Singing Monsters that makes awakening progress easier to track across multiple active targets. Full-stack ownership in a desktop form factor: PySide6 UI architecture, SQLite persistence, reversible user actions, updater tooling, and release automation.",
     chips: ["Python", "PySide6", "SQLite", "PyInstaller", "GitHub Actions"],
   },
 ];
 
-export const workProjects: Project[] = [
-  {
-    slug: "flagship-test-suite-overhaul",
-    title: "Flagship test-suite overhaul",
-    kind: "work",
-    eyebrow: "Boeing · public-safe",
-    year: "2024 - present",
-    status: "Originated and led",
-    summary:
-      "Helped turn a station-level assignment into the largest active modernization effort in my organization by framing the real system risk and building the case for a full-suite overhaul.",
-    notes:
-      "The interesting part of this work was not just the technical depth. It was the combination of systems understanding, disciplined analysis, and stakeholder communication needed to move a fragmented effort into a credible program-level story.",
-    stack: ["Ada", "Requirements engineering", "Stakeholder communication", "Cross-discipline systems"],
-    chips: ["Ada", "Requirements engineering", "Stakeholder communication", "Cross-discipline systems"],
-  },
-  {
-    slug: "legacy-labview-instrumentation",
-    title: "Legacy LabVIEW instrumentation overhaul",
-    kind: "work",
-    eyebrow: "Boeing · public-safe",
-    year: "2024 - present",
-    status: "Lead software engineer",
-    summary:
-      "Leading the software side of a legacy instrumentation overhaul where the safest path was not a full rewrite, but a careful architecture that preserved the right legacy behavior while integrating new hardware.",
-    notes:
-      "I inherited a brittle, old LabVIEW environment with real constraints and missing pieces. The work has been about making deliberate tradeoffs, keeping risk contained, and creating a supportable path forward without pretending the system was greenfield.",
-    stack: ["LabVIEW", "C++", "Hardware integration", "Modernization strategy"],
-    chips: ["LabVIEW", "C++", "Hardware integration", "Modernization strategy"],
-  },
-  {
-    slug: "calibration-equipment-suite",
-    title: "Calibration-equipment software suite",
-    kind: "work",
-    eyebrow: "Boeing · public-safe",
-    year: "2023 - present",
-    status: "In production use",
-    summary:
-      "Built a brand-new software suite for calibration equipment that supports broader testing operations, taking it from zero software to production-facing daily use.",
-    notes:
-      "This project is a good example of my comfort zone: define the interface between old and new systems, build the missing software layer from scratch, and stay with it through acceptance, real usage, and release-process friction.",
-    stack: ["LabVIEW", "Real-time behavior", "Instrumentation", "Production validation"],
-    chips: ["LabVIEW", "Real-time behavior", "Instrumentation", "Production validation"],
-  },
-];
-
-export const professionalBlock = {
-  eyebrow: "At Boeing",
-  heading: "High-stakes engineering, done under real constraints.",
-  body: [
-    "I work across three very different efforts at Boeing spanning software, systems, and instrumentation for high-stakes test infrastructure. One I helped originate as the largest active modernization initiative in my organization; one I lead as the senior software engineer on a legacy instrumentation overhaul; one I built from scratch and took into daily production use.",
-    "Professional work here is written public-safe — enough to show scope and ownership without exposing program specifics.",
+export const howIWork: { heading: string; pillars: Pillar[] } = {
+  heading: "How I work.",
+  pillars: [
+    {
+      lead: "Systems thinking",
+      body: "Depth before noise: understand the system, then make the smallest high-leverage move.",
+    },
+    {
+      lead: "Agentic workflows",
+      body: "Custom skills, MCP servers, RAG pipelines, and tool-using agents, built and run day-to-day.",
+    },
+    {
+      lead: "Practical AI implementation",
+      body: "Engineer-first. Autonomy is earned, not assumed; clear interfaces, small blast radius, honest failure modes.",
+    },
+    {
+      lead: "Restrained product judgment",
+      body: "Architecture with a purpose: design for maintainability, operator trust, and real usage.",
+    },
+    {
+      lead: "Architectural discipline",
+      body: "Calm ownership and clean boundaries: communicate clearly, contain risk, keep momentum up.",
+    },
   ],
-  chips: [
-    "Ada",
-    "C++",
-    "LabVIEW",
-    "Hardware integration",
-    "Requirements engineering",
-    "Stakeholder communication",
-  ],
-  link: { label: "Read more", href: "/projects/boeing-modernization" },
 };
 
-export const aiBlock = {
-  eyebrow: "AI & agentic engineering",
-  heading: "Shipping with frontier tools, not just using them.",
-  body: [
-    "I build and operate agentic workflows day-to-day — custom skills, MCP servers, RAG pipelines, tool-using agents — and I serve as the primary internal resource for frontier-AI adoption across two organizations.",
-    "My posture is engineer-first: operator trust, verifiable behavior, clear failure modes. Autonomy gets earned, not assumed — the same discipline I apply in Milodex and in production test systems.",
+export const aboutPage = {
+  currentFocus: {
+    body:
+      "Most of my work right now sits at the intersection of applied AI and software engineering. The day-to-day looks like building agentic workflows, shipping LLM-powered features, and helping organizations adopt frontier tools without getting burned by them.",
+    items: [
+      "Applied AI and LLM-powered products.",
+      "Agentic engineering workflows: custom skills, MCP servers, RAG pipelines, tool-using agents.",
+      "Frontier model patterns and how they change what's worth building.",
+      "High-leverage systems where small, careful moves compound.",
+    ],
+  },
+  howIWorkPillars: [
+    {
+      lead: "Systems thinking",
+      body: "Depth before noise: understand the system, then make the smallest high-leverage move.",
+    },
+    {
+      lead: "Restrained product judgment",
+      body: "Architecture with a purpose: design for maintainability, operator trust, and real usage.",
+    },
+    {
+      lead: "Deep ownership",
+      body: "Stay with the work through the messy middle: design, build, ship, support, and the conversations that hold it all together.",
+    },
+    {
+      lead: "Practical experimentation",
+      body: "Hands on the tools, not just opinions about them. Claim less, demonstrate more.",
+    },
+    {
+      lead: "Architectural discipline",
+      body: "Clear interfaces, small blast radius, honest failure modes: the discipline that keeps hard systems livable.",
+    },
   ],
-  chips: ["Claude API", "MCP", "RAG", "Agentic workflows", "Prompt engineering", "Custom skills"],
+  whereHeaded: {
+    body:
+      "I'm looking for the next chapter of work where applied AI and product engineering meet under real constraints.",
+    items: [
+      "AI-native companies building frontier-model-shaped products.",
+      "Frontier-model applications across product and tooling.",
+      "Software roles where AI fluency is an edge, not a separate job title.",
+    ],
+  },
 };
 
 export const resumeEntries: ResumeEntry[] = [
@@ -288,9 +301,10 @@ export const resumeEntries: ResumeEntry[] = [
     chips: ["Next.js", "TypeScript", "Supabase", "Vitest", "Playwright", "CI"],
   },
   {
-    role: "Software Engineer 2 -> Systems Engineer 2 -> Systems Engineer 1",
+    role: "Software Engineer 2",
     organization: "The Boeing Company · Boeing Guidance Repair Center · Heath, Ohio",
     period: "Sep 2022 - Present",
+    previousRoles: "Previously Systems Engineer 2 and Systems Engineer 1.",
     bullets: [
       "Lead or shape three major engineering efforts across high-stakes test infrastructure, spanning software, systems, instrumentation, and public-safe technical communication.",
       "Helped originate the largest active modernization effort in my organization by framing system risk, building the case, and presenting the path forward to senior stakeholders.",
@@ -325,7 +339,6 @@ export const educationEntries: EducationEntry[] = [
     credential: "B.S. Computer Science · Cum Laude",
     period: "Aug 2018 - May 2022",
     details: [
-      "Cumulative GPA 3.6 with six Dean's List semesters.",
       "Coursework included machine learning, deep learning, AI, big data analytics, linear algebra, software engineering, and requirements engineering.",
       "Senior capstone focused on recommendation-pipeline and database design work for a social-media aggregation web app.",
     ],
@@ -363,49 +376,35 @@ export const skillGroups: SkillGroup[] = [
   },
 ];
 
-export const aboutPhilosophy = {
-  heading: "How I think about AI & agentic work",
-  body: [
-    "The part of frontier AI that holds my attention is the same part that holds my attention in a legacy test system: can the operator trust what it's doing? I spend most of my time building agentic workflows, custom skills, MCP servers, and RAG pipelines — and I spend a lot of the rest helping two organizations adopt these tools without getting burned by them.",
-    "My posture is engineer-first. Autonomy is earned, not assumed. A tool that can't explain itself, can't be verified, or can't be safely rolled back isn't ready for production — no matter how impressive the demo. The discipline that makes that real — clear interfaces, small blast radius, honest failure modes — is the same discipline I lean on in hard systems work.",
-    "On the hands-on side: hands on Claude and the major frontier models; hands on MCP, RAG, custom skills, and tool-using agents I actually run day-to-day. On the conceptual side: I'm honest about what I've shipped versus what I've only read about, and I'd rather claim less and demonstrate more.",
-  ],
-  chips: ["Claude API", "MCP", "RAG", "Agentic workflows", "Prompt engineering", "Custom skills"],
-};
-
 export const projectDetails: ProjectDetail[] = [
   {
     slug: "milodex",
+    detailTitle: "Architecting an Autonomous Trading Platform with Research-First Risk Controls",
     lead:
       "A research-first autonomous trading platform where autonomy is earned, not assumed.",
     topChips: ["Python", "Alpaca", "Parquet", "pytest", "CLI"],
-    takeaways: [
-      {
-        lead: "Architecture-first",
-        body:
-          "vendors are isolated behind internal models; market data and execution paths are standardized so swapping brokers is a boundary concern, not a rewrite.",
-      },
-      {
-        lead: "Risk has veto power",
-        body:
-          "a gated execution layer sits between strategy and the broker — automation has to pass risk checks before any order leaves.",
-      },
-      {
-        lead: "Operator-safe by design",
-        body:
-          "CLI-first, reversible actions, auditable decisions — built for the operator, not the algorithm.",
-      },
-    ],
     glance: [
-      { label: "Scope", value: "Personal project, active build" },
+      { label: "Role", value: "Solo build; owner of architecture, code, and tests" },
+      { label: "Year", value: "2026 · active build" },
       { label: "Stack", value: "Python · pytest · Parquet · Alpaca" },
+      { label: "Scope", value: "Personal project covering research, infrastructure, risk gating, and operator CLI" },
       {
         label: "Links",
         value:
           '<a class="link" href="https://github.com/zackmeach/Milodex" target="_blank" rel="noreferrer">GitHub</a>',
       },
     ],
-    subsystems: [
+    whyThisMattered:
+      "Trading software is unusual in that its blast radius can be financial. Most hobby-grade systems collapse vendor logic, strategy, and execution into one tangle. Milodex inverts that: vendors sit behind internal models, the risk layer has veto power, and autonomy has to be earned instead of assumed. The interesting design question is how to keep the system researchable while making it operationally safe.",
+    roleAndOwnership:
+      "Solo. I own the architecture, the code, the tests, and the operator surface. The discipline of the project is mine.",
+    coreConstraints: [
+      "Financial blast radius. Defaults have to be refuse, not execute.",
+      "Broker-vendor risk: trading-API behavior is the kind of dependency that shouldn't leak into strategy code.",
+      "Market-data quality and consistency across paths the system can take.",
+      "Single-developer operability. The CLI and tests have to be the operator's source of truth.",
+    ],
+    architecture: [
       {
         title: "Broker abstraction & market-data pipeline",
         description:
@@ -415,7 +414,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         title: "Risk-gated execution layer",
         description:
-          "A layer between strategy and broker that enforces risk rules per order. Every path an automated system can take runs through the gate — the default outcome is refuse, not execute.",
+          "A layer between strategy and broker that enforces risk rules per order. Every path an automated system can take runs through the gate. The default outcome is refuse, not execute.",
         chips: ["Python", "Gating rules", "Reversibility"],
       },
       {
@@ -425,72 +424,74 @@ export const projectDetails: ProjectDetail[] = [
         chips: ["Python", "CLI", "pytest"],
       },
     ],
-    closing: {
-      heading: "What's next",
-      body:
-        "Continuing to harden the risk layer, add more strategy research, and tighten the operator feedback loop. The goal is a system whose behavior I can trust before I extend what it's allowed to do.",
-    },
+    execution: [
+      "Broker abstraction in place; vendor swaps stay at the boundary.",
+      "Risk-gated execution layer with refuse-by-default semantics.",
+      "CLI-first operator surface; tests cover the same paths the operator drives.",
+      "Parquet-based market-data pipeline with shared contracts across paths.",
+    ],
+    currentState:
+      "Active build. The risk layer and broker abstraction are settled; strategy research and operator-feedback hardening are the next focus.",
+    whatThisDemonstrates:
+      "Architectural discipline under high blast radius, risk-first system thinking, and operator-centered design.",
   },
   {
     slug: "ledger",
+    detailTitle: "Building a Civic AI Assistant with Source-Aware Tool Use",
     lead:
-      "A civic-tech product focused on making politics more legible at the local, state, and federal level.",
+      "A civic-tech product focused on making politics more legible at the local, state, and federal level, built so every claim cites its source. Ledger is the broader civic product; Vera is the AI assistant surface inside it.",
     topChips: ["Next.js", "TypeScript", "Supabase", "Upstash", "Vitest", "Playwright"],
-    takeaways: [
-      {
-        lead: "Provenance-first",
-        body:
-          "every fact traces to a source; citation is a first-class UX concern, not an afterthought.",
-      },
-      {
-        lead: "Modern stack, disciplined boundaries",
-        body:
-          "Next.js + Supabase + Upstash with clear data contracts between layers so surface-area changes stay local.",
-      },
-      {
-        lead: "Built to ship and stay shipped",
-        body:
-          "CI, rate limiting, auth-aware behavior, Playwright and Vitest coverage — the kind of habits that let a small team keep moving.",
-      },
-    ],
     glance: [
-      { label: "Scope", value: "Civic-tech startup, CTO, launch-stage" },
+      { label: "Role", value: "CTO" },
+      { label: "Year", value: "2026 · launch-stage" },
+      { label: "Team", value: "Small founding team" },
       {
         label: "Stack",
         value: "Next.js · React · TypeScript · Supabase · Upstash · Vitest · Playwright",
       },
+      { label: "Scope", value: "Civic AI assistant covering local, state, and federal political data" },
       { label: "Links", value: "Live URL coming soon" },
     ],
-    subsystems: [
+    whyThisMattered:
+      "Civic information is hard to navigate at scale, and most consumer-grade summaries strip out the provenance that makes a claim defensible. Ledger / Vera is built around source-aware tool use: every assertion in the product is grounded in a citable source, and the UI surfaces that grounding instead of hiding it. The thesis is that a civic AI assistant only earns trust if it can show its work.",
+    roleAndOwnership:
+      "CTO. I own architecture and implementation across frontend UX, data contracts, provenance and citation behavior, testing infrastructure, rate limiting, CI, and product-definition work. The project doubles as a modern public proving ground for product judgment, maintainability, and shipping speed.",
+    coreConstraints: [
+      "Every claim in the product has to cite its source. Provenance is a UX requirement, not a debug feature.",
+      "LLM behavior is the primary risk surface: hallucinated facts cost user trust faster than they earn it.",
+      "Auth-aware behavior and rate limiting protect against cost and abuse vectors a public civic-tech product can't ignore.",
+      "Small team and a public-facing shipping cadence that has to stay defensible as the codebase evolves.",
+    ],
+    architecture: [
       {
         title: "Frontend UX & provenance flows",
         description:
-          "Product surfaces that let citation and context ride with every claim. The UI is shaped around trust: what did we assert, where did it come from, and how can a reader verify it themselves.",
+          "Product surfaces that let citation and context ride with every claim. The UI is shaped around trust: what did we assert, where did it come from, and how can a reader verify it themselves. Provenance is a first-class UX concern, not a hidden affordance.",
         chips: ["Next.js", "React", "TypeScript", "Tailwind"],
       },
       {
         title: "Data contracts & backend",
         description:
-          "Supabase for structured data, Upstash for rate-limiting and ephemeral state, with typed contracts at every crossing. The goal is to make the honest path the easy path as the schema evolves.",
+          "Supabase for structured data, Upstash for rate-limiting and ephemeral state, with typed contracts at every crossing. The goal is to make the honest path the easy path as the schema evolves, and to keep surface-area changes local when boundaries are tight.",
         chips: ["Supabase", "Upstash", "TypeScript"],
       },
-      {
-        title: "Testing & CI",
-        description:
-          "Vitest for units, Playwright for end-to-end flows, GitHub Actions for CI — set up to catch the regressions a civic-tech product can least afford to ship.",
-        chips: ["Vitest", "Playwright", "GitHub Actions"],
-      },
     ],
-    closing: {
-      heading: "What's next",
-      body:
-        "Pushing toward public launch while hardening the parts that matter most — provenance, auth-aware behavior, and the operator tooling that makes the data defensible.",
-    },
+    execution: [
+      "Provenance-first UI shipped: every assertion surfaces its citation.",
+      "Auth-aware behavior and rate limiting wired through Upstash.",
+      "Vitest for units; Playwright for end-to-end flows; GitHub Actions for CI.",
+      "Typed contracts across data, server, and client layers.",
+    ],
+    currentState:
+      "Launch-stage. The provenance-first UI shape is settled; CI, auth-aware behavior, and rate limiting are in place. Public launch and operator tooling are the next milestones.",
+    whatThisDemonstrates:
+      "Applied-AI product judgment under public-trust constraints, full-stack ownership end-to-end, and the systems-level discipline to keep a civic-tech product shippable as it grows.",
   },
   {
-    slug: "boeing-modernization",
+    slug: "boeing",
+    detailTitle: "Modernizing Mission-Critical Test Infrastructure in a Constrained Enterprise",
     lead:
-      "Three modernization efforts across high-stakes test infrastructure — one originated, one led, one built from scratch.",
+      "Three concurrent modernization efforts across high-stakes test infrastructure: one originated, one led, one built from scratch. Written public-safe.",
     topChips: [
       "Ada",
       "C++",
@@ -499,57 +500,58 @@ export const projectDetails: ProjectDetail[] = [
       "Requirements engineering",
       "Stakeholder communication",
     ],
-    takeaways: [
-      {
-        lead: "Originated a program-level modernization effort",
-        body:
-          "turned a station-level assignment into the largest active modernization initiative in my organization by framing system risk and taking the story to senior stakeholders.",
-      },
-      {
-        lead: "Led legacy instrumentation modernization",
-        body:
-          "deliberate tradeoffs over rewrites; risk-contained integration of new hardware alongside behaviors the legacy system still has to honor.",
-      },
-      {
-        lead: "Shipped calibration software from zero to production",
-        body:
-          "built the missing software layer from scratch, owned it through acceptance, and carried it into daily production use.",
-      },
-    ],
     glance: [
-      { label: "Scope", value: "Boeing · public-safe · 2022 – present" },
+      { label: "Role", value: "Software Engineer 2; also held Systems Engineer roles earlier in tenure" },
+      { label: "Period", value: "Sep 2022 – present" },
+      { label: "Scope", value: "Three concurrent modernization efforts across test infrastructure" },
       {
         label: "Stack",
         value: "Ada · C++ · LabVIEW · Hardware integration · Requirements engineering",
       },
+      { label: "Status", value: "Active across all three efforts; calibration suite in production-facing use" },
       { label: "Recognition", value: "Two Boeing recognition awards tied to modernization impact" },
     ],
-    subsystems: [
+    whyThisMattered:
+      "Test infrastructure is what the rest of an engineering organization depends on. When the test bench is wrong, every downstream judgment about the system under test is wrong. Modernization here is about supportability and confidence in the data the bench produces, not aesthetics.",
+    roleAndOwnership:
+      "Across the three efforts: helped originate the largest active modernization initiative in my organization by framing system risk and taking the path forward to senior stakeholders; led the software strategy on a legacy instrumentation overhaul as the lead software engineer; built a new calibration-equipment software suite from scratch and carried it through acceptance into production-facing daily use. Also mentored an intern and an early-career software engineer along the way.",
+    coreConstraints: [
+      "Brittle legacy systems with real production usage: modernization can't disrupt active operations.",
+      "Hardware-software interfaces where the legacy behavior carries meaning that has to be preserved.",
+      "Sensitive program context: some implementation details are intentionally omitted or generalized.",
+      "Cross-discipline stakeholders: modernization has to be defensible across software, systems, and engineering leadership.",
+    ],
+    architecture: [
       {
         title: "Flagship test-suite overhaul (originator)",
         description:
-          "Helped turn a station-level assignment into a program-level modernization. The interesting part wasn't the technical depth alone — it was pairing system understanding with disciplined analysis and stakeholder communication until a credible modernization story existed.",
+          "Helped turn a station-level assignment into a program-level modernization. The interesting part wasn't the technical depth alone. It was pairing system understanding with disciplined analysis and stakeholder communication until a credible modernization story existed.",
         chips: ["Ada", "Requirements engineering", "Stakeholder communication"],
       },
       {
         title: "Legacy instrumentation overhaul (lead software engineer)",
         description:
-          "Inherited a brittle legacy environment with real constraints and missing pieces. The work has been about careful tradeoffs — preserving the legacy behavior that matters, integrating new hardware safely, and creating a supportable path forward without pretending the system is greenfield.",
+          "Inherited a brittle legacy environment with real constraints and missing pieces. The work has been about careful tradeoffs: preserving the legacy behavior that matters, integrating new hardware safely, and creating a supportable path forward without pretending the system is greenfield.",
         chips: ["LabVIEW", "C++", "Hardware integration", "Modernization strategy"],
       },
       {
         title: "Calibration-equipment software suite (from scratch)",
         description:
-          "Built a new software suite for calibration equipment that supports broader testing operations. Zero software to production-facing daily use — the kind of work where defining the interface between old and new, and staying with it through acceptance, is most of the job.",
+          "Built a new software suite for calibration equipment that supports broader testing operations. Zero software to production-facing daily use. The kind of work where defining the interface between old and new, and staying with it through acceptance, is most of the job.",
         chips: ["LabVIEW", "Real-time behavior", "Instrumentation", "Production validation"],
       },
     ],
-    closing: {
-      heading: "How I think about this work",
-      body:
-        "Modernization is rarely a rewrite. The discipline is finding the smallest high-leverage move that makes the system safer, clearer, and easier to live with — and then being the one who stays with it through the messy middle.",
-    },
+    execution: [
+      "Calibration-equipment software suite delivered from zero to production-facing use.",
+      "Legacy instrumentation modernization advanced with new hardware integrated alongside preserved legacy behaviors.",
+      "Program-level modernization framing built and presented to senior stakeholders.",
+      "Internal AI-adoption work led across two organizations alongside the modernization efforts.",
+    ],
+    currentState:
+      "All three efforts active; calibration suite is in production-facing daily use. Recognized with two Boeing awards tied to modernization impact. Internal AI-adoption work continues alongside the modernization efforts.",
+    whatThisDemonstrates:
+      "Ownership of mission-critical systems under real constraints, stakeholder trust earned through clear analysis and communication, and the discipline to modernize without pretending the system is greenfield.",
     publicSafeNote:
-      "This page is written public-safe: program names, specific station counts, and sensitive internal detail are intentionally omitted.",
+      "This page is written public-safe: program names, specific station counts, and sensitive internal detail are intentionally omitted or generalized.",
   },
 ];
