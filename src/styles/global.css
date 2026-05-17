@@ -504,6 +504,46 @@
   @media print {
     .reg-marks { display: none; }
   }
+
+  .title-block {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px solid var(--color-rule);
+    font-family: var(--font-mono);
+  }
+
+  .title-block__cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .title-block__k {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    color: var(--color-graphite);
+  }
+
+  .title-block__v {
+    font-size: 0.8rem;
+    color: var(--color-ink);
+  }
+
+  .title-block__sep {
+    color: var(--color-graphite);
+  }
+
+  @media (min-width: 768px) {
+    .title-block {
+      grid-template-columns: 2fr 1fr 1fr 1.4fr 1fr;
+    }
+    .title-block__cell + .title-block__cell {
+      border-left: 1px solid var(--color-rule);
+    }
+    .title-block__cell { border-bottom: 0; }
+  }
 }
 
 @media print {
