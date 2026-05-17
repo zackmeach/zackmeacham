@@ -30,6 +30,9 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
     <meta property="og:site_name" content={site.name} />
   </head>
   <body>
+    <div class="reg-marks" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
     <SiteHeader currentPath={Astro.url.pathname} />
     <main class:list={["pb-24"]}>
       <slot />
