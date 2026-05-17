@@ -3,13 +3,13 @@ import { links, site } from "../data/site";
 ---
 
 <footer class="title-block" aria-label="Site footer">
-  <div class="title-block__cell title-block__cell--wide">
+  <div class="title-block__cell">
     <span class="title-block__k">DRAWN BY</span>
     <span class="title-block__v">{site.name}</span>
   </div>
   <div class="title-block__cell">
     <span class="title-block__k">SHEET</span>
-    <span class="title-block__v">{Astro.url.pathname === "/" ? "00 · HOME" : Astro.url.pathname.replace(/^\//, "").toUpperCase()}</span>
+    <span class="title-block__v">{Astro.url.pathname === "/" ? "00 · HOME" : Astro.url.pathname.replace(/^\//, "").replace(/\//g, " · ").toUpperCase()}</span>
   </div>
   <div class="title-block__cell">
     <span class="title-block__k">REV</span>
