@@ -59,13 +59,13 @@ const railItems: RailItem[] = [
     </div>
   </section>
 
-  <section id="proof" class="shell-wide pt-2 pb-2 scroll-mt-24">
-    <p class="mono-tag">Proof</p>
+  <section id="proof" class="shell-wide pt-14 pb-2 scroll-mt-24">
+    <p class="mono-tag mono-tag--accent">Proof</p>
     <ul class="mt-6 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
       {proofStrip.map((item) => (
         <li>
           <p class="mono-tag mono-tag--accent">{item.label}</p>
-          <p class="prose-soft mt-3 text-sm max-w-[36ch]">{item.body}</p>
+          <p class="prose-soft mt-3 max-w-[38ch]">{item.body}</p>
         </li>
       ))}
     </ul>
@@ -88,7 +88,7 @@ const railItems: RailItem[] = [
             <p class="mono mt-2">{project.meta}</p>
           </div>
           <div class="project-row-body">
-            <h3>{project.title}</h3>
+            <h3 class="flagship-title">{project.title}</h3>
             <p class="prose-soft mt-3">{project.blurb}</p>
             <ChipRow chips={project.chips} class="mt-4" />
             <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">

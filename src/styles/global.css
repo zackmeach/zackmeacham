@@ -19,7 +19,7 @@
   --color-paper-3: oklch(0.802 0.058 78);
   --color-ink: oklch(0.198 0.008 60);
   --color-ink-soft: oklch(0.398 0.013 55);
-  --color-graphite: oklch(0.518 0.013 60);
+  --color-graphite: oklch(0.470 0.013 60);
   --color-rule: oklch(0.198 0.008 60 / 0.18);
   --color-accent: oklch(0.526 0.142 41);
   --color-accent-soft: oklch(0.526 0.142 41 / 0.12);
@@ -437,6 +437,13 @@
 
   .project-row-body {
     max-width: 48rem;
+  }
+
+  /* Flagship titles sit one tier above section H2s on the home page so the
+     three-unlike-projects triad reads as the visual anchor, not peer copy. */
+  .flagship-title {
+    font-size: clamp(1.6rem, 1.3rem + 1.1vw, 2.15rem);
+    line-height: 1.1;
   }
 
   .work-plane {
