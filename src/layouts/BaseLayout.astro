@@ -33,6 +33,7 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
     <div class="reg-marks" aria-hidden="true">
       <span></span><span></span><span></span><span></span>
     </div>
+    <div class="gutter-ticks" aria-hidden="true"></div>
     <SiteHeader currentPath={Astro.url.pathname} />
     <main class:list={["pb-24"]}>
       <slot />
