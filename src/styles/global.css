@@ -605,11 +605,12 @@
 
   @media (min-width: 1280px) {
     .gutter-ticks {
+      --gt-right: max(1.5rem, calc((100vw - 89rem) / 2 + 1.2rem));
       display: block;
       position: fixed;
       top: 0;
       bottom: 0;
-      right: max(1.5rem, calc((100vw - 89rem) / 2 + 1.2rem));
+      right: var(--gt-right);
       width: 1px;
       z-index: 0;
       pointer-events: none;
@@ -627,7 +628,7 @@
       position: fixed;
       top: 0;
       bottom: 0;
-      right: max(1.5rem, calc((100vw - 89rem) / 2 + 1.2rem));
+      right: var(--gt-right);
       width: 7px;
       transform: translateX(7px);
       background: color-mix(in oklch, var(--color-ink) 18%, transparent);
