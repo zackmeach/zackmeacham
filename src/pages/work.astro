@@ -1,45 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ChipRow from "../components/ChipRow.astro";
-import ContextRail, { type RailItem } from "../components/ContextRail.astro";
 import { archiveProjects, flagshipProjects, site } from "../data/site";
-
-const railItems: RailItem[] = [
-  {
-    id: "ledger",
-    label: "Ledger / Vera",
-    note: "civic AI · source-aware",
-    href: "/work/ledger",
-  },
-  {
-    id: "boeing",
-    label: "Boeing",
-    note: "test infrastructure · public-safe",
-    href: "/work/boeing",
-  },
-  {
-    id: "milodex",
-    label: "Milodex",
-    note: "risk system · operator tooling",
-    href: "/work/milodex",
-  },
-  {
-    id: "archive",
-    label: "Archive",
-    evidence: "MSM Awakening Tracker",
-    href: "#archive",
-  },
-];
 ---
 
-<BaseLayout title={`Work · ${site.name}`} description={site.description} hasRail>
-  <ContextRail
-    heading="Case index"
-    subheading="Flagship work first. Archive second."
-    items={railItems}
-    variant="case-index"
-  />
-
+<BaseLayout title={`Work · ${site.name}`} description={site.description}>
   <section class="shell-wide pt-14 pb-4">
     <p class="mono-tag">Work</p>
     <h1 class="hero-title mt-5 max-w-[22ch]">Selected work.</h1>

@@ -7,10 +7,9 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
-  hasRail?: boolean;
 }
 
-const { title = site.title, description = site.description, hasRail = false } = Astro.props;
+const { title = site.title, description = site.description } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
 ---
 
@@ -32,7 +31,7 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
   </head>
   <body>
     <SiteHeader currentPath={Astro.url.pathname} />
-    <main class:list={["pb-24", { "main-with-rail": hasRail }]}>
+    <main class:list={["pb-24"]}>
       <slot />
     </main>
     <SiteFooter />

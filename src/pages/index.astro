@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ChipRow from "../components/ChipRow.astro";
-import ContextRail, { type RailItem } from "../components/ContextRail.astro";
 import {
   flagshipProjects,
   hero,
@@ -10,42 +9,9 @@ import {
   site,
 } from "../data/site";
 
-const railItems: RailItem[] = [
-  {
-    id: "systems-depth",
-    label: "Systems depth",
-    evidence: "Boeing",
-    href: "/work/boeing",
-  },
-  {
-    id: "applied-ai",
-    label: "Applied AI products",
-    evidence: "Ledger / Vera",
-    href: "/work/ledger",
-  },
-  {
-    id: "agentic-workflows",
-    label: "Agentic workflows",
-    evidence: "How I work",
-    href: "#how-i-work",
-  },
-  {
-    id: "full-stack",
-    label: "Full-stack delivery",
-    evidence: "Selected work",
-    href: "#selected-work",
-  },
-];
 ---
 
-<BaseLayout title={site.title} description={site.description} hasRail>
-  <ContextRail
-    heading="Thesis ⇢ Evidence"
-    subheading="Each principle links to the work that proves it."
-    items={railItems}
-    variant="thesis"
-  />
-
+<BaseLayout title={site.title} description={site.description}>
   <section class="hero-band">
     <div class="shell-wide pt-10 pb-16 sm:pb-20">
       <p class="mono-tag mono-tag--accent reveal">{hero.eyebrow}</p>
