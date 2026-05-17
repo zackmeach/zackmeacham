@@ -33,9 +33,9 @@ Each task is independently committable and leaves the site building and visually
 - Delete: `src/components/ContextRail.astro`
 - Modify: `src/pages/index.astro` (remove import, `railItems` const, `<ContextRail>` JSX, `hasRail` prop)
 - Modify: `src/pages/work.astro` (same four removals)
-- Modify: `src/pages/work/[slug].astro` (same four removals — same pattern as the other two)
+- Modify: `src/pages/work/[slug].astro` (see Step 3b — deviates: const is `caseStructureItems` + dead `focusNotes`; preserve the `projectDetails/site/Project` data import)
 - Modify: `src/layouts/BaseLayout.astro` (remove `hasRail` from Props, destructure, and the `main-with-rail` class:list entry)
-- Modify: `src/styles/global.css` (delete the `.context-rail*` rules and the `@media (min-width:1500px) .main-with-rail` block, lines ~137–263)
+- Modify: `src/styles/global.css` (delete the `.context-rail*` rules, the `@media (min-width:1500px) .main-with-rail` block, and the trailing `@media (prefers-reduced-motion) .context-rail__link` block, lines ~137–269)
 
 - [ ] **Step 1: Locate every rail touchpoint**
 
@@ -46,9 +46,19 @@ Expected: matches in the 5 files above. Use this as the authoritative checklist.
 
 In `src/pages/index.astro`: delete the `import ContextRail, { type RailItem } ...` line; delete the entire `const railItems: RailItem[] = [ ... ];` block; delete the `<ContextRail ... />` element; change `<BaseLayout title={site.title} description={site.description} hasRail>` to remove the `hasRail` attribute.
 
-- [ ] **Step 3: Remove rail from `work.astro` and `work/[slug].astro`**
+- [ ] **Step 3: Remove rail from `work.astro`**
 
-Apply the identical four removals (import, `railItems` const, `<ContextRail>` JSX, `hasRail` attribute) to both files.
+In `src/pages/work.astro`: delete the `import ContextRail, { type RailItem } ...` line; delete the `const railItems: RailItem[] = [ ... ];` block; delete the `<ContextRail ... />` element; remove the `hasRail` attribute from `<BaseLayout ...>`.
+
+- [ ] **Step 3b: Remove rail from `work/[slug].astro` (NOT identical — read carefully)**
+
+This file deviates from the others. In `src/pages/work/[slug].astro`:
+- Delete the `import ContextRail, { type RailItem } from "../../components/ContextRail.astro";` line (line 4). `RailItem` is used only here.
+- **Keep** the separate `import { projectDetails, site, type Project } from "../../data/site";` line (line 5) — `Project`/`projectDetails` are still used by `getStaticPaths`. Do not touch it.
+- Delete the `const caseStructureItems: RailItem[] = [ ... ];` block (the rail-data const is named `caseStructureItems` here, **not** `railItems`).
+- Delete the `const focusNotes: Record<string, string> = { ... };` block — its only consumer is the rail's `footerNote` prop, so it becomes dead code (and `astro check` may flag it as unused).
+- Delete the `<ContextRail ... footerNote={focusNotes[project.slug]} ... />` element.
+- Remove the `hasRail` attribute from `<BaseLayout title=... description={detail.lead} hasRail>`.
 
 - [ ] **Step 4: Remove `hasRail` plumbing from `BaseLayout.astro`**
 
