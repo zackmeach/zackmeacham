@@ -9,7 +9,7 @@ import { archiveProjects, flagshipProjects, site } from "../data/site";
     <p class="mono-tag">Work</p>
     <h1 class="hero-title mt-5 max-w-[22ch]">Selected work.</h1>
     <p class="lead mt-6 max-w-[60ch]">
-      Three flagship case studies plus a compact archive of additional shipped work.
+      Three flagship case studies, plus other shipped work.
     </p>
     <p class="mono mt-6 max-w-[65ch] text-graphite">{site.publicSafeRule}</p>
   </section>
@@ -28,7 +28,10 @@ import { archiveProjects, flagshipProjects, site } from "../data/site";
             <p class="prose-soft mt-3">{project.blurb}</p>
             <ChipRow chips={project.chips} class="mt-4" />
             <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">
-              <a href={project.href} class="link">Read case study →</a>
+              <a href={project.href} class="link">Read case study</a>
+              {project.repo && (
+                <a href={project.repo} target="_blank" rel="noreferrer" class="link">GitHub</a>
+              )}
             </div>
           </div>
         </li>

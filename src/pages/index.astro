@@ -5,6 +5,7 @@ import {
   flagshipProjects,
   hero,
   howIWork,
+  links,
   proofStrip,
   site,
 } from "../data/site";
@@ -64,6 +65,9 @@ import {
             <ChipRow chips={project.chips} class="mt-4" />
             <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">
               <a href={project.href} class="link">Read case study</a>
+              {project.repo && (
+                <a href={project.repo} target="_blank" rel="noreferrer" class="link">GitHub</a>
+              )}
             </div>
           </div>
         </li>
@@ -96,6 +100,7 @@ import {
       </div>
       <a href="/resume" class="mono link whitespace-nowrap">Open resume</a>
     </div>
+    <p class="prose-soft mt-6 max-w-[60ch]">Software Engineer 2 at Boeing since 2022 and CTO at Ledger, with personal systems and tooling shipped alongside.</p>
   </section>
 
   <section id="contact" class="shell-wide pt-20 pb-20 scroll-mt-24">
@@ -107,5 +112,11 @@ import {
       <a href={site.email} class="mono link whitespace-nowrap">Email</a>
     </div>
     <p class="prose-soft mt-6 max-w-[55ch]">{site.contactIntro}</p>
+    <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+      <a href={site.email} class="link">{site.emailDisplay}</a>
+      {links.map((link) => (
+        <a href={link.href} target="_blank" rel="noreferrer" class="link">{link.label}</a>
+      ))}
+    </div>
   </section>
 </BaseLayout>

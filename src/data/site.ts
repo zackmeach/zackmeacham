@@ -22,6 +22,7 @@ export type FlagshipProject = {
   meta: string;
   chips: Chip[];
   href: string;
+  repo?: string;
 };
 
 export type Pillar = {
@@ -110,7 +111,7 @@ export const site = {
   name: "Zack Meacham",
   title: "Zack Meacham | Software Engineer",
   description:
-    "Personal site for Zack Meacham, software engineer in Findlay, Ohio. Test infrastructure at Boeing, CTO of Ledger (civic-tech), and frontier-AI adoption lead across two organizations.",
+    "Zack Meacham is a software engineer working across systems, applied AI, and product: mission-critical test infrastructure at Boeing, CTO of the civic-tech startup Ledger, and LLM-powered tools shipped end to end.",
   siteUrl: "https://zackmeacham.com",
   email: "mailto:zdmeacham@gmail.com",
   emailDisplay: "zdmeacham@gmail.com",
@@ -145,11 +146,11 @@ export const links: LinkItem[] = [
 
 export const hero = {
   eyebrow: "Zack Meacham",
-  headline: "Software Engineer focused on Applied AI and LLM-powered products.",
+  headline: "Software engineer across systems, applied AI, and product.",
   thesis:
-    "I combine systems engineering, software engineering, and AI fluency to build high-leverage products.",
+    "Systems engineering, software engineering, and applied AI in one practice: I build products and tooling where all three have to hold up under real constraints.",
   paragraph:
-    "Systems-minded by background, product-driven by instinct, and deeply interested in how LLMs can be used both as features and as force multipliers for engineering itself.",
+    "I work across three lanes that usually stay separate: mission-critical systems, applied AI, and product. LLMs show up throughout that work, as features users touch and as tools that change how the engineering itself gets done.",
   primaryCta: { label: "View selected work", href: "/work" },
   secondaryCta: { label: "Resume", href: "/resume" },
 };
@@ -157,7 +158,7 @@ export const hero = {
 export const proofStrip: ProofStripItem[] = [
   {
     label: "Systems engineering",
-    body: "Mission-critical test infrastructure at Boeing: public-safe scope, ownership, and modernization work.",
+    body: "Mission-critical test infrastructure at Boeing. Three concurrent efforts: one calibration suite built from zero to production-facing daily use.",
   },
   {
     label: "LLM-powered products",
@@ -187,9 +188,9 @@ export const flagshipProjects: FlagshipProject[] = [
   {
     slug: "boeing",
     eyebrow: "Flagship · professional engineering",
-    title: "Modernization at Boeing",
+    title: "Test Infrastructure at Boeing",
     blurb:
-      "Modernizing mission-critical test infrastructure inside a constrained enterprise, written public-safe. Three concurrent efforts spanning Ada, LabVIEW, and stakeholder-level systems work.",
+      "Mission-critical test infrastructure inside a constrained enterprise, written public-safe. Three concurrent efforts spanning Ada, LabVIEW, hardware integration, and stakeholder-level systems work: one originated, one led, one built from scratch.",
     meta: "2022 – present · public-safe",
     chips: ["Ada", "C++", "LabVIEW", "Hardware integration", "Requirements engineering"],
     href: "/work/boeing",
@@ -203,6 +204,7 @@ export const flagshipProjects: FlagshipProject[] = [
     meta: "2026 · Active build",
     chips: ["Python", "Alpaca", "Parquet", "pytest", "CLI"],
     href: "/work/milodex",
+    repo: "https://github.com/zackmeach/Milodex",
   },
 ];
 
@@ -292,18 +294,18 @@ export const resumeEntries: ResumeEntry[] = [
   {
     role: "CTO",
     organization: "Ledger",
-    period: "2026 - Present",
+    period: "2026 – present",
     bullets: [
       "Leading technical direction for a civic-tech product focused on transparency, literacy, and usability across political data and workflows.",
       "Own architecture and implementation across frontend UX, data contracts, provenance and citation behavior, testing infrastructure, rate limiting, CI, and product-definition work.",
-      "Use the project as a modern public proving ground for product judgment, maintainability, and shipping speed.",
+      "Set the testing, CI, and data-contract foundations early so the codebase stays shippable and defensible as it grows.",
     ],
     chips: ["Next.js", "TypeScript", "Supabase", "Vitest", "Playwright", "CI"],
   },
   {
     role: "Software Engineer 2",
     organization: "The Boeing Company · Boeing Guidance Repair Center · Heath, Ohio",
-    period: "Sep 2022 - Present",
+    period: "Sep 2022 – present",
     previousRoles: "Previously Systems Engineer 2 and Systems Engineer 1.",
     bullets: [
       "Lead or shape three major engineering efforts across high-stakes test infrastructure, spanning software, systems, instrumentation, and public-safe technical communication.",
@@ -324,7 +326,7 @@ export const resumeEntries: ResumeEntry[] = [
   {
     role: "Volunteer contributor, ML / Data Science",
     organization: "Pillar.gg",
-    period: "Dec 2021 - Mar 2022",
+    period: "Dec 2021 – Mar 2022",
     bullets: [
       "Contributed to a startup's automated editing product while finishing my computer science degree.",
       "Worked on feature engineering, structured-data analysis, and research into deeper ML and audio-processing capabilities.",
@@ -337,7 +339,7 @@ export const educationEntries: EducationEntry[] = [
   {
     institution: "Kent State University",
     credential: "B.S. Computer Science · Cum Laude",
-    period: "Aug 2018 - May 2022",
+    period: "Aug 2018 – May 2022",
     details: [
       "Coursework included machine learning, deep learning, AI, big data analytics, linear algebra, software engineering, and requirements engineering.",
       "Senior capstone focused on recommendation-pipeline and database design work for a social-media aggregation web app.",
@@ -491,7 +493,7 @@ export const projectDetails: ProjectDetail[] = [
     slug: "boeing",
     detailTitle: "Modernizing Mission-Critical Test Infrastructure in a Constrained Enterprise",
     lead:
-      "Three concurrent modernization efforts across high-stakes test infrastructure: one originated, one led, one built from scratch. Written public-safe.",
+      "Three concurrent efforts across high-stakes test infrastructure: one originated, one led, one built from scratch. Written public-safe.",
     topChips: [
       "Ada",
       "C++",
