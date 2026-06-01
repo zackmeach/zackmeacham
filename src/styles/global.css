@@ -132,9 +132,38 @@
     background: var(--color-accent);
     color: var(--color-paper);
   }
+
+  /* Visible keyboard focus (WCAG 2.4.7). Accent ring, square to match the
+     zero-radius system, offset to clear the hairline borders on chips/buttons. */
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
 }
 
 @layer components {
+  /* Skip-to-content link: off-screen until focused (WCAG 2.4.1). The body
+     opens with decorative furniture and full nav before <main>. */
+  .skip-link {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    z-index: 50;
+    transform: translateY(-150%);
+    padding: 0.5rem 0.85rem;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: transform 140ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
   .shell {
     @apply mx-auto w-full px-6 sm:px-8;
     max-width: 50rem;
@@ -193,7 +222,7 @@
     width: min(38vw, 28rem);
     height: min(38vw, 28rem);
     border-radius: 9999px;
-    background: radial-gradient(circle, rgba(162, 78, 43, 0.14), transparent 65%);
+    background: radial-gradient(circle, color-mix(in oklch, var(--color-accent) 14%, transparent), transparent 65%);
     pointer-events: none;
     filter: blur(2px);
   }
@@ -205,6 +234,7 @@
   .hero-title--detail {
     font-size: clamp(1.95rem, 1.35rem + 2.6vw, 4.6rem);
     line-height: 1.04;
+    overflow-wrap: anywhere;
   }
 
   .hero-grid {
@@ -237,6 +267,8 @@
   .dim-callout line {
     stroke: color-mix(in oklch, var(--color-ink) 30%, transparent);
     stroke-width: 1;
+    /* viewBox is distorted by preserveAspectRatio=none; keep a true 1px hairline */
+    vector-effect: non-scaling-stroke;
   }
 
   .dim-callout__line {
@@ -556,6 +588,16 @@
   .reg-marks > span:nth-child(2) { top: 18px; right: 18px; border-top-width: 1px; border-right-width: 1px; }
   .reg-marks > span:nth-child(3) { bottom: 18px; left: 18px; border-bottom-width: 1px; border-left-width: 1px; }
   .reg-marks > span:nth-child(4) { bottom: 18px; right: 18px; border-bottom-width: 1px; border-right-width: 1px; }
+
+  /* Below 1024px the dim-callout and gutter ticks are hidden, so the corner
+     marks become the only drafting cue. Make them read as intentional brackets. */
+  @media (max-width: 1023px) {
+    .reg-marks > span {
+      width: 18px;
+      height: 18px;
+      border-color: color-mix(in oklch, var(--color-ink) 34%, transparent);
+    }
+  }
 
   @media print {
     .reg-marks { display: none; }
