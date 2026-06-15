@@ -249,7 +249,7 @@
     color: var(--color-ink);
   }
 
-  .hero-band > .shell-wide {
+  .hero-band > .sheet-row {
     --dim-top: 2.5rem;
     --dim-h: clamp(7rem, 16vw, 11rem);
     position: relative;
@@ -457,6 +457,70 @@
     justify-content: space-between;
   }
 
+  /* Case-study "sheet": below xl it is a single centered column; at xl the
+     section labels move into a left margin column (the drafting metaphor:
+     annotations in the margin), so the prose reads centered rather than
+     stranded left against a half-empty canvas on wide monitors (P1-4). */
+  .detail-sheet {
+    @apply mx-auto w-full px-6 sm:px-8;
+    max-width: 53rem;
+  }
+
+  .detail-row__label {
+    margin-bottom: 1.4rem;
+  }
+
+  .detail-row__body > :first-child {
+    margin-top: 0;
+  }
+
+  @media (min-width: 1280px) {
+    .detail-sheet {
+      max-width: 60rem;
+    }
+
+    .detail-row {
+      display: grid;
+      grid-template-columns: 9.5rem minmax(0, 64ch);
+      column-gap: 2.75rem;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .detail-row__label {
+      margin-bottom: 0;
+      padding-top: 0.2rem;
+    }
+  }
+
+  /* Top-level pages (home / work / about): identical to the wide shell below 2xl,
+     but at >=1536px the section label moves into a left margin column (the same
+     drafting-annotation move as the case-study sheet) so QHD monitors read as a
+     centered sheet rather than content stranded left against dead margin (P1-4,
+     flagged worst at 2560px). Below 2xl nothing changes. */
+  .sheet-row {
+    @apply mx-auto w-full px-6 sm:px-8;
+    max-width: 74rem;
+  }
+
+  @media (min-width: 1536px) {
+    .sheet-row {
+      display: grid;
+      grid-template-columns: 10rem minmax(0, 52rem);
+      column-gap: 3rem;
+      align-items: start;
+      justify-content: center;
+    }
+
+    .sheet-row__label {
+      padding-top: 0.2rem;
+    }
+
+    .sheet-row__body > :first-child {
+      margin-top: 0;
+    }
+  }
+
   .about-grid {
     display: grid;
     gap: 2rem;
@@ -483,6 +547,16 @@
     display: grid;
     grid-template-columns: 6rem 1fr;
     gap: 1rem 1.5rem;
+  }
+
+  /* Grow the mobile nav hit area to the 44px touch-target guideline without
+     changing the visible type or the desktop baseline-aligned header. */
+  @media (max-width: 767px) {
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2.75rem;
+    }
   }
 
   .nav-link[data-active="true"] {

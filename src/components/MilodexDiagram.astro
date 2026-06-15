@@ -1,0 +1,213 @@
+---
+// Milodex signal-path schematic. A narrow vertical drawing so it stays legible
+// when it scales down on a phone (PRODUCT.md: readers are often on mobile). It
+// is content, not the decorative drafting furniture, so it is never hidden.
+// Themed entirely through the global CSS custom properties; no hard-coded color.
+---
+
+<figure class="mx-fig" role="group" aria-labelledby="mx-cap">
+  <div class="mx-fig__head">
+    <span class="mx-fig__id">FIG. 1</span>
+    <span class="mx-fig__name">MILODEX · SIGNAL PATH</span>
+  </div>
+
+  <svg
+    class="mx-svg"
+    viewBox="0 0 460 524"
+    role="img"
+    aria-labelledby="mx-title mx-desc"
+    focusable="false"
+  >
+    <title id="mx-title">Milodex system signal path</title>
+    <desc id="mx-desc">
+      The operator CLI drives a strategy research harness. Every order the
+      strategy proposes passes through a risk gate of 16 checks that fails
+      closed and refuses by default. Only approved orders reach the broker
+      abstraction, which routes to Alpaca in paper mode or a simulated broker
+      for backtesting. Market data lands in a Parquet store that feeds the
+      strategy. Live trading is blocked in code.
+    </desc>
+
+    <defs>
+      <marker id="mx-ah" viewBox="0 0 10 10" refX="8.5" refY="5"
+        markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse">
+        <path class="mx-ah" d="M1.5,1.5 L9,5 L1.5,8.5" />
+      </marker>
+    </defs>
+
+    <!-- connectors (drawn first so blocks sit on top of line ends) -->
+    <!-- operator -> strategy -->
+    <line class="mx-line" x1="143" y1="72" x2="143" y2="112" marker-end="url(#mx-ah)" />
+    <!-- strategy -> gate -->
+    <line class="mx-line" x1="143" y1="164" x2="143" y2="206" marker-end="url(#mx-ah)" />
+    <text class="mx-anno" x="151" y="189">order</text>
+    <!-- gate -> broker -->
+    <line class="mx-line" x1="143" y1="292" x2="143" y2="334" marker-end="url(#mx-ah)" />
+    <text class="mx-anno" x="151" y="317">approved</text>
+    <!-- broker -> two venues -->
+    <path class="mx-line" d="M143,386 L143,406 L77,406 L77,426" marker-end="url(#mx-ah)" />
+    <path class="mx-line" d="M143,406 L209,406 L209,426" marker-end="url(#mx-ah)" />
+    <!-- data loop: broker/market -> parquet -> strategy -->
+    <path class="mx-line" d="M268,360 L380,360 L380,272" marker-end="url(#mx-ah)" />
+    <text class="mx-anno" x="324" y="353" text-anchor="middle">market data</text>
+    <path class="mx-line" d="M380,216 L380,138 L268,138" marker-end="url(#mx-ah)" />
+
+    <!-- operator -->
+    <rect class="mx-block" x="18" y="20" width="250" height="52" />
+    <text class="mx-title" x="143" y="44" text-anchor="middle">OPERATOR CLI</text>
+    <text class="mx-sub" x="143" y="60" text-anchor="middle">drives · inspects · replays</text>
+
+    <!-- strategy -->
+    <rect class="mx-block" x="18" y="112" width="250" height="52" />
+    <text class="mx-title" x="143" y="136" text-anchor="middle">STRATEGY</text>
+    <text class="mx-sub" x="143" y="152" text-anchor="middle">research harness</text>
+
+    <!-- risk gate (the chokepoint) -->
+    <rect class="mx-gate-outer" x="18" y="206" width="250" height="86" />
+    <rect class="mx-gate" x="22" y="210" width="242" height="78" />
+    <text class="mx-title" x="143" y="232" text-anchor="middle">RISK GATE</text>
+    <text class="mx-sub" x="143" y="250" text-anchor="middle">16 checks · fails closed</text>
+    <text class="mx-accent" x="143" y="274" text-anchor="middle">DEFAULT: REFUSE</text>
+
+    <!-- broker abstraction -->
+    <rect class="mx-block" x="18" y="334" width="250" height="52" />
+    <text class="mx-title" x="143" y="358" text-anchor="middle">BROKER ABSTRACTION</text>
+    <text class="mx-sub" x="143" y="374" text-anchor="middle">one internal model</text>
+
+    <!-- venues -->
+    <rect class="mx-block" x="18" y="426" width="118" height="56" />
+    <text class="mx-title" x="77" y="450" text-anchor="middle">ALPACA</text>
+    <text class="mx-sub" x="77" y="466" text-anchor="middle">paper</text>
+
+    <rect class="mx-block" x="150" y="426" width="118" height="56" />
+    <text class="mx-title" x="209" y="450" text-anchor="middle">SIMULATED</text>
+    <text class="mx-sub" x="209" y="466" text-anchor="middle">broker · backtest</text>
+
+    <!-- parquet store -->
+    <rect class="mx-block" x="320" y="216" width="120" height="56" />
+    <text class="mx-title" x="380" y="240" text-anchor="middle">PARQUET</text>
+    <text class="mx-sub" x="380" y="258" text-anchor="middle">store</text>
+
+    <text class="mx-note" x="143" y="506" text-anchor="middle">paper-only · live trading blocked in code</text>
+  </svg>
+
+  <figcaption id="mx-cap" class="mx-fig__cap">
+    Strategy proposes; the risk gate disposes, refusing by default. Market data
+    lands in Parquet and feeds research.
+  </figcaption>
+</figure>
+
+<style>
+  .mx-fig {
+    margin: 0 0 2.5rem;
+    max-width: 30rem;
+    border: 1px solid var(--color-rule);
+    padding: 0.9rem 1.05rem 1.05rem;
+  }
+
+  .mx-fig__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid var(--color-rule);
+    font-family: var(--font-mono);
+  }
+
+  .mx-fig__id,
+  .mx-fig__name {
+    font-size: 0.62rem;
+    letter-spacing: 0.16em;
+    color: var(--color-graphite);
+  }
+
+  .mx-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .mx-block {
+    fill: var(--color-chip-bg);
+    stroke: var(--color-rule);
+    stroke-width: 1;
+  }
+
+  /* Gate gets weight, not extra color: a double ink rule reads as emphasis
+     per the no-shadow / restrained-accent system. */
+  .mx-gate {
+    fill: var(--color-chip-bg);
+    stroke: var(--color-ink);
+    stroke-width: 1.3;
+  }
+
+  .mx-gate-outer {
+    fill: none;
+    stroke: var(--color-ink);
+    stroke-width: 1;
+    opacity: 0.55;
+  }
+
+  .mx-title {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    fill: var(--color-ink);
+  }
+
+  .mx-sub {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.02em;
+    fill: var(--color-graphite);
+  }
+
+  /* The single accent in the figure: the gate's default behavior. */
+  .mx-accent {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    fill: var(--color-accent);
+  }
+
+  .mx-line {
+    fill: none;
+    stroke: color-mix(in oklch, var(--color-ink) 32%, transparent);
+    stroke-width: 1;
+  }
+
+  .mx-ah {
+    fill: none;
+    stroke: color-mix(in oklch, var(--color-ink) 48%, transparent);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .mx-anno {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    fill: var(--color-graphite);
+  }
+
+  .mx-note {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+    fill: var(--color-graphite);
+  }
+
+  .mx-fig__cap {
+    margin-top: 0.85rem;
+    max-width: 46ch;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+  }
+</style>

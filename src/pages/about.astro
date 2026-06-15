@@ -4,27 +4,32 @@ import { aboutPage, site } from "../data/site";
 ---
 
 <BaseLayout title={`About · ${site.name}`} description={site.description}>
-  <section class="shell-wide pt-14 pb-24">
-    <p class="mono-tag">About</p>
-    <h1 class="hero-title mt-5 max-w-[20ch]">About.</h1>
-
-    <div class="mt-10 space-y-7 max-w-[65ch] sm:space-y-5">
-      {site.aboutParagraphs.map((p) => <p class="prose-soft">{p}</p>)}
+  <section class="sheet-row pt-14">
+    <p class="mono-tag sheet-row__label">About</p>
+    <div class="sheet-row__body">
+      <h1 class="hero-title mt-5 max-w-[20ch]">About.</h1>
+      <div class="mt-10 space-y-7 max-w-[65ch] sm:space-y-5">
+        {site.aboutParagraphs.map((p) => <p class="prose-soft" set:html={p} />)}
+      </div>
     </div>
+  </section>
 
-    <section class="mt-16">
-      <p class="mono-tag">Current focus</p>
+  <section class="sheet-row pt-16 scroll-mt-24">
+    <p class="mono-tag sheet-row__label">Current focus</p>
+    <div class="sheet-row__body">
       <p class="prose-soft mt-6 max-w-[70ch]">{aboutPage.currentFocus.body}</p>
       <ul class="mt-6 space-y-3 max-w-[70ch]">
         {aboutPage.currentFocus.items.map((item) => (
           <li class="prose-soft text-sm">{item}</li>
         ))}
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <section class="mt-16">
-      <p class="mono-tag">How I work</p>
-      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+  <section class="sheet-row pt-16 scroll-mt-24">
+    <p class="mono-tag sheet-row__label">How I work</p>
+    <div class="sheet-row__body">
+      <ul class="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2">
         {aboutPage.howIWorkPillars.map((pillar) => (
           <li class="max-w-[40ch]">
             <p class="mono-tag mono-tag--accent">{pillar.lead}</p>
@@ -32,21 +37,25 @@ import { aboutPage, site } from "../data/site";
           </li>
         ))}
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <section class="mt-16">
-      <p class="mono-tag">Outside the work</p>
+  <section class="sheet-row pt-16 scroll-mt-24">
+    <p class="mono-tag sheet-row__label">Outside the work</p>
+    <div class="sheet-row__body">
       <p class="prose-soft mt-6 max-w-[65ch]">{site.shortPersonal}</p>
-    </section>
+    </div>
+  </section>
 
-    <section class="mt-16">
-      <p class="mono-tag">Where I'm headed</p>
+  <section class="sheet-row pt-16 pb-24 scroll-mt-24">
+    <p class="mono-tag sheet-row__label">Where I'm headed</p>
+    <div class="sheet-row__body">
       <p class="prose-soft mt-6 max-w-[70ch]">{aboutPage.whereHeaded.body}</p>
       <ul class="mt-6 space-y-3 max-w-[70ch]">
         {aboutPage.whereHeaded.items.map((item) => (
           <li class="prose-soft text-sm">{item}</li>
         ))}
       </ul>
-    </section>
+    </div>
   </section>
 </BaseLayout>
