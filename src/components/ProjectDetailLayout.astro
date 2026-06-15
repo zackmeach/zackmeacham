@@ -1,6 +1,7 @@
 ---
 import type { Project, ProjectDetail } from "../data/site";
 import ChipRow from "./ChipRow.astro";
+import MilodexDiagram from "./MilodexDiagram.astro";
 
 interface Props {
   project: Project;
@@ -10,88 +11,115 @@ interface Props {
 const { project, detail } = Astro.props;
 ---
 
-<article class="shell-wide pt-14 pb-24">
-  <header>
-    <p class="mono-tag">{project.eyebrow}</p>
-    <h1 class="hero-title hero-title--detail mt-5 max-w-[26ch]">{detail.detailTitle}</h1>
-    <p class="mono mt-3">{project.year} · {project.status}</p>
-    <p class="lead mt-6 max-w-[60ch]">{detail.lead}</p>
-    <ChipRow chips={detail.topChips} class="mt-6" />
-    {project.href && (
-      <p class="mono mt-4">
-        <a href={project.href} target="_blank" rel="noreferrer" class="link">Visit link</a>
-      </p>
-    )}
+<article class="detail-sheet pt-14 pb-24">
+  <header class="detail-row">
+    <p class="mono-tag detail-row__label">{project.eyebrow}</p>
+    <div class="detail-row__body">
+      <h1 class="hero-title hero-title--detail max-w-[26ch]">{detail.detailTitle}</h1>
+      <p class="mono mt-3">{project.year} · {project.status}</p>
+      <p class="lead mt-6 max-w-[60ch]">{detail.lead}</p>
+      <ChipRow chips={detail.topChips} class="mt-6" />
+      {project.href && (
+        <p class="mono mt-4">
+          <a href={project.href} target="_blank" rel="noreferrer" class="link">Visit link</a>
+        </p>
+      )}
+    </div>
   </header>
 
-  <section id="at-a-glance" class="mt-14 scroll-mt-24">
-    <p class="mono-tag">At a glance</p>
-    <dl class="mt-6 grid gap-x-8 gap-y-3 max-w-[72ch] sm:grid-cols-[auto_1fr]">
-      {detail.glance.map((row) => (
-        <>
-          <dt class="mono">{row.label}</dt>
-          <dd class="prose-soft" set:html={row.value} />
-        </>
-      ))}
-    </dl>
-  </section>
-
-  <section id="why-this-mattered" class="mt-14 max-w-[72ch] scroll-mt-24">
-    <p class="mono-tag">Why this mattered</p>
-    <p class="prose-soft mt-6">{detail.whyThisMattered}</p>
-  </section>
-
-  <section id="role-and-ownership" class="mt-14 max-w-[72ch] scroll-mt-24">
-    <p class="mono-tag">My role and ownership</p>
-    <p class="prose-soft mt-6">{detail.roleAndOwnership}</p>
-  </section>
-
-  <section id="core-constraints" class="mt-14 max-w-[72ch] scroll-mt-24">
-    <p class="mono-tag">Core constraints</p>
-    <ul class="mt-6 space-y-3">
-      {detail.coreConstraints.map((c) => (
-        <li class="prose-soft text-sm">{c}</li>
-      ))}
-    </ul>
-  </section>
-
-  <section id="architecture-and-key-decisions" class="mt-14 scroll-mt-24">
-    <p class="mono-tag">Architecture and key decisions</p>
-    <div class="mt-6 space-y-10 max-w-[72ch]">
-      {detail.architecture.map((s) => (
-        <div>
-          <h3>{s.title}</h3>
-          <p class="prose-soft mt-3">{s.description}</p>
-          <ChipRow chips={s.chips} class="mt-4" />
-        </div>
-      ))}
+  <section id="at-a-glance" class="detail-row mt-14 scroll-mt-24">
+    <p class="mono-tag detail-row__label">At a glance</p>
+    <div class="detail-row__body">
+      <dl class="grid gap-x-8 gap-y-3 sm:grid-cols-[auto_1fr]">
+        {detail.glance.map((row) => (
+          <>
+            <dt class="mono">{row.label}</dt>
+            <dd class="prose-soft" set:html={row.value} />
+          </>
+        ))}
+      </dl>
     </div>
   </section>
 
-  <section id="execution-highlights" class="mt-14 max-w-[72ch] scroll-mt-24">
-    <p class="mono-tag">Execution highlights</p>
-    <ul class="mt-6 space-y-3">
-      {detail.execution.map((e) => (
-        <li class="prose-soft text-sm">{e}</li>
-      ))}
-    </ul>
+  <section id="why-this-mattered" class="detail-row mt-14 scroll-mt-24">
+    <p class="mono-tag detail-row__label">Why this mattered</p>
+    <div class="detail-row__body">
+      <p class="prose-soft">{detail.whyThisMattered}</p>
+    </div>
   </section>
 
-  <section id="impact-current-state" class="mt-14 max-w-[72ch] scroll-mt-24">
-    <p class="mono-tag">Impact / current state</p>
-    <p class="prose-soft mt-6">{detail.currentState}</p>
+  <section id="role-and-ownership" class="detail-row mt-14 scroll-mt-24">
+    <p class="mono-tag detail-row__label">My role and ownership</p>
+    <div class="detail-row__body">
+      <p class="prose-soft">{detail.roleAndOwnership}</p>
+    </div>
   </section>
 
-  <section id="what-this-demonstrates" class="mt-14 max-w-[72ch] scroll-mt-24">
-    <p class="mono-tag">What this demonstrates</p>
-    <p class="lead mt-6">{detail.whatThisDemonstrates}</p>
+  <section id="core-constraints" class="detail-row mt-14 scroll-mt-24">
+    <p class="mono-tag detail-row__label">Core constraints</p>
+    <div class="detail-row__body">
+      <ul class="space-y-3">
+        {detail.coreConstraints.map((c) => (
+          <li class="prose-soft text-sm">{c}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="architecture-and-key-decisions" class="detail-row mt-14 scroll-mt-24">
+    <p class="mono-tag detail-row__label">Architecture and key decisions</p>
+    <div class="detail-row__body">
+      {project.slug === "milodex" && <MilodexDiagram />}
+      <div class="space-y-10">
+        {detail.architecture.map((s) => (
+          <div>
+            <h3>{s.title}</h3>
+            <p class="prose-soft mt-3">{s.description}</p>
+            <ChipRow chips={s.chips} class="mt-4" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="execution-highlights" class="detail-row mt-14 scroll-mt-24">
+    <p class="mono-tag detail-row__label">Execution highlights</p>
+    <div class="detail-row__body">
+      <ul class="space-y-3">
+        {detail.execution.map((e) => (
+          <li class="prose-soft text-sm">{e}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section id="impact-current-state" class="detail-row mt-14 scroll-mt-24">
+    <p class="mono-tag detail-row__label">Impact / current state</p>
+    <div class="detail-row__body">
+      <p class="prose-soft">{detail.currentState}</p>
+    </div>
+  </section>
+
+  <section id="what-this-demonstrates" class="detail-row mt-14 scroll-mt-24">
+    <p class="mono-tag detail-row__label">What this demonstrates</p>
+    <div class="detail-row__body">
+      <p class="lead">{detail.whatThisDemonstrates}</p>
+    </div>
   </section>
 
   {detail.publicSafeNote && (
-    <p class="mono mt-14 max-w-[72ch] text-graphite">{detail.publicSafeNote}</p>
+    <section class="detail-row mt-14">
+      <p class="detail-row__label" aria-hidden="true"></p>
+      <div class="detail-row__body">
+        <p class="mono text-graphite">{detail.publicSafeNote}</p>
+      </div>
+    </section>
   )}
 
-  <p class="mt-14">
-    <a href="/work" class="mono link">← All work</a>
-  </p>
+  <section class="detail-row mt-14">
+    <p class="detail-row__label" aria-hidden="true"></p>
+    <div class="detail-row__body">
+      <a href="/work" class="mono link">← All work</a>
+    </div>
+  </section>
 </article>
