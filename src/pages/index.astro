@@ -5,7 +5,6 @@ import {
   flagshipProjects,
   hero,
   howIWork,
-  links,
   proofStrip,
   site,
 } from "../data/site";
@@ -110,14 +109,12 @@ import {
     <div class="sheet-row__body">
       <div class="mt-4 flex items-baseline justify-between gap-4">
         <h2 class="max-w-[20ch]">Reach out.</h2>
-        <a href={site.email} class="mono link whitespace-nowrap">Email</a>
+        <a href="/contact" class="mono link whitespace-nowrap">Contact</a>
       </div>
       <p class="prose-soft mt-6 max-w-[55ch]">{site.contactIntro}</p>
-      <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-        <a href={site.email} class="link">{site.emailDisplay}</a>
-        {links.map((link) => (
-          <a href={link.href} target="_blank" rel="noreferrer" class="link">{link.label}</a>
-        ))}
+      <div class="mt-8 flex flex-wrap items-center gap-3 text-sm">
+        <a href="/contact" class="button-link">Get in touch</a>
+        <a href={site.email} class="button-link button-link--ghost">Email</a>
       </div>
     </div>
   </section>
