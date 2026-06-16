@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { contactChannels, contactTopics, site } from "../data/site";
+---
+
+<BaseLayout title={`Contact · ${site.name}`} description={site.description}>
+  <section class="sheet-row pt-14">
+    <p class="mono-tag mono-tag--accent sheet-row__label">Contact</p>
+    <div class="sheet-row__body">
+      <h1 class="hero-title mt-5 max-w-[16ch]">Reach out.</h1>
+      <p class="lead mt-6 max-w-[52ch]">{site.contactLead}</p>
+      <div class="mt-9 flex flex-wrap items-center gap-3 text-sm">
+        <a href={site.email} class="button-link">Email me</a>
+        <a href={contactChannels[1].href} target="_blank" rel="noreferrer" class="button-link button-link--ghost">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet-row pt-16 scroll-mt-24">
+    <p class="mono-tag sheet-row__label">Direct lines</p>
+    <div class="sheet-row__body">
+      <dl class="contact-register mt-6">
+        {contactChannels.map((channel) => (
+          <div class="contact-register__row">
+            <dt class="contact-register__k">{channel.key}</dt>
+            <dd class="contact-register__v">
+              {channel.href ? (
+                <a
+                  class="link"
+                  href={channel.href}
+                  {...(channel.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                >
+                  {channel.value}
+                </a>
+              ) : (
+                channel.value
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="sheet-row pt-16 pb-24 scroll-mt-24">
+    <p class="mono-tag sheet-row__label">Good fits</p>
+    <div class="sheet-row__body">
+      <ul class="contact-topics mt-6 max-w-[58ch]">
+        {contactTopics.map((topic) => (
+          <li class="prose-soft">{topic}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
