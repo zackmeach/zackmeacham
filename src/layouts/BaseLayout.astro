@@ -36,6 +36,16 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={new URL("/og.png", site.siteUrl).toString()} />
+    <script is:inline>
+      // Gate scroll-reveal on motion being allowed, set BEFORE paint so the
+      // hidden pre-state never flashes. No-JS / reduced-motion skip this and
+      // everything renders fully visible.
+      try {
+        if (!window.matchMedia || !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          document.documentElement.classList.add("reveal-ready");
+        }
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
@@ -48,5 +58,28 @@ const canonicalUrl = new URL(Astro.url.pathname, site.siteUrl).toString();
       <slot />
     </main>
     <SiteFooter />
+    <script>
+      // Add `is-in` as each marked element scrolls into view; once only.
+      const root = document.documentElement;
+      if (root.classList.contains("reveal-ready")) {
+        const els = document.querySelectorAll("[data-reveal], [data-draw]");
+        if ("IntersectionObserver" in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("is-in");
+                  io.unobserve(entry.target);
+                }
+              }
+            },
+            { rootMargin: "0px 0px -8% 0px", threshold: 0.1 },
+          );
+          els.forEach((el) => io.observe(el));
+        } else {
+          els.forEach((el) => el.classList.add("is-in"));
+        }
+      }
+    </script>
   </body>
 </html>

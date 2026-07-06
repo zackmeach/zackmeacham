@@ -13,30 +13,45 @@ import {
 
 <BaseLayout title={site.title} description={site.description}>
   <section class="hero-band">
-    <div class="sheet-row pt-10 pb-16 sm:pb-20">
-      <p class="sheet-row__label" aria-hidden="true"></p>
-      <div class="sheet-row__body">
-        <p class="mono-tag mono-tag--accent reveal">{hero.eyebrow}</p>
-        <h1 class="hero-title reveal reveal-1 mt-5 max-w-[22ch]">{hero.headline}</h1>
-        <p class="lead reveal reveal-2 mt-6 max-w-[60ch]">{hero.thesis}</p>
-        <p class="hero-sub reveal reveal-3 mt-6 max-w-[62ch]">{hero.paragraph}</p>
-        <div class="reveal reveal-3 mt-9 flex flex-wrap items-center gap-3 text-sm">
-          <a href={hero.primaryCta.href} class="button-link">{hero.primaryCta.label}</a>
-          <a href={hero.secondaryCta.href} class="button-link button-link--ghost">{hero.secondaryCta.label}</a>
+    <div class="hero-sheet pt-10 pb-16 sm:pb-20">
+      <div class="hero-masthead">
+        <div class="hero-lede">
+          <p class="mono-tag mono-tag--accent reveal">{hero.eyebrow}</p>
+          <h1 class="hero-title reveal reveal-1 mt-5 max-w-[17ch]">{hero.headline}</h1>
+          <p class="lead reveal reveal-2 mt-6 max-w-[44ch]">{hero.thesis}</p>
+          <div class="reveal reveal-3 mt-9 flex flex-wrap items-center gap-3 text-sm">
+            <a href={hero.primaryCta.href} class="button-link">{hero.primaryCta.label}</a>
+            <a href={hero.secondaryCta.href} class="button-link button-link--ghost">{hero.secondaryCta.label}</a>
+          </div>
         </div>
+        <aside class="hero-spec reveal reveal-2" aria-label="At a glance">
+          <dl class="hero-spec__list">
+            <div class="hero-spec__row">
+              <dt>Focus</dt>
+              <dd>LLM-powered products · agentic workflows · mission-critical systems</dd>
+            </div>
+            <div class="hero-spec__row">
+              <dt>Ledger</dt>
+              <dd>Civic AI assistant · cofounder &amp; CTO</dd>
+            </div>
+            <div class="hero-spec__row">
+              <dt>Milodex</dt>
+              <dd>Risk-gated trading system · built solo</dd>
+            </div>
+            <div class="hero-spec__row">
+              <dt>Based in</dt>
+              <dd>Findlay, Ohio</dd>
+            </div>
+          </dl>
+          <span class="hero-spec__coord" aria-hidden="true">applied AI · systems · product</span>
+        </aside>
       </div>
-      <svg class="dim-callout" aria-hidden="true" viewBox="0 0 60 200" preserveAspectRatio="none" focusable="false">
-        <line class="dim-callout__line" x1="30" y1="4" x2="30" y2="196" />
-        <line class="dim-callout__tick" x1="22" y1="4" x2="38" y2="4" />
-        <line class="dim-callout__tick" x1="22" y1="196" x2="38" y2="196" />
-      </svg>
-      <span class="dim-callout__label" aria-hidden="true">applied AI · systems · product</span>
     </div>
   </section>
 
-  <section id="proof" class="sheet-row pt-14 pb-2 scroll-mt-24">
+  <section id="proof" class="sheet-row pt-14 scroll-mt-24">
     <p class="mono-tag mono-tag--accent sheet-row__label">Proof</p>
-    <div class="sheet-row__body">
+    <div class="sheet-row__body" data-reveal>
       <ul class="mt-6 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-4">
         {proofStrip.map((item) => (
           <li>
@@ -50,7 +65,7 @@ import {
 
   <section id="selected-work" class="sheet-row pt-20 scroll-mt-24">
     <p class="mono-tag sheet-row__label">Selected work</p>
-    <div class="sheet-row__body">
+    <div class="sheet-row__body" data-reveal>
       <div class="mt-4 flex items-baseline justify-between gap-4">
         <h2 class="max-w-[22ch]">Three flagship case studies.</h2>
         <a href="/work" class="mono link whitespace-nowrap">All work</a>
@@ -63,7 +78,7 @@ import {
               <p class="mono mt-2">{project.meta}</p>
             </div>
             <div class="project-row-body">
-              <h3 class="flagship-title">{project.title}</h3>
+              <h3 class="flagship-title"><a href={project.href}>{project.title}</a></h3>
               <p class="prose-soft mt-3">{project.blurb}</p>
               <ChipRow chips={project.chips} class="mt-4" />
               <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">
@@ -81,7 +96,7 @@ import {
 
   <section id="how-i-work" class="sheet-row pt-20 scroll-mt-24">
     <p class="mono-tag sheet-row__label">How I work</p>
-    <div class="sheet-row__body">
+    <div class="sheet-row__body" data-reveal>
       <h2 class="mt-4 max-w-[18ch]">{howIWork.heading}</h2>
       <ul class="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2">
         {howIWork.pillars.map((p) => (
@@ -96,7 +111,7 @@ import {
 
   <section id="resume" class="sheet-row pt-20 scroll-mt-24">
     <p class="mono-tag sheet-row__label">Experience</p>
-    <div class="sheet-row__body">
+    <div class="sheet-row__body" data-reveal>
       <div class="mt-4 flex items-baseline justify-between gap-4">
         <h2 class="max-w-[22ch]">Full role history and skills.</h2>
         <a href="/resume" class="mono link whitespace-nowrap">Open resume</a>
@@ -107,7 +122,7 @@ import {
 
   <section id="contact" class="sheet-row pt-20 pb-20 scroll-mt-24">
     <p class="mono-tag sheet-row__label">Contact</p>
-    <div class="sheet-row__body">
+    <div class="sheet-row__body" data-reveal>
       <div class="mt-4 flex items-baseline justify-between gap-4">
         <h2 class="max-w-[20ch]">Reach out.</h2>
         <a href={site.email} class="mono link whitespace-nowrap">Email</a>

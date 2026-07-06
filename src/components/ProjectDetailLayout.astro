@@ -1,5 +1,6 @@
 ---
 import type { Project, ProjectDetail } from "../data/site";
+import { flagshipProjects } from "../data/site";
 import ChipRow from "./ChipRow.astro";
 import MilodexDiagram from "./MilodexDiagram.astro";
 
@@ -9,6 +10,14 @@ interface Props {
 }
 
 const { project, detail } = Astro.props;
+
+// Carry the reader to the next flagship sheet in order. Non-flagship (archive)
+// pages and the last flagship have no successor and just show the back link.
+const flagshipIdx = flagshipProjects.findIndex((p) => p.slug === project.slug);
+const nextFlagship =
+  flagshipIdx >= 0 && flagshipIdx < flagshipProjects.length - 1
+    ? flagshipProjects[flagshipIdx + 1]
+    : null;
 ---
 
 <article class="detail-sheet pt-14 pb-24">
@@ -118,8 +127,11 @@ const { project, detail } = Astro.props;
 
   <section class="detail-row mt-14">
     <p class="detail-row__label" aria-hidden="true"></p>
-    <div class="detail-row__body">
+    <div class="detail-row__body flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
       <a href="/work" class="mono link">← All work</a>
+      {nextFlagship && (
+        <a href={nextFlagship.href} class="mono link print:hidden">Next sheet → {nextFlagship.title}</a>
+      )}
     </div>
   </section>
 </article>

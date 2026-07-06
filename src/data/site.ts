@@ -180,8 +180,8 @@ export const flagshipProjects: FlagshipProject[] = [
     eyebrow: "Flagship · applied AI product",
     title: "Ledger / Vera",
     blurb:
-      "A civic AI assistant with source-aware tool use, where provenance is enforced in the type system: every claim cites its official source. Nationwide federal coverage with a 21-state data foundation activating behind a fail-closed bar.",
-    meta: "2026 · Launch-stage · Cofounder & CTO",
+      "A civic AI assistant where every claim cites its official source: Vera answers only from a closed set of grounded tools, and an un-sourced fact cannot be constructed in the type system. A federal data foundation built, with state-level coverage activating behind a fail-closed bar.",
+    meta: "2026 · Pre-Alpha · Cofounder & CTO",
     chips: ["Next.js", "TypeScript", "Supabase", "Anthropic API", "Vitest", "Playwright"],
     href: "/work/ledger",
   },
@@ -190,9 +190,9 @@ export const flagshipProjects: FlagshipProject[] = [
     eyebrow: "Flagship · independent systems",
     title: "Milodex",
     blurb:
-      "A research-first, risk-gated trading harness built solo, where autonomy is earned, not assumed. Refuse-by-default risk layer, broker abstraction, operator CLI; paper-only, enforced in code. ~2,670 tests at 90% coverage.",
+      "A solo-built autonomous trading system where every order clears a fail-closed risk chokepoint no code path can bypass: exactly-once execution drain, append-only event store, a 17-check veto layer, and CLI plus Qt desktop operator surfaces. Paper-only, enforced in code; governed by 57 ADRs and a custom Opus risk-reviewer.",
     meta: "2026 · Active build · Solo",
-    chips: ["Python", "Alpaca", "Parquet", "pytest", "CLI"],
+    chips: ["Python", "Alpaca", "SQLite", "Parquet", "PySide6 / Qt", "pytest"],
     href: "/work/milodex",
     repo: "https://github.com/zackmeach/Milodex",
   },
@@ -213,10 +213,11 @@ export const archiveProjects: ArchiveProject[] = [
     slug: "msm-awakening-tracker",
     title: "MSM Awakening Tracker",
     eyebrow: "Personal project · desktop",
-    meta: "2026 · Built from scratch",
+    meta: "2026 · Shipped · six releases",
     summary:
-      "A Windows desktop companion app for My Singing Monsters that makes awakening progress easier to track across multiple active targets. Full-stack ownership in a desktop form factor: PySide6 UI architecture, SQLite persistence, reversible user actions, updater tooling, and release automation.",
+      "A Windows desktop companion app for My Singing Monsters, built solo from greenfield to six tagged releases. Production-grade reliability for a solo project: an atomic, threat-modeled auto-updater with SHA-256 verification and rollback, a two-database SQLite design whose user progress survives full content rebuilds, a self-publishing GitHub Actions pipeline, and a 472-test suite.",
     chips: ["Python", "PySide6", "SQLite", "PyInstaller", "GitHub Actions"],
+    href: "/work/msm-awakening-tracker",
   },
 ];
 
@@ -233,7 +234,7 @@ export const howIWork: { heading: string; pillars: Pillar[] } = {
     },
     {
       lead: "Earned autonomy",
-      body: "Autonomy is earned, not assumed. Milodex refuses orders by default and blocks live trading in code; in Ledger an un-sourced fact cannot be constructed.",
+      body: "Autonomy is earned, not assumed. Milodex refuses orders by default and won't move live capital without an explicit, human-approved promotion; in Ledger an un-sourced fact cannot be constructed.",
     },
     {
       lead: "Restrained product judgment",
@@ -288,9 +289,10 @@ export const resumeEntries: ResumeEntry[] = [
     organization: "Ledger App, Inc.",
     period: "2026 – present",
     bullets: [
-      "Cofounder and technical lead of an incorporated civic-tech startup (Delaware C-corp, three-cofounder team), building an AI assistant that answers civic questions with a citation behind every claim.",
-      "Built provenance into the type system (an un-sourced fact cannot be constructed) across an 8-tool LLM agent, 9 government data sources, and 25 Supabase tables, with nationwide federal coverage and a 21-state data foundation activating behind a fail-closed bar.",
-      "Own data contracts, citation behavior, auth-aware rate limiting, and CI; ~2,500 unit tests plus Playwright end-to-end and accessibility gates keep the product shippable and defensible as it grows.",
+      "Cofounder and technical lead of an incorporated civic-tech startup (Delaware C-corp, three-cofounder team); authored roughly half of all commits and lead the AI, data, and security engineering for an assistant that answers civic questions with a citation behind every claim.",
+      "Built Vera, a production multi-turn LLM agent on Anthropic Claude with a closed 5-class grounded tool registry and hand-rolled SSE streaming, engineered so no user PII can reach the model by construction (the prompt carries only message text; the jurisdiction tool takes zero parameters).",
+      "Added governance-as-code around the model: a prompt-hash CI gate that fails closed on any neutrality-prompt edit, an 85-fixture LLM-as-judge validation harness replaying the real production loop, and multi-tier abuse enforcement unified across both LLM routes.",
+      "Own a 65-migration Postgres/Supabase data layer with mandatory row-level security (56 policies across 26 tables) and a multi-source ingestion layer where provenance is enforced in the type system; a pre-launch security audit found and fixed real auth-bypass, data-destruction, and privilege-escalation defects.",
     ],
     chips: ["Next.js", "TypeScript", "Supabase", "Anthropic API", "Vitest", "Playwright"],
   },
@@ -377,15 +379,17 @@ export const projectDetails: ProjectDetail[] = [
     slug: "milodex",
     detailTitle: "Building a Research-First, Risk-Gated Trading Harness",
     lead:
-      "A research-first, operator-governed trading harness where autonomy is earned, not assumed: paper-only, with a risk layer that refuses by default.",
-    topChips: ["Python", "Alpaca", "Parquet", "pytest", "CLI"],
+      "A solo-built autonomous equities trading system where autonomy is earned, not assumed: every order routes through a fail-closed risk chokepoint no code path can bypass. Phase One is deliberately bounded (US equities, paper-only, sub-$1,000 capital) so the engineering goes into correctness and governance, not breadth.",
+    topChips: ["Python", "Alpaca", "SQLite", "Parquet", "PySide6 / Qt Quick", "pytest"],
     glance: [
-      { label: "Role", value: "Solo build; owner of architecture, code, and tests" },
+      { label: "Role", value: "Solo build; owner of architecture, code, tests, and governance" },
       { label: "Year", value: "2026" },
       { label: "Status", value: "Active build · paper-only, no live capital (enforced in code)" },
-      { label: "Stack", value: "Python · Alpaca · Parquet · pytest · CLI" },
-      { label: "Tests", value: "~2,670 tests · 90% line coverage (89% floor) · 56 ADRs" },
-      { label: "Scope", value: "Research, infrastructure, a refuse-by-default risk layer, and an operator CLI" },
+      { label: "Stack", value: "Python 3.11 · Alpaca · SQLite event store · Parquet · PySide6 / Qt Quick · pytest" },
+      { label: "Scale", value: "14-module package · ~52K LOC source / ~90K LOC tests · ~890 commits (solo)" },
+      { label: "Tests", value: "~241 test files · coverage ratcheted at 89% · mutation-tested" },
+      { label: "Governance", value: "57 ADRs · a custom Opus risk-invariant-reviewer gating every risk and execution diff" },
+      { label: "Proof", value: "17-check fail-closed risk layer · exactly-once order drain · ~20 config-driven strategies" },
       {
         label: "Links",
         value:
@@ -393,98 +397,128 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     whyThisMattered:
-      "Trading software is unusual in that its blast radius can be financial. Most hobby-grade systems collapse vendor logic, strategy, and execution into one tangle. Milodex inverts that: vendors sit behind internal models, the risk layer has veto power, and autonomy has to be earned instead of assumed. The interesting design question is how to keep the system researchable while making it operationally safe.",
+      "Trading software is unusual in that its blast radius can be financial. Most hobby-grade systems collapse vendor logic, strategy, and execution into one tangle. Milodex inverts that: vendors sit behind internal models, the risk layer holds an unconditional veto, and autonomy has to be earned instead of assumed. The genuinely hard problems turned out to be distributed-systems and financial-correctness problems: exactly-once execution, crash recovery, and cross-process serialization over a shared brokerage account.",
     roleAndOwnership:
-      "Solo. I own the architecture, the code, the tests, and the operator surface. The discipline of the project is mine.",
+      "Solo. I own the architecture, the code, the tests, the operator surfaces, and the governance. Every consequential decision is captured in a 57-record ADR corpus, and a custom Opus-backed reviewer subagent I built gates every diff that touches risk, execution, or promotion against named safety invariants.",
     coreConstraints: [
       "Financial blast radius. Defaults have to be refuse, not execute.",
+      "Exactly-once execution under failure: an overnight double-launch or a mid-submit crash must never place a duplicate order.",
+      "Cross-process safety: many strategy runners share one brokerage account and must never act on a stale snapshot.",
       "Broker-vendor risk: trading-API behavior is the kind of dependency that shouldn't leak into strategy code.",
-      "Market-data quality and consistency across paths the system can take.",
-      "Single-developer operability. The CLI and tests have to be the operator's source of truth.",
+      "Single-developer operability. The CLI, the tests, and the audit trail have to be the operator's source of truth.",
     ],
     architecture: [
       {
-        title: "Broker abstraction & market-data pipeline",
+        title: "Append-only event store as the single source of truth",
         description:
-          "Broker vendors are hidden behind an internal model so the rest of the system reasons in one vocabulary. Market data lands in Parquet with a consistent shape; execution paths share the same contract the data uses.",
-        chips: ["Python", "Alpaca", "Parquet"],
+          "An append-only SQLite (WAL) event store holds all trade, explanation, kill-switch, strategy-run, and backtest history. Explanation and trade rows write atomically in one transaction, and the schema evolves only through ordered, additive, version-pinned migrations. Event sourcing buys full decision-level auditability: every outcome is reconstructable from the log.",
+        chips: ["SQLite", "Event sourcing", "Schema migrations"],
       },
       {
-        title: "Risk-gated execution layer",
+        title: "Exactly-once execution drain",
         description:
-          "A layer between strategy and broker that enforces risk rules per order. Every path an automated system can take runs through the gate. The default outcome is refuse, not execute.",
-        chips: ["Python", "Gating rules", "Reversibility"],
+          "A single ExecutionService is the only path to the broker: it assembles context, invokes risk, records the explanation, then submits. An idempotent consume-CAS plus pre-submit outbox makes the drain crash-recoverable: a pending row commits before the broker call, and a single-transaction compare-and-swap flips an intent from queued to consumed only if it is still queued, so an overnight double-launch or a crash-retry can never place a duplicate order.",
+        chips: ["Idempotency", "Consume-CAS + outbox", "Crash recovery"],
       },
       {
-        title: "Operator CLI & test harness",
+        title: "Fail-closed risk layer and kill switch",
         description:
-          "A deliberate CLI-first operator surface: inspect state, replay sessions, run with simulated brokers. Tests cover the same paths the operator drives.",
-        chips: ["Python", "CLI", "pytest"],
+          "A risk evaluator runs 17 veto checks (kill switch, staleness, daily-loss, fat-finger, exposure, duplicate- and opposite-side-order) with an unconditional veto and no skip flag, sitting above backtest so it cannot be bypassed for convenience. A daily-loss breach trips a manual-reset-only kill switch where auto-resume is structurally impossible. Cross-process advisory locks (PID plus heartbeat liveness, stale auto-reclaim) serialize the snapshot-to-submit path and fail closed on acquire timeout.",
+        chips: ["Fail-closed", "Veto gate", "Advisory locks"],
+      },
+      {
+        title: "Promotion pipeline and walk-forward backtest",
+        description:
+          "A backtest, paper, micro-live, live state machine with no stage-skipping, a two-tier statistical gate (a permissive paper-readiness tier and a stricter capital-readiness tier with a 30-trade floor), hash-pinned frozen strategy manifests, and human approval for capital-bearing stages. The walk-forward engine indexes out-of-sample trading days and dispatches on a Timeframe enum between a daily path and an intraday advance-evaluate-drain path with guaranteed T+1 fills, so the same engine runs identically in backtest and live and even replays 24/7 crypto bars. Roughly 20 strategies are defined entirely in YAML.",
+        chips: ["State machine", "Walk-forward", "YAML config"],
+      },
+      {
+        title: "Operator surfaces: CLI and Qt desktop GUI",
+        description:
+          "An argparse CLI is the primary, source-of-truth operator surface, with paired human and JSON formatters. Alongside it, a PySide6 / Qt Quick (QML) desktop GUI (~11K LOC of QML across ~45 files) sits over thin command facades and ~30 event-store-backed read models, with a promotion-pipeline kanban and a design-system and theme architecture.",
+        chips: ["argparse", "PySide6", "Qt Quick / QML"],
       },
     ],
     execution: [
-      "16-check risk layer that fails closed: any error in any check blocks the order rather than letting it through.",
-      "Paper-only enforced structurally: a dedicated test asserts live promotion is blocked, and orders route through a single execution chokepoint.",
-      "Same strategy code runs in backtest and paper with no branches; the simulated broker implements the identical interface.",
-      "~2,670 tests at 90% line coverage; 56 ADRs capture the reasoning behind each consequential decision.",
+      "Every order routes through a single ExecutionService chokepoint that assembles context, invokes risk, records an explanation, then submits, so a paper-stage strategy is structurally incapable of submitting live.",
+      "Exactly-once, crash-recoverable order drain: a pending outbox row commits before the broker call and a single-transaction consume-CAS suppresses duplicate orders across overnight double-launch and crash-retry.",
+      "Fail-closed risk evaluator with 17 veto checks that no code path can bypass (no skip flag), plus a manual-reset-only kill switch where auto-resume is structurally impossible.",
+      "Cross-process serialization via lock-file advisory mutexes (PID plus heartbeat liveness, stale auto-reclaim) so many runners sharing one Alpaca account never evaluate against a stale snapshot; lock-acquire timeout fails closed.",
+      "Append-only SQLite event store as the single source of truth, with atomic explanation-plus-trade writes and ordered version-pinned migrations; every decision (submit, veto, expired, idempotency-suppressed, dropped) emits a durable explanation record.",
+      "~241 test files (~90K LOC) with coverage ratcheted at 89%, including AST-level invariant tests that lock the existence of safety guards, golden regression tests, and mutation testing; 57 ADRs and a custom Opus risk-invariant-reviewer gate every risk-touching diff against 8 named safety invariants.",
     ],
     currentState:
-      "Active build. The risk layer and broker abstraction are settled; strategy research and operator-feedback hardening are the next focus.",
+      "Active build, solo. The correctness core (event store, exactly-once execution drain, 17-check risk layer, promotion gates) and the operator surfaces are settled; Phase One stays deliberately bounded (US equities, paper-only, sub-$1,000 capital) so the work goes into correctness and governance. Strategy research and the null-baseline evidence lane are the next focus.",
     whatThisDemonstrates:
-      "Architectural discipline under high blast radius, risk-first system thinking, and operator-centered design.",
+      "Distributed-systems correctness under financial blast radius (exactly-once execution, crash recovery, cross-process safety), fail-closed risk-first design, and governance built in (an ADR corpus and a custom reviewer agent), delivered solo.",
   },
   {
     slug: "ledger",
     detailTitle: "Building a Civic AI Assistant with Source-Aware Tool Use",
     lead:
-      "A civic-tech product focused on making politics more legible at the local, state, and federal level, built so every claim cites its source. Ledger is the broader civic product; Vera is the AI assistant surface inside it.",
-    topChips: ["Next.js", "TypeScript", "Supabase", "Anthropic API", "Vitest", "Playwright"],
+      "A civic-tech product focused on making politics more legible at the local, state, and federal level, built so every claim cites its source. Ledger is the broader civic product; Vera is the AI assistant surface inside it. I lead the AI, data, and security engineering on a three-cofounder team.",
+    topChips: ["Next.js", "React", "TypeScript", "Supabase", "Anthropic API", "Vitest", "Playwright"],
     glance: [
-      { label: "Role", value: "Cofounder & CTO" },
+      { label: "Role", value: "Cofounder & CTO; lead full-stack, AI, and data engineer" },
       { label: "Team", value: "Three cofounders · Ledger App, Inc. (Delaware C-corp)" },
       { label: "Year", value: "2026" },
-      { label: "Status", value: "Launch-stage · federal coverage live, state foundation activating" },
+      { label: "Status", value: "Pre-Alpha · federal data foundation built, state-level activating" },
       {
         label: "Stack",
-        value: "Next.js · React · TypeScript · Supabase · Upstash · Anthropic API · Vitest · Playwright",
+        value: "Next.js 16 · React 19 · TypeScript · Supabase · Upstash · Anthropic Claude · Vitest · Playwright",
       },
-      { label: "Proof", value: "8-tool LLM agent · 9 government data sources · 25 tables · ~2,500 tests" },
+      { label: "Contribution", value: "1,000+ commits (about half of all authored); owner of the AI, data, and security layers" },
+      { label: "Proof", value: "5-class grounded tool agent · 65 Postgres migrations · 56 RLS policies · 47 zod-validated APIs · 7 data sources" },
       { label: "Links", value: '<a class="link" href="https://ledger.vote" target="_blank" rel="noreferrer">ledger.vote</a>' },
     ],
     whyThisMattered:
       "Civic information is hard to navigate at scale, and most consumer-grade summaries strip out the provenance that makes a claim defensible. Ledger / Vera is built around source-aware tool use: every assertion in the product is grounded in a citable source, and the UI surfaces that grounding instead of hiding it. The thesis is that a civic AI assistant only earns trust if it can show its work.",
     roleAndOwnership:
-      "Cofounder & CTO. I own architecture and implementation across frontend UX, data contracts, provenance and citation behavior, testing infrastructure, rate limiting, CI, and product-definition work. The project doubles as a modern public proving ground for product judgment, maintainability, and shipping speed.",
+      "Cofounder and CTO on a three-person founding team. I authored roughly half of all commits and own the parts that make the product defensible end-to-end: Vera (the LLM agent), the Supabase data model and row-level-security posture, the civic-data ingestion layer and FEC adapter, the values-quiz scoring engine, and the pre-launch security program. The user-facing surfaces and the design system are a shared effort; the AI, data, and security engineering are mine.",
     coreConstraints: [
-      "Every claim in the product has to cite its source. Provenance is a UX requirement, not a debug feature.",
-      "LLM behavior is the primary risk surface: hallucinated facts cost user trust faster than they earn it.",
-      "Auth-aware behavior and rate limiting protect against cost and abuse vectors a public civic-tech product can't ignore.",
-      "A three-cofounder team and a public-facing shipping cadence that has to stay defensible as the codebase evolves.",
+      "Every claim in the product has to cite its source. Provenance is a UX requirement and a type-system invariant, not a debug feature.",
+      "LLM behavior is the primary risk surface: a hallucinated fact, or a leaked address, costs user trust faster than features earn it.",
+      "Public civic-tech invites abuse and cost vectors: jailbreaks, prompt-leak attempts, and cross-user data extraction all have to be handled, not ignored.",
+      "A three-cofounder team and a public shipping cadence that has to stay defensible as the codebase grows.",
     ],
     architecture: [
       {
-        title: "Frontend UX & provenance flows",
+        title: "Vera: a grounded multi-turn LLM agent",
         description:
-          "Product surfaces that let citation and context ride with every claim. The UI is shaped around trust: what did we assert, where did it come from, and how can a reader verify it themselves. Provenance is a first-class UX concern, not a hidden affordance.",
-        chips: ["Next.js", "React", "TypeScript", "Tailwind"],
+          "Vera answers only from a closed 5-class grounded tool registry (federal candidates and finance, officeholders, jurisdiction, federal ballot, election calendar). An iteration-capped tool-use loop streams answers over a hand-rolled SSE protocol with inline citations and an explicit information-unavailable contract. No user PII can reach the model by construction: the prompt carries only message text, and the jurisdiction tool exposes an empty input schema, so an address has no channel into model-visible context.",
+        chips: ["Anthropic Claude", "TypeScript", "SSE streaming", "Tool use"],
       },
       {
-        title: "Data contracts & backend",
+        title: "Governance-as-code for the model",
         description:
-          "Supabase for structured data, Upstash for rate-limiting and ephemeral state, with typed contracts at every crossing. Provenance is enforced at the type level: a sourced value can't be constructed without its label, URL, and as-of date, so an un-cited fact fails the type check rather than shipping silently.",
-        chips: ["Supabase", "Upstash", "TypeScript"],
+          "The part most teams never build. A SHA-256 hash gate fails the build closed on any edit to the neutrality prompt surface, forcing a fresh validation log. An 85-fixture LLM-as-judge harness (a Claude Opus judge) replays the real production loop before release. Multi-tier abuse enforcement (tiers 1 to 4) runs regex input and output classifiers and shares one abuse budget across both LLM routes, with per-message prompt-version provenance on every persisted turn.",
+        chips: ["CI gates", "LLM-as-judge", "Abuse enforcement"],
+      },
+      {
+        title: "Postgres data model and security",
+        description:
+          "A 65-migration Supabase data layer with mandatory row-level security on every user-linked table (56 policies across 26 tables) and security-definer RPCs for privacy-safe aggregation. Jurisdiction lookups use HMAC-keyed caching so raw addresses never persist. A multi-phase pre-launch audit found and fixed real defects: an RLS auth-bypass, an unauthenticated data-destruction RPC, and an admin privilege-escalation, each closed by a forward-only migration with regression tests.",
+        chips: ["Supabase", "Postgres", "Row-level security", "Security audit"],
+      },
+      {
+        title: "Civic-data ingestion with provenance",
+        description:
+          "Multiple government and civic sources (FEC, US Census, OpenStates, MEDSL / Harvard Dataverse, and more) unified under a generic Sourced<T> envelope: a value cannot be constructed without its source label, URL, and as-of date, so an un-cited fact fails the type check. Scheduled pipelines re-ingest rosters and auto-open a drift PR, while a separate liveness watchdog catches the silent failure where the cron itself stops firing.",
+        chips: ["FEC", "Census", "Provenance envelope", "GitHub Actions"],
       },
     ],
     execution: [
-      "Provenance enforced in the type system: an un-sourced value fails to compile.",
-      "8-tool Anthropic agent with citations accumulated across the tool loop and surfaced with every answer.",
-      "Nationwide federal coverage; a 21-state data foundation built and validated behind a fail-closed activation bar.",
-      "~2,500 unit tests, Playwright end-to-end + accessibility gates, and 16 CI workflows including CodeQL and secret-scanning.",
+      "Vera answers only from a closed 5-class grounded tool registry; an iteration-capped tool-use loop streams answers over a hand-rolled SSE protocol with inline citations and an explicit information-unavailable contract.",
+      "No PII reaches the model by construction: the prompt carries only message text, and the jurisdiction tool takes zero parameters, so a user's address has no channel into model context. A merge-blocking contract test locks the guarantee against regression.",
+      "Governance-as-code: a SHA-256 hash gate fails the build on any edit to the neutrality prompt surface, and an 85-fixture LLM-as-judge harness replays the real production loop before release.",
+      "65 Postgres migrations with mandatory row-level security on every user-linked table (56 policies, 26 tables); a pre-launch audit found and fixed an RLS auth-bypass, an unauthenticated data-destruction RPC, and an admin privilege-escalation.",
+      "Multi-source ingestion under a generic Sourced<T> provenance envelope, so an un-cited value fails to compile; self-monitoring pipelines auto-open drift PRs and a watchdog catches the cron silently ceasing to fire.",
+      "400+ co-located test files, 12 real-Supabase RLS round-trip suites, and 27 Playwright specs (9 accessibility); an OpenAPI 3.1 contract derived from zod schemas with a CI drift gate; 16 GitHub Actions workflows including CodeQL and secret-scanning.",
     ],
     currentState:
-      "Launch-stage: federal coverage is live in production, with a 21-state data foundation activating state-by-state behind the activation bar. Provenance, auth-aware rate limiting, and CI are in place; broader state surfacing and operator tooling are the next milestones.",
+      "Pre-Alpha: the federal data foundation is built and ledger.vote is reachable, with state-level coverage activating behind a fail-closed bar. The AI, data, and security layers are settled; broader state surfacing and operator tooling are the next milestones.",
     whatThisDemonstrates:
-      "Applied-AI product judgment under public-trust constraints, full-stack ownership end-to-end, and the systems-level discipline to keep a civic-tech product shippable as it grows.",
+      "Applied-AI engineering under public-trust constraints: an LLM agent that earns trust by showing its work, governance-as-code around model behavior, and the database and data-pipeline rigor to keep a civic product defensible as it grows.",
   },
   {
     slug: "boeing",
@@ -553,5 +587,76 @@ export const projectDetails: ProjectDetail[] = [
       "Ownership of mission-critical systems under real constraints, stakeholder trust earned through clear analysis and communication, and the discipline to modernize without pretending the system is greenfield.",
     publicSafeNote:
       "This page is written public-safe: program names, specific station counts, and sensitive internal detail are intentionally omitted or generalized.",
+  },
+  {
+    slug: "msm-awakening-tracker",
+    detailTitle: "Shipping a Production-Grade Desktop App Solo, End to End",
+    lead:
+      "A Windows desktop companion app for My Singing Monsters, built solo from greenfield to six tagged releases. The interesting part isn't the feature set; it's the reliability engineering underneath: atomic database swaps with rollback, a threat-modeled auto-updater, a two-database design whose user progress survives full content rebuilds, and a self-publishing CI/CD pipeline.",
+    topChips: ["Python", "PySide6 / Qt 6", "SQLite", "PyInstaller", "Inno Setup", "GitHub Actions"],
+    glance: [
+      { label: "Role", value: "Solo author, end to end (greenfield to six releases)" },
+      { label: "Year", value: "2026" },
+      { label: "Status", value: "Shipped · v1.0.2 · six tagged releases" },
+      { label: "Stack", value: "Python 3.10 · PySide6 / Qt 6 · SQLite · PyInstaller · Inno Setup · GitHub Actions" },
+      { label: "Scope", value: "Windows desktop app · 64 monsters / 76 egg types of content" },
+      { label: "Tests", value: "472 tests across 34 modules (31 unit, 3 integration) · real in-memory SQLite · pytest-qt" },
+      { label: "Process", value: "103 commits · 15 single-concern PRs · Conventional Commits" },
+      { label: "Proof", value: "Atomic SHA-256-verified updater with rollback · two-database stable-identity design · self-publishing CI/CD" },
+    ],
+    whyThisMattered:
+      "A desktop app that auto-updates its own content is deceptively risky: a botched update can corrupt a user's saved progress or brick startup, and there is no server-side rollback to save you. Most hobby apps either skip auto-update or do it unsafely. This one treats the update path as the highest-risk surface: the content database swaps atomically with automatic rollback, the channel is hardened against a concrete poisoned-manifest threat model, and user progress is decoupled from the content's primary keys so it survives a full rebuild. The bar was production-grade reliability for a solo project, not just feature delivery.",
+    roleAndOwnership:
+      "Solo, end to end. I own the domain logic, the Qt UI, the two-database SQLite design, the in-app updater, the maintainer content pipeline, the installer, and the CI/CD. Every release shipped through a feature-branch and pull-request workflow (15 merged single-concern PRs across 103 commits), including a deliberate over-engineering audit that removed dead code as first-class reviewed work.",
+    coreConstraints: [
+      "Auto-updating content with no server-side safety net: a bad update can corrupt saved progress or brick startup, so the update path has to be atomic and self-healing.",
+      "User progress must survive full content-database rebuilds, even when numeric primary keys are reassigned.",
+      "The update channel is an attack surface: a poisoned manifest could force an HTTP downgrade, a local-file read, or an attacker-controlled host.",
+      "Solo maintenance: the build, the tests, and the release gates have to make a broken artifact structurally unable to ship.",
+    ],
+    architecture: [
+      {
+        title: "Strictly-layered Qt application core",
+        description:
+          "A pure-Python domain core free of Qt and SQLite, function-style repositories with dependency-injected connections, an AppService(QObject) orchestrator, and a passive UI that reads only frozen ViewModel dataclasses, all on a unidirectional dependency arrow. A Command pattern drives disciplined undo/redo: each command snapshots its own reversal state, and the service re-pushes a command on a failed undo so the in-memory history can never desync from the database.",
+        chips: ["PySide6", "Command pattern", "Layered architecture"],
+      },
+      {
+        title: "Two-database design with stable identity",
+        description:
+          "A read-only content.db (reopened through a SQLite URI in mode=ro, so a stray write raises OperationalError) paired with a read-write userstate.db. A slug-based stable-identity system (content_key) decouples user progress from numeric AUTOINCREMENT ids; partial unique indexes enforce uniqueness of populated keys while tolerating pre-backfill placeholders. Post-update reconciliation rebuilds progress by stable key (delete-then-insert) so saved state survives a full content rebuild without orphaning.",
+        chips: ["SQLite", "Stable identity", "Atomic migrations"],
+      },
+      {
+        title: "Atomic, threat-modeled auto-updater",
+        description:
+          "The updater streams a new SQLite database in 64 KB chunks under a 64 MB ceiling and trusts it only after a mandatory SHA-256 check plus a PRAGMA integrity_check and an orphan-row schema audit, then swaps it atomically with os.replace() and automatic rollback so content and user state are never left mismatched. The channel is hardened against a poisoned-manifest threat model: HTTPS-only with a host allowlist (blocking HTTP-downgrade, file:// reads, and attacker-host redirects) behind a numeric, non-lexical min-version gate.",
+        chips: ["SHA-256", "Atomic swap", "Threat modeling"],
+      },
+      {
+        title: "Maintainer ETL content pipeline",
+        description:
+          "An offline ingest, normalize, semantic-diff, deterministic-build, validate, publish pipeline kept strictly out of the app runtime. A semantic diff classifies content changes into a typed taxonomy, and a 9-gate publish-validation system (integrity, orphan-FK scans, unique-key, JSON-Schema conformance, and a blocking review gate) stops a bad release. It emits a versioned, checksum-stamped artifact contract, the exact manifest the in-app updater verifies before applying.",
+        chips: ["ETL", "JSON Schema", "Deterministic builds"],
+      },
+      {
+        title: "Build, release, and CI/CD",
+        description:
+          "A fail-fast build script chains version injection, pytest, content-DB seed, asset and icon generation, bundle verification, PyInstaller, and Inno Setup as checked subprocesses, aborting on the first non-zero exit. A bundle-verification gate cross-validates the seeded content DB against on-disk assets and must exit 0 before any release tag. Three least-privilege GitHub Actions workflows handle PR test gating, tag-driven release builds, and a self-publishing content workflow that wires CI directly into the app's update channel.",
+        chips: ["PyInstaller", "Inno Setup", "GitHub Actions"],
+      },
+    ],
+    execution: [
+      "Atomic content updater: streams a new SQLite database in 64 KB chunks under a 64 MB ceiling, validates it with SHA-256 plus a PRAGMA integrity_check and an orphan-row audit, then swaps via os.replace() with automatic rollback, so a failed swap or reconciliation restores the backup and never leaves content and user state mismatched.",
+      "Hardened the update channel against a poisoned-manifest threat model: HTTPS-only with a host allowlist that blocks HTTP-downgrade, file:// local reads, and attacker-host redirects, behind a numeric (non-lexical) min-version gate.",
+      "Two-database SQLite design enforcing content immutability at runtime (the content DB reopens read-only, so stray writes raise OperationalError), with a slug-based stable-identity system so user progress survives full content rebuilds and primary-key reassignment without orphaning.",
+      "Made SQLite schema migrations atomic (each wrapped in BEGIN/COMMIT with rollback), eliminating a startup-bricking class of partial-apply failures, with the fix landing alongside a dedicated regression test.",
+      "472-test suite across 34 modules against real in-memory SQLite, including adversarial updater tests (SHA-256 mismatch, scheme and host allowlist rejection) and a live-HTTP end-to-end harness exercising the full fetch, validate, swap, rollback loop; acceptance tests map traceably to formal SRS criteria.",
+      "Self-publishing CI/CD: three least-privilege GitHub Actions workflows (PR test gating, a tag-driven release build with PyInstaller and Inno Setup, and an on-demand content publisher that validates, builds, and commits artifacts back into the app's update channel).",
+    ],
+    currentState:
+      "Shipped and maintained: six tagged releases from three betas through v1.0.0 to two hardening and maintenance point releases (v1.0.2), each a real git tag with a matching GitHub Release. A dedicated v1.0.1 security-hardening pass made SHA-256 mandatory, enforced the HTTPS host allowlist, capped streaming downloads, and opened the runtime database read-only.",
+    whatThisDemonstrates:
+      "End-to-end ownership of a shipped desktop product, reliability engineering as a first-class concern (atomic swaps, rollback, read-only enforcement), threat-model-driven security, and the discipline to treat deletion and gated releases as real engineering, delivered solo.",
   },
 ];
