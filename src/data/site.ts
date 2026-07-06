@@ -9,6 +9,13 @@ export type LinkItem = {
   external?: boolean;
 };
 
+export type ContactChannel = {
+  key: string;
+  value: string;
+  href?: string;
+  external?: boolean;
+};
+
 export type ProofStripItem = {
   label: string;
   body: string;
@@ -129,6 +136,8 @@ export const site = {
     "Professional work is intentionally written at a public-safe level: enough to show scope, ownership, and technical depth without exposing internal or sensitive program detail.",
   contactIntro:
     "Email is the quickest way to reach me. Happy to talk about applied AI, agentic engineering, product and systems work, or something interesting you think I should be building.",
+  contactLead:
+    "Email is the quickest way to reach me. I read everything that comes in and reply to anything real.",
 };
 
 export const navigation: NavItem[] = [
@@ -136,12 +145,27 @@ export const navigation: NavItem[] = [
   { label: "Work", href: "/work" },
   { label: "Resume", href: "/resume" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const links: LinkItem[] = [
   { label: "GitHub", href: "https://github.com/zackmeach", external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/zachary-meacham/", external: true },
+];
+
+export const contactChannels: ContactChannel[] = [
+  { key: "Email", value: site.emailDisplay, href: site.email },
+  { key: "GitHub", value: "github.com/zackmeach", href: "https://github.com/zackmeach", external: true },
+  { key: "LinkedIn", value: "in/zachary-meacham", href: "https://www.linkedin.com/in/zachary-meacham/", external: true },
+  { key: "Based in", value: site.location },
+  { key: "Time zone", value: "Eastern (ET)" },
+];
+
+export const contactTopics: string[] = [
+  "Applied AI and LLM-powered products",
+  "Agentic engineering workflows: custom skills, MCP servers, RAG, tool-using agents",
+  "Product and systems work under real constraints",
+  "Something interesting you think I should be building",
 ];
 
 export const hero = {
