@@ -16,9 +16,9 @@ import { archiveProjects, flagshipProjects, site } from "../data/site";
     </div>
   </section>
 
-  <section id="flagship-case-studies" class="sheet-row pt-12 scroll-mt-24">
+  <section id="flagship-case-studies" class="sheet-row pt-20 scroll-mt-24">
     <p class="mono-tag sheet-row__label">Flagship case studies</p>
-    <div class="sheet-row__body">
+    <div class="sheet-row__body" data-reveal>
       <ol class="project-list mt-8">
         {flagshipProjects.map((project) => (
           <li class="project-row">
@@ -27,7 +27,7 @@ import { archiveProjects, flagshipProjects, site } from "../data/site";
               <p class="mono mt-2">{project.meta}</p>
             </div>
             <div class="project-row-body">
-              <h2>{project.title}</h2>
+              <h2 class="flagship-title"><a href={project.href}>{project.title}</a></h2>
               <p class="prose-soft mt-3">{project.blurb}</p>
               <ChipRow chips={project.chips} class="mt-4" />
               <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-graphite">

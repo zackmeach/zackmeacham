@@ -24,7 +24,7 @@ function isActive(href: string) {
       {navigation.map((item) => (
         <a
           href={item.href}
-          class="nav-link hover:text-ink transition-colors"
+          class="nav-link"
           data-active={isActive(item.href) ? "true" : "false"}
         >
           {item.label}

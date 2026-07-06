@@ -1,6 +1,6 @@
 # Zack Meacham Personal Site
 
-Personal portfolio site for `zackmeacham.com`, built with Astro and Tailwind CSS. This first version is intentionally focused: a strong homepage, clear project story pages, an HTML resume, and a contact page that is easy to keep current.
+Personal portfolio site for `zackmeacham.com`, built with Astro and Tailwind CSS. This first version is intentionally focused: a strong homepage, clear project story pages, an HTML resume, and a contact section that is easy to keep current.
 
 ## Stack
 
@@ -32,9 +32,9 @@ Local dev runs at `http://localhost:4321`.
 │   ├── pages/
 │   │   ├── index.astro
 │   │   ├── about.astro
-│   │   ├── projects.astro
-│   │   ├── resume.astro
-│   │   └── contact.astro
+│   │   ├── work.astro          # project index
+│   │   ├── work/[slug].astro   # per-project case studies
+│   │   └── resume.astro        # contact lives at /#contact + the footer
 │   └── styles/
 │       └── global.css
 ├── astro.config.mjs
