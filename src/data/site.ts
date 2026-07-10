@@ -327,11 +327,11 @@ export const resumeEntries: ResumeEntry[] = [
     period: "Sep 2022 – present",
     previousRoles: "Previously Systems Engineer 2 and Systems Engineer 1.",
     bullets: [
-      "Led and shaped three major engineering efforts across high-stakes test infrastructure, spanning software, systems, instrumentation, and public-safe technical communication.",
-      "Serve as a primary internal resource for frontier-AI adoption across two organizations (bringing agentic and LLM tooling into a constrained enterprise), and mentored an intern and an early-career software engineer.",
-      "Originated the largest active modernization effort in my organization: framed the system risk, built the case, and presented the path forward to senior stakeholders.",
+      "Led and shaped three major engineering efforts across the test infrastructure for a strategic defense guidance system, spanning software, systems, instrumentation, and public-safe technical communication.",
+      "Serve as a primary internal resource for frontier-AI adoption across two organizations, including bounded agent skills that let an ITAR/CUI-compliant sovereign-cloud model work a legacy Ada codebase, and mentored an intern and an early-career software engineer.",
+      "Originated the largest active modernization effort at the site — its flagship test-station suite (~15 engineers across 5 interconnected stations): framed the system risk from 20+ years of production logs, built the case, and presented the path forward to Boeing and U.S. Air Force leadership.",
       "Built a production-facing calibration-equipment software suite solo as lead engineer (zero software to production in ~6 months), replacing a purely mechanical reference at sub-arcsecond, real-time precision and owning the full formal artifact set (SRS, Software Test Plan, Software Test Procedure, VDD).",
-      "Led the software strategy for a legacy LabVIEW instrumentation overhaul under real constraints, integrating new hardware while preserving the legacy behavior the system depends on.",
+      "Led the software strategy for the site's second-largest test-station suite — a 1990s VXI platform migrated to modern PXI — integrating new hardware behind the existing test executive while preserving the legacy behavior the system depends on.",
       "Received Boeing recognition awards for engineering impact and production-level acceptance success.",
     ],
     chips: [
