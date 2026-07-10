@@ -225,7 +225,7 @@ export const flagshipProjects: FlagshipProject[] = [
     eyebrow: "Flagship · professional engineering",
     title: "Test Infrastructure at Boeing",
     blurb:
-      "Mission-critical test infrastructure inside a constrained enterprise, written public-safe. Three concurrent efforts spanning Ada, LabVIEW, hardware integration, and stakeholder-level systems work (one originated, one led, one built from scratch), plus internal frontier-AI adoption across two organizations.",
+      "Mission-critical test infrastructure for a strategic defense guidance system, written public-safe. Three concurrent efforts spanning Ada, LabVIEW, hardware integration, and stakeholder-level systems work (one originated, one led, one built from scratch), plus internal frontier-AI adoption across two organizations.",
     meta: "2022 – present · Shipped & ongoing · public-safe",
     chips: ["Ada", "C++", "LabVIEW", "Hardware integration", "Requirements engineering"],
     href: "/work/boeing",
@@ -550,7 +550,7 @@ export const projectDetails: ProjectDetail[] = [
     slug: "boeing",
     detailTitle: "Hardening Mission-Critical Test Infrastructure in a Constrained Enterprise",
     lead:
-      "Three concurrent efforts across high-stakes test infrastructure: one originated, one led, one built from scratch. Written public-safe.",
+      "Three concurrent efforts across the test infrastructure for a strategic defense guidance system: one originated, one led, one built from scratch. Written public-safe — internal program identifiers omitted.",
     topChips: [
       "Ada",
       "C++",
@@ -574,7 +574,7 @@ export const projectDetails: ProjectDetail[] = [
     whyThisMattered:
       "Test infrastructure is what the rest of an engineering organization depends on. When the test bench is wrong, every downstream judgment about the system under test is wrong. The work here is about supportability and confidence in the data the bench produces, not aesthetics.",
     roleAndOwnership:
-      "Across the three efforts: originated the largest active modernization initiative in my organization by framing system risk and taking the path forward to senior stakeholders; led the software strategy on a legacy instrumentation overhaul as the lead software engineer; built a new calibration-equipment software suite from scratch and carried it through acceptance into production-facing daily use. Also mentored an intern and an early-career software engineer along the way.",
+      "Across the three efforts: originated the largest active modernization initiative at the site — its flagship test-station suite — by framing system risk from 20+ years of production logs and taking the path forward to Boeing and U.S. Air Force leadership; led the software strategy on the second-largest suite's VXI-to-PXI instrumentation overhaul as the lead software engineer; built a new calibration-equipment software suite from scratch and carried it through acceptance into production-facing daily use. Also mentored an intern and an early-career software engineer along the way.",
     coreConstraints: [
       "Brittle legacy systems with real production usage: modernization can't disrupt active operations.",
       "Hardware-software interfaces where the legacy behavior carries meaning that has to be preserved.",
@@ -583,16 +583,16 @@ export const projectDetails: ProjectDetail[] = [
     ],
     architecture: [
       {
-        title: "Flagship test-suite overhaul (originator)",
+        title: "Flagship test-station suite overhaul (originator)",
         description:
-          "Turned a station-level assignment into a program-level effort. The interesting part wasn't the technical depth alone. It was pairing system understanding with disciplined analysis and stakeholder communication until a credible path forward existed.",
+          "The site's flagship test-station suite — roughly 15 engineers across 5 interconnected stations. Turned a station-level assignment into a program-level effort: a risk analysis across 20+ years of production logs became the case for modernization, framed and taken to Boeing and U.S. Air Force leadership. The interesting part wasn't the technical depth alone; it was pairing system understanding with disciplined analysis and stakeholder communication until a credible path forward existed.",
         chips: ["Ada", "Requirements engineering", "Stakeholder communication"],
       },
       {
         title: "Legacy instrumentation overhaul (lead software engineer)",
         description:
-          "Inherited a brittle legacy environment with real constraints and missing pieces. The work has been about careful tradeoffs: preserving the legacy behavior that matters, integrating new hardware safely, and creating a supportable path forward without pretending the system is greenfield.",
-        chips: ["LabVIEW", "C++", "Hardware integration", "Legacy migration"],
+          "The site's second-largest test-station suite: a 1990s-era VXI platform migrated to modern PXI. Inherited a brittle legacy environment with real constraints and missing pieces; the work has been careful tradeoffs — new hardware slotted in behind the existing test executive so reliability returns without rewriting the test logic, preserving the legacy behavior that matters instead of pretending the system is greenfield.",
+        chips: ["LabVIEW", "C++", "VXI → PXI", "Hardware integration", "Legacy migration"],
       },
       {
         title: "Calibration-equipment software suite (from scratch)",
@@ -603,16 +603,16 @@ export const projectDetails: ProjectDetail[] = [
     ],
     execution: [
       "Calibration-equipment software suite delivered solo (zero software to production in ~6 months), replacing a purely mechanical reference, matched 1:1 at sub-arcsecond real-time precision.",
-      "Legacy instrumentation overhaul advanced, with new hardware integrated alongside preserved legacy behaviors.",
-      "Program-level risk framing built and presented to senior stakeholders.",
-      "Internal frontier-AI adoption led across two organizations, bringing agentic and LLM tooling into a constrained enterprise.",
+      "Second-largest test-station suite advanced from 1990s VXI toward modern PXI, with new hardware integrated behind the existing test executive alongside preserved legacy behaviors.",
+      "Program-level risk framing built from 20+ years of production logs and presented to Boeing and U.S. Air Force leadership.",
+      "Internal frontier-AI adoption led across two organizations, including bounded agent skills that let an ITAR/CUI-compliant sovereign-cloud model work a legacy Ada codebase.",
     ],
     currentState:
       "All three efforts active; calibration suite is in production-facing daily use. Recognized with two Boeing awards for engineering impact and acceptance success. Internal frontier-AI adoption continues across two organizations.",
     whatThisDemonstrates:
       "Ownership of mission-critical systems under real constraints, stakeholder trust earned through clear analysis and communication, and the discipline to modernize without pretending the system is greenfield.",
     publicSafeNote:
-      "This page is written public-safe: program names, specific station counts, and sensitive internal detail are intentionally omitted or generalized.",
+      "This page is written public-safe: internal program identifiers and codenames are omitted, and sensitive implementation detail is generalized. What remains is cleared for public use.",
   },
   {
     slug: "msm-awakening-tracker",
