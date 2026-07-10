@@ -239,7 +239,7 @@ export const archiveProjects: ArchiveProject[] = [
     eyebrow: "Personal project · desktop",
     meta: "2026 · Shipped · six releases",
     summary:
-      "A Windows desktop companion app for My Singing Monsters, built solo from greenfield to six tagged releases. Production-grade reliability for a solo project: an atomic, threat-modeled auto-updater with SHA-256 verification and rollback, a two-database SQLite design whose user progress survives full content rebuilds, a self-publishing GitHub Actions pipeline, and a 472-test suite.",
+      "A Windows desktop companion app for My Singing Monsters, built solo from greenfield to six tagged releases. Production-grade reliability for a solo project: an atomic, threat-modeled auto-updater with SHA-256 verification and rollback, a two-database SQLite design whose user progress survives full content rebuilds, a self-publishing GitHub Actions pipeline, and a 505-test suite.",
     chips: ["Python", "PySide6", "SQLite", "PyInstaller", "GitHub Actions"],
     href: "/work/msm-awakening-tracker",
   },
@@ -626,7 +626,7 @@ export const projectDetails: ProjectDetail[] = [
       { label: "Status", value: "Shipped · v1.0.2 · six tagged releases" },
       { label: "Stack", value: "Python 3.10 · PySide6 / Qt 6 · SQLite · PyInstaller · Inno Setup · GitHub Actions" },
       { label: "Scope", value: "Windows desktop app · 64 monsters / 76 egg types of content" },
-      { label: "Tests", value: "472 tests across 34 modules (31 unit, 3 integration) · real in-memory SQLite · pytest-qt" },
+      { label: "Tests", value: "505 tests across 34 modules (31 unit, 3 integration) · real in-memory SQLite · pytest-qt" },
       { label: "Process", value: "103 commits · 15 single-concern PRs · Conventional Commits" },
       { label: "Proof", value: "Atomic SHA-256-verified updater with rollback · two-database stable-identity design · self-publishing CI/CD" },
     ],
@@ -677,11 +677,11 @@ export const projectDetails: ProjectDetail[] = [
       "Hardened the update channel against a poisoned-manifest threat model: HTTPS-only with a host allowlist that blocks HTTP-downgrade, file:// local reads, and attacker-host redirects, behind a numeric (non-lexical) min-version gate.",
       "Two-database SQLite design enforcing content immutability at runtime (the content DB reopens read-only, so stray writes raise OperationalError), with a slug-based stable-identity system so user progress survives full content rebuilds and primary-key reassignment without orphaning.",
       "Made SQLite schema migrations atomic (each wrapped in BEGIN/COMMIT with rollback), eliminating a startup-bricking class of partial-apply failures, with the fix landing alongside a dedicated regression test.",
-      "472-test suite across 34 modules against real in-memory SQLite, including adversarial updater tests (SHA-256 mismatch, scheme and host allowlist rejection) and a live-HTTP end-to-end harness exercising the full fetch, validate, swap, rollback loop; acceptance tests map traceably to formal SRS criteria.",
+      "505-test suite across 34 modules against real in-memory SQLite, including adversarial updater tests (SHA-256 mismatch, scheme and host allowlist rejection) and a live-HTTP end-to-end harness exercising the full fetch, validate, swap, rollback loop; acceptance tests map traceably to formal SRS criteria.",
       "Self-publishing CI/CD: three least-privilege GitHub Actions workflows (PR test gating, a tag-driven release build with PyInstaller and Inno Setup, and an on-demand content publisher that validates, builds, and commits artifacts back into the app's update channel).",
     ],
     currentState:
-      "Shipped and maintained: six tagged releases from three betas through v1.0.0 to two hardening and maintenance point releases (v1.0.2), each a real git tag with a matching GitHub Release. A dedicated v1.0.1 security-hardening pass made SHA-256 mandatory, enforced the HTTPS host allowlist, capped streaming downloads, and opened the runtime database read-only.",
+      "Shipped and maintained: six tagged releases from three betas through v1.0.0 to two hardening and maintenance point releases (v1.0.2), each a real git tag with a matching GitHub Release. A dedicated v1.0.1 security-hardening pass made SHA-256 mandatory and capped streaming downloads.",
     whatThisDemonstrates:
       "End-to-end ownership of a shipped desktop product, reliability engineering as a first-class concern (atomic swaps, rollback, read-only enforcement), threat-model-driven security, and the discipline to treat deletion and gated releases as real engineering, delivered solo.",
   },
