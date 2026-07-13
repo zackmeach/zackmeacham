@@ -313,11 +313,11 @@ export const resumeEntries: ResumeEntry[] = [
     organization: "Ledger App, Inc.",
     period: "2026 – present",
     bullets: [
-      "Cofounder and technical lead of an incorporated civic-tech startup (Delaware C-corp, three-cofounder team); authored roughly half of all commits and lead the AI, data, and security engineering for an assistant that answers civic questions with a citation behind every claim.",
-      "Built Vera, a production multi-turn LLM agent on Anthropic Claude with a closed 5-class grounded tool registry and hand-rolled SSE streaming, engineered so no user PII can reach the model by construction (the prompt carries only message text; the jurisdiction tool takes zero parameters).",
-      "Added governance-as-code around the model: a prompt-hash CI gate that fails closed on any neutrality-prompt edit, an 85-fixture LLM-as-judge validation harness replaying the real production loop, and multi-tier abuse enforcement unified across both LLM routes.",
-      "Own a 70-migration Postgres/Supabase data layer with mandatory row-level security on all 23 tables (100% coverage) and a multi-source ingestion layer where provenance is enforced in the type system; a pre-launch security audit found and fixed real auth-bypass, data-destruction, and privilege-escalation defects.",
-      "Contributed to Ledger's public iOS companion app (Expo / React Native, live on the App Store), focused on the client trust boundary so the phone preserves the web product's provenance-enforced, no-PII-to-model guarantee: Vera served entirely from the shared backend, session tokens kept in the iOS Keychain, and a CI contract test guarding the mobile↔web API seam against drift.",
+      '<strong class="font-medium text-ink">Company:</strong> Cofounder and technical lead of an incorporated civic-tech startup (Delaware C-corp, three-cofounder team); authored roughly half of all commits and lead the AI, data, and security engineering for an assistant that answers civic questions.',
+      '<strong class="font-medium text-ink">Vera agent:</strong> Built Vera, a production multi-turn LLM agent on Anthropic Claude with a closed 5-class grounded tool registry and hand-rolled SSE streaming, engineered so no user PII can reach the model by construction.',
+      '<strong class="font-medium text-ink">Governance:</strong> Added governance-as-code around the model: a prompt-hash CI gate that fails closed on any neutrality-prompt edit, an 85-fixture LLM-as-judge validation harness, and multi-tier abuse enforcement.',
+      '<strong class="font-medium text-ink">Data layer:</strong> Own a 70-migration Postgres/Supabase data layer with mandatory row-level security on all 23 tables (100% coverage); a pre-launch security audit found and fixed real auth-bypass, data-destruction, and privilege-escalation defects.',
+      '<strong class="font-medium text-ink">Mobile trust boundary:</strong> Contributed to Ledger\'s public iOS companion app (live on the App Store), focused on the client trust boundary so the phone preserves the web product\'s provenance-enforced, no-PII-to-model guarantee: Vera served entirely from the shared backend, and a CI contract test guarding the mobile↔web API seam against drift.',
     ],
     chips: ["Next.js", "TypeScript", "Supabase", "Anthropic API", "Expo / React Native", "Vitest", "Playwright"],
   },
@@ -327,12 +327,12 @@ export const resumeEntries: ResumeEntry[] = [
     period: "Sep 2022 – present",
     previousRoles: "Previously Systems Engineer 2 and Systems Engineer 1.",
     bullets: [
-      "Led and shaped three major engineering efforts across the test infrastructure for a strategic defense guidance system, spanning software, systems, instrumentation, and public-safe technical communication.",
-      "Serve as a primary internal resource for frontier-AI adoption across two organizations, including bounded agent skills that let an ITAR/CUI-compliant sovereign-cloud model work a legacy Ada codebase, and mentored an intern and an early-career software engineer.",
-      "Originated the largest active modernization effort at the site — its flagship test-station suite (~15 engineers across 5 interconnected stations): framed the system risk from 20+ years of production logs, built the case, and presented the path forward to Boeing and U.S. Air Force leadership.",
-      "Built a production-facing calibration-equipment software suite solo as lead engineer (zero software to production in ~6 months), replacing a purely mechanical reference at sub-arcsecond, real-time precision and owning the full formal artifact set (SRS, Software Test Plan, Software Test Procedure, VDD).",
-      "Led the software strategy for the site's second-largest test-station suite — a 1990s VXI platform migrated to modern PXI — integrating new hardware behind the existing test executive while preserving the legacy behavior the system depends on.",
-      "Received Boeing recognition awards for engineering impact and production-level acceptance success.",
+      '<strong class="font-medium text-ink">Scope:</strong> Led and shaped three major engineering efforts across the test infrastructure for a strategic defense guidance system.',
+      '<strong class="font-medium text-ink">Frontier AI:</strong> Serve as a primary internal resource for frontier-AI adoption across two organizations, including bounded agent skills that let an ITAR/CUI-compliant sovereign-cloud model work a legacy Ada codebase.',
+      '<strong class="font-medium text-ink">Modernization:</strong> Originated the largest active modernization effort at the site — its flagship test-station suite: framed the system risk from 20+ years of production logs and presented the path forward to Boeing and U.S. Air Force leadership.',
+      '<strong class="font-medium text-ink">Calibration suite:</strong> Built a production-facing calibration-equipment software suite solo as lead engineer (zero software to production in ~6 months), replacing a purely mechanical reference at sub-arcsecond, real-time precision, and owning the full formal artifact set.',
+      '<strong class="font-medium text-ink">Legacy migration:</strong> Led the software strategy for the site\'s second-largest test-station suite — a 1990s VXI platform migrated to PXI — integrating new hardware while preserving the legacy behavior the system depends on.',
+      '<strong class="font-medium text-ink">Recognition:</strong> Received Boeing awards for engineering impact and acceptance success.',
     ],
     chips: [
       "Ada",
@@ -436,7 +436,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         title: "Append-only event store as the single source of truth",
         description:
-          "An append-only SQLite (WAL) event store holds all trade, explanation, kill-switch, strategy-run, and backtest history. Explanation and trade rows write atomically in one transaction, and the schema evolves only through ordered, additive, version-pinned migrations. Event sourcing buys full decision-level auditability: every outcome is reconstructable from the log.",
+          "An append-only SQLite (WAL) event store holds all trade, explanation, kill-switch, strategy-run, and backtest history. Explanation and trade rows write atomically in one transaction, and the schema evolves only through ordered, additive, version-pinned migrations. Event sourcing buys full decision-level auditability: every outcome is reconstructable from the log. Every decision (submit, veto, expired, idempotency-suppressed, dropped) emits a durable explanation record.",
         chips: ["SQLite", "Event sourcing", "Schema migrations"],
       },
       {
@@ -465,11 +465,8 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     execution: [
-      "Every order routes through a single ExecutionService chokepoint that assembles context, invokes risk, records an explanation, then submits, so a paper-stage strategy is structurally incapable of submitting live.",
-      "Exactly-once, crash-recoverable order drain: a pending outbox row commits before the broker call and a single-transaction consume-CAS suppresses duplicate orders across overnight double-launch and crash-retry.",
-      "Fail-closed risk evaluator with 17 veto checks that no code path can bypass (no skip flag), plus a manual-reset-only kill switch where auto-resume is structurally impossible.",
-      "Cross-process serialization via lock-file advisory mutexes (PID plus heartbeat liveness, stale auto-reclaim) so many runners sharing one Alpaca account never evaluate against a stale snapshot; lock-acquire timeout fails closed.",
-      "Append-only SQLite event store as the single source of truth, with atomic explanation-plus-trade writes and ordered version-pinned migrations; every decision (submit, veto, expired, idempotency-suppressed, dropped) emits a durable explanation record.",
+      "The single ExecutionService chokepoint means a paper-stage strategy is structurally incapable of submitting live.",
+      "Cross-process serialization means many runners sharing one Alpaca account never evaluate against a stale snapshot.",
       "~225 test files (~94K LOC) with coverage ratcheted at 89%, including AST-level invariant tests that lock the existence of safety guards, golden regression tests, and a manual mutation audit; 58 ADRs and a custom Opus risk-invariant-reviewer I run on every risk-touching diff against 8 named safety invariants.",
     ],
     currentState:
@@ -510,7 +507,7 @@ export const projectDetails: ProjectDetail[] = [
       {
         title: "Vera: a grounded multi-turn LLM agent",
         description:
-          "Vera answers only from a closed 5-class grounded tool registry (federal candidates and finance, officeholders, jurisdiction, federal ballot, election calendar). An iteration-capped tool-use loop streams answers over a hand-rolled SSE protocol with inline citations and an explicit information-unavailable contract. No user PII can reach the model by construction: the prompt carries only message text, and the jurisdiction tool exposes an empty input schema, so an address has no channel into model-visible context.",
+          "Vera answers only from a closed 5-class grounded tool registry (federal candidates and finance, officeholders, jurisdiction, federal ballot, election calendar). An iteration-capped tool-use loop streams answers over a hand-rolled SSE protocol with inline citations and an explicit information-unavailable contract. No user PII can reach the model by construction: the prompt carries only message text, and the jurisdiction tool exposes an empty input schema, so an address has no channel into model-visible context. A merge-blocking contract test locks the guarantee against regression.",
         chips: ["Anthropic Claude", "TypeScript", "SSE streaming", "Tool use"],
       },
       {
@@ -533,11 +530,6 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     execution: [
-      "Vera answers only from a closed 5-class grounded tool registry; an iteration-capped tool-use loop streams answers over a hand-rolled SSE protocol with inline citations and an explicit information-unavailable contract.",
-      "No PII reaches the model by construction: the prompt carries only message text, and the jurisdiction tool takes zero parameters, so a user's address has no channel into model context. A merge-blocking contract test locks the guarantee against regression.",
-      "Governance-as-code: a SHA-256 hash gate fails the build on any edit to the neutrality prompt surface, and an 85-fixture LLM-as-judge harness replays the real production loop before release.",
-      "70 Postgres migrations with mandatory row-level security on every user-linked table (all 23 tables, 100%); a pre-launch audit found and fixed an RLS auth-bypass, an unauthenticated data-destruction RPC, and an admin privilege-escalation.",
-      "Multi-source ingestion under a generic Sourced<T> provenance envelope, so an un-cited value fails to compile; self-monitoring pipelines auto-open drift PRs and a watchdog catches the cron silently ceasing to fire.",
       "4,000+ tests across 445 files, 15 real-Supabase RLS round-trip suites, and 28 Playwright specs (9 accessibility); an OpenAPI 3.1 contract derived from zod schemas with a CI drift gate; 19 GitHub Actions workflows including CodeQL and secret-scanning.",
       "Extended the guarantee to the client: contributed to Ledger's public iOS companion app (Expo / React Native, live on the App Store), where Vera is served entirely from the shared backend so the device never assembles a model prompt, session tokens live in the iOS Keychain, and a CI contract test guards the mobile↔web API seam against drift.",
     ],
@@ -673,12 +665,8 @@ export const projectDetails: ProjectDetail[] = [
       },
     ],
     execution: [
-      "Atomic content updater: streams a new SQLite database in 64 KB chunks under a 64 MB ceiling, validates it with SHA-256 plus a PRAGMA integrity_check and an orphan-row audit, then swaps via os.replace() with automatic rollback, so a failed swap or reconciliation restores the backup and never leaves content and user state mismatched.",
-      "Hardened the update channel against a poisoned-manifest threat model: HTTPS-only with a host allowlist that blocks HTTP-downgrade, file:// local reads, and attacker-host redirects, behind a numeric (non-lexical) min-version gate.",
-      "Two-database SQLite design enforcing content immutability at runtime (the content DB reopens read-only, so stray writes raise OperationalError), with a slug-based stable-identity system so user progress survives full content rebuilds and primary-key reassignment without orphaning.",
       "Made SQLite schema migrations atomic (each wrapped in BEGIN/COMMIT with rollback), eliminating a startup-bricking class of partial-apply failures, with the fix landing alongside a dedicated regression test.",
       "505-test suite across 34 modules against real in-memory SQLite, including adversarial updater tests (SHA-256 mismatch, scheme and host allowlist rejection) and a live-HTTP end-to-end harness exercising the full fetch, validate, swap, rollback loop; acceptance tests map traceably to formal SRS criteria.",
-      "Self-publishing CI/CD: three least-privilege GitHub Actions workflows (PR test gating, a tag-driven release build with PyInstaller and Inno Setup, and an on-demand content publisher that validates, builds, and commits artifacts back into the app's update channel).",
     ],
     currentState:
       "Shipped and maintained: six tagged releases from three betas through v1.0.0 to two hardening and maintenance point releases (v1.0.2), each a real git tag with a matching GitHub Release. A dedicated v1.0.1 security-hardening pass made SHA-256 mandatory and capped streaming downloads.",
