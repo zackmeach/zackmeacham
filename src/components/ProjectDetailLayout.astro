@@ -24,7 +24,8 @@ const nextFlagship =
   <header class="detail-row">
     <p class="mono-tag detail-row__label">{project.eyebrow}</p>
     <div class="detail-row__body">
-      <h1 class="hero-title hero-title--detail max-w-[26ch]">{detail.detailTitle}</h1>
+      <p class="mono print:hidden"><a href="/work" class="link">← All work</a></p>
+      <h1 class="hero-title hero-title--detail max-w-[26ch] mt-4">{detail.detailTitle}</h1>
       <p class="mono mt-3">{project.year} · {project.status}</p>
       <p class="lead mt-6 max-w-[60ch]">{detail.lead}</p>
       <ChipRow chips={detail.topChips} class="mt-6" />
@@ -49,6 +50,22 @@ const nextFlagship =
       </dl>
     </div>
   </section>
+
+  {/* Sheets run long on mobile; a jump index up top saves the scroll-to-the-bottom hunt for wayfinding. Targets the section ids already in place below. */}
+  <nav class="detail-row mt-14 print:hidden" aria-label="On this page">
+    <p class="mono-tag detail-row__label">On this page</p>
+    <div class="detail-row__body">
+      <ul class="flex flex-wrap gap-x-5">
+        <li><a href="#why-this-mattered" class="mono link inline-flex min-h-11 items-center">Why this mattered</a></li>
+        <li><a href="#role-and-ownership" class="mono link inline-flex min-h-11 items-center">Role &amp; ownership</a></li>
+        <li><a href="#core-constraints" class="mono link inline-flex min-h-11 items-center">Constraints</a></li>
+        <li><a href="#architecture-and-key-decisions" class="mono link inline-flex min-h-11 items-center">Architecture</a></li>
+        <li><a href="#execution-highlights" class="mono link inline-flex min-h-11 items-center">Execution</a></li>
+        <li><a href="#impact-current-state" class="mono link inline-flex min-h-11 items-center">Impact</a></li>
+        <li><a href="#what-this-demonstrates" class="mono link inline-flex min-h-11 items-center">What this demonstrates</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <section id="why-this-mattered" class="detail-row mt-14 scroll-mt-24">
     <p class="mono-tag detail-row__label">Why this mattered</p>

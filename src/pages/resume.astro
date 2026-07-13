@@ -14,7 +14,7 @@ import { educationEntries, links, resumeEntries, site, skillGroups } from "../da
       </div>
 
       <div class="resume-links print:hidden">
-        <button type="button" data-print-resume class="button-link">Save as PDF</button>
+        <button type="button" data-print-resume class="button-link">Print / save PDF</button>
         <p class="mono mt-3">{site.emailDisplay}</p>
         <p class="mono">{site.location}</p>
         {links.map((item) => (
@@ -39,9 +39,9 @@ import { educationEntries, links, resumeEntries, site, skillGroups } from "../da
             </div>
             <p class="mono whitespace-nowrap">{entry.period}</p>
           </div>
-          <ul class="mt-4 space-y-2">
+          <ul class="mt-4 space-y-3 sm:space-y-2">
             {entry.bullets.map((bullet) => (
-              <li class="prose-soft text-sm">{bullet}</li>
+              <li class="prose-soft text-sm" set:html={bullet} />
             ))}
           </ul>
           <ChipRow chips={entry.chips} class="mt-4" />

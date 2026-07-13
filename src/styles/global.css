@@ -16,7 +16,7 @@
      reads as the same instrument rather than copy-pasted magic numbers. */
   --ease-draft: cubic-bezier(0.2, 0.7, 0.2, 1);
   --dur-hover: 140ms;
-  --dur-reveal: 520ms;
+  --dur-reveal: 380ms;
 
   /* Palette anchored to brand hue ~41 (terra-cotta). All neutrals tinted warm
      in the 55–80 hue range, low chroma at extremes per perceptual rules. */
@@ -589,6 +589,7 @@
   .resume-entry ul {
     list-style: disc;
     padding-left: 1.2rem;
+    max-width: 72ch;
   }
 
   /* Contact "schedule": a ruled key→value register in the title-block voice
@@ -652,6 +653,15 @@
     }
   }
 
+  /* Below ~400px the 6.5rem label rail leaves the value ~148px and URLs
+     fragment mid-word; stack each term above its value instead. */
+  @media (max-width: 399px) {
+    .contact-register__row {
+      grid-template-columns: 1fr;
+      gap: 0.3rem;
+    }
+  }
+
   /* Grow the mobile nav hit area to the 44px touch-target guideline without
      changing the visible type or the desktop baseline-aligned header. */
   @media (max-width: 767px) {
@@ -659,6 +669,15 @@
       display: inline-flex;
       align-items: center;
       min-height: 2.75rem;
+    }
+  }
+
+  /* Desktop nav links render ~20px tall; pad the hit target toward 44px and
+     cancel it with negative margin so the baseline-aligned header never moves. */
+  @media (min-width: 768px) {
+    .nav-link {
+      padding-block: 0.75rem;
+      margin-block: -0.75rem;
     }
   }
 
@@ -698,15 +717,15 @@
   }
 
   .reveal-2 {
-    animation-delay: 120ms;
+    animation-delay: 100ms;
   }
 
   .reveal-3 {
-    animation-delay: 220ms;
+    animation-delay: 160ms;
   }
 
   .reveal-4 {
-    animation-delay: 320ms;
+    animation-delay: 220ms;
   }
 
   @keyframes reveal {
@@ -779,8 +798,12 @@
     }
   }
 
+  /* Absolute (not fixed): body is position:relative with min-height:100vh, so
+     inset:0 spans the full document and the marks sit at its extreme corners
+     — top of page and bottom past the footer — never riding mid-scroll over
+     content on long pages. */
   .reg-marks {
-    position: fixed;
+    position: absolute;
     inset: 0;
     z-index: 0;
     pointer-events: none;
